@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Performance! Determinism. Vs? | luddites, inc.</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Performance! Determinism. Vs?" />
+<meta name="author" content="CF" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="[David Ungar]httpenwikipediaorgwikiDavidUngar cocreator of [Self]httpselflanguageorg the forefather …" />
+<meta property="og:description" content="[David Ungar]httpenwikipediaorgwikiDavidUngar cocreator of [Self]httpselflanguageorg the forefather …" />
+<link rel="canonical" href="https://crfroehlich.github.io/cellar/code/measurements/speed/2012/01/24/performance-determinism-vs.html" />
+<meta property="og:url" content="https://crfroehlich.github.io/cellar/code/measurements/speed/2012/01/24/performance-determinism-vs.html" />
+<meta property="og:site_name" content="luddites, inc." />
+<meta property="og:image" content="https://crfroehlich.github.io/cellar/images/2012-01-24-performance-determinism-vs.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2012-01-24T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"[David Ungar]httpenwikipediaorgwikiDavidUngar cocreator of [Self]httpselflanguageorg the forefather …","url":"https://crfroehlich.github.io/cellar/code/measurements/speed/2012/01/24/performance-determinism-vs.html","@type":"BlogPosting","headline":"Performance! Determinism. Vs?","dateModified":"2012-01-24T00:00:00-06:00","datePublished":"2012-01-24T00:00:00-06:00","author":{"@type":"Person","name":"CF"},"image":"https://crfroehlich.github.io/cellar/images/2012-01-24-performance-determinism-vs.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://crfroehlich.github.io/cellar/code/measurements/speed/2012/01/24/performance-determinism-vs.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cellar/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://crfroehlich.github.io/cellar/feed.xml" title="luddites, inc." /><link rel="shortcut icon" type="image/x-icon" href="/cellar/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cellar/">luddites, inc.</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/cellar/about/">About Me</a><a class="page-link" href="/cellar/search/">Search</a><a class="page-link" href="/cellar/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Performance! Determinism. Vs?</h1><p class="page-description">[David Ungar]httpenwikipediaorgwikiDavidUngar cocreator of [Self]httpselflanguageorg the forefather ...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2012-01-24T00:00:00-06:00" itemprop="datePublished">
+        Jan 24, 2012
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">CF</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/cellar/categories/#code">code</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#measurements">measurements</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#speed">speed</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><p><a href="http://en.wikipedia.org/wiki/David_Ungar">David Ungar</a> (co-creator of <a href="http://selflanguage.org/">Self</a>, the forefather to my favorite language, JavaScript) had an interesting talk at SPLASH 2011, which is <a href="http://my-inner-voice.blogspot.com/2012/01/many-core-processors-everything-you.html">nicely summarized here</a> (post-talk <a href="http://channel9.msdn.com/Blogs/Charles/SPLASH-2011-David-Ungar-Self-ManyCore-and-Embracing-Non-Determinism">interview here</a>).</p>
+
+<p>There are two predicate assumptions in this line of thinking. First, that in the end, we will always value performance over everything else (data integrity, reliability, determinism). Second, that we must sacrifice some level of determinism if we want to increase performance.</p>
+
+<p>The JavaScript example is a good one.</p>
+
+<p>“Why would you write critical business logic in an untyped language?”</p>
+
+<p>“Because, by sacrificing static typing, you can achieve performance that is otherwise impossible to attain.”</p>
+
+<p>Of course, JavaScript itself <a href="http://hacks.mozilla.org/2012/01/javascript-on-the-server-growing-the-node-js-community/">isn’t even the Wild West</a>. It’s serial; it’s single-threaded. It poses few of the suggested risks of operating in thousand core environment, where (if we are to believe Mr. Ungar) we must stare into the abyss.</p>
+
+<p>The line of thinking is provocative, and it’s led me to wonder if it doesn’t speak to something more basic: we must constantly challenge our assumptions about what is the most performant way to program.</p>
+
+<p>Recently, Node.js entered the tweet-o-sphere and has garnered enough attention that even Microsoft has built support for Node into IIS and their Azure platform. <a href="http://www.hanselman.com/blog/InstallingAndRunningNodejsApplicationsWithinIISOnWindowsAreYouMad.aspx">Are they mad</a>?</p>
+
+<p><a href="http://radar.oreilly.com/2011/07/what-is-node.html">In explaining the relevance of Node to broader technology groups</a>, Brett McLaughlin notes:</p>
+
+<p>“There’s another web pattern at work here, and it’s probably far more important than whether you use Node or not, and how evented your web applications are. It’s simply this: use different solutions for different problems. Even better, use the right solution for a particular problem, regardless of whether that’s the solution you’ve been using for all your other problems.”</p>
+
+<p>That, to me, is the most elegant subversion of Mr. Ungar’s thesis. We may have to abandon determinism to solve certain problems, but we can also abandon it in a deterministic way.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="crfroehlich/cellar"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://crfroehlich.github.io/cellar/code/measurements/speed/2012/01/24/performance-determinism-vs.html';
+    this.page.identifier = 'https://crfroehlich.github.io/cellar/code/measurements/speed/2012/01/24/performance-determinism-vs.html';
+  };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+
+    s.src = 'https://luddites.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+    powered by Disqus.</a></noscript><a class="u-url" href="/cellar/code/measurements/speed/2012/01/24/performance-determinism-vs.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cellar/%20/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/cellar/feed.xml">
+            <svg class="svg-icon blue">
+              <use xlink:href="/cellar/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>rss</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>A journey of one person hiking their desk</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/tquestingbeast" title="tquestingbeast"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer></body>
+
+</html>

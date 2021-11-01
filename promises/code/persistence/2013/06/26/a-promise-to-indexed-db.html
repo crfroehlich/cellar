@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>A Promise to IndexedDb | luddites, inc.</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="A Promise to IndexedDb" />
+<meta name="author" content="CF" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Quite a bit of my free time in the last 8 months has slipped away into [OJ]httpsomecallmechiefgithub…" />
+<meta property="og:description" content="Quite a bit of my free time in the last 8 months has slipped away into [OJ]httpsomecallmechiefgithub…" />
+<link rel="canonical" href="https://crfroehlich.github.io/cellar/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html" />
+<meta property="og:url" content="https://crfroehlich.github.io/cellar/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html" />
+<meta property="og:site_name" content="luddites, inc." />
+<meta property="og:image" content="https://crfroehlich.github.io/cellar/images/2013-06-26-a-promise-to-indexed-db.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-06-26T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Quite a bit of my free time in the last 8 months has slipped away into [OJ]httpsomecallmechiefgithub…","url":"https://crfroehlich.github.io/cellar/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html","@type":"BlogPosting","headline":"A Promise to IndexedDb","dateModified":"2013-06-26T00:00:00-05:00","datePublished":"2013-06-26T00:00:00-05:00","author":{"@type":"Person","name":"CF"},"image":"https://crfroehlich.github.io/cellar/images/2013-06-26-a-promise-to-indexed-db.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://crfroehlich.github.io/cellar/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cellar/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://crfroehlich.github.io/cellar/feed.xml" title="luddites, inc." /><link rel="shortcut icon" type="image/x-icon" href="/cellar/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cellar/">luddites, inc.</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/cellar/about/">About Me</a><a class="page-link" href="/cellar/search/">Search</a><a class="page-link" href="/cellar/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">A Promise to IndexedDb</h1><p class="page-description">Quite a bit of my free time in the last 8 months has slipped away into [OJ]httpsomecallmechiefgithub...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2013-06-26T00:00:00-05:00" itemprop="datePublished">
+        Jun 26, 2013
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">CF</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      14 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/cellar/categories/#promises">promises</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#code">code</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#persistence">persistence</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><p>Quite a bit of my free time in the last 8 months has slipped away into <a href="http://somecallmechief.github.io/oj/">OJ</a>, my solution to the hell of dynamic form creation (based on arbitrary data inputs and accordingly arbitrary data outputs). Folks at <a href="http://www.wufoo.com/">WuFoo</a> and <a href="https://bootsnipp.com/index.php/forms">Bootsnip</a> have some nice prototypes of runtime manipulatable engines; while each looks like excellent work, neither solves my problem of generating entire workflows based on data. I want the data to drive the UI; the UI should simply read the data and generate the necessary rich form content necessary to provide slick, intuitive, addictive user experiences.</p>
+
+<p>In the pursuit of this heffalump, I had recently been working on decomposing <a href="http://www.youtube.com/user/karnevalCom">Martin Orth</a>’s <a href="http://www.youtube.com/watch?v=QJwlEry_ER4">query builder</a> into classes in the OJ framework (see it on <a href="https://github.com/somecallmechief/oj">Github</a>, in <a href="https://npmjs.org/package/ojs">NPM</a>, and collaborate with me in <a href="https://c9.io/somecallmechief/oj">Cloud9</a>). This body of work depends upon <a href="http://www.sencha.com/products/extjs">ExtJs</a>, which is a powerful but extraordinarily inscrutable framework. I spend a frustrating amount of time comparing the inputs into Ext from OJ vs the inputs in Sencha’s examples or their documentation. It’s tedious and fragile as seeming minor changes can produce difficult to track bugs which go unobserved across several commits.</p>
+
+<p>I wanted to be able to instrument my code in such a way that I could flip a switch and start logging every input into Ext. I had a few requirements: the objects logged needed to be in as close a state as possible to their values at the time of logging (logging to the console sends the object by reference, so you’ll usually get the last known value of the object by the time you see it). The objects needed to persist across page loads. There would be a lot of data (more than would fit in localStorage). Finally, the data needed to be queryable.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/IndexedDB%E2%80%8E">IndexedDb</a> seemed like a potentially good fit. Unfortunately, like so many “HTML5” standards, <a href="https://developer.mozilla.org/en-US/docs/IndexedDB">the API is terrible</a>. If the consumers of this API were just vendors, like Chrome and Firefox, it would be hard to identify any specific contract as “wrong”; but as a developer consuming this API, I cannot easily point to any component and say, “this is right.” But it is what it is, and it is all we’ve got.</p>
+
+<p>So in an effort to transmogrify the indexedDb API into something that I would actually want to use myself, I put together a proof-of-concept wrapped around <a href="http://wiki.commonjs.org/wiki/Promises/A">Promises</a>. I am developing it inside of OJ, but it could easily be factored out to use independently.</p>
+
+<p>You’ll need:</p>
+
+<ul>
+  <li>
+<a href="https://github.com/kriskowal/q">Q.js</a> (<a href="http://www.blogger.com/profile/01443956999129365941">Kris Kowal</a>’s excellent Promise library)</li>
+  <li>The <a href="http://nparashuram.com/IndexedDBShim/">IndexedDb polyfill</a> (to support the IEs of the world, and such)</li>
+  <li>
+<a href="https://github.com/marak/Faker.js/%E2%80%8E">FakerJs</a> (Optional: very useful to get prototypes running without worrying about creating the data)</li>
+  <li>
+<a href="http://somecallmechief.github.io/oj/">OJ</a> (Optional: only if you don’t want to have to factor out my helper methods)</li>
+</ul>
+
+<p>This is the API that I wanted to call:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">tableName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">messages</span><span class="dl">'</span><span class="p">,</span>    
+  <span class="nx">dbName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">diagnostics</span><span class="dl">'</span><span class="p">,</span>    
+  <span class="nx">dbVersion</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    
+    
+<span class="c1">//Create a new DB manager instance    </span>
+<span class="kd">var</span> <span class="nx">newDbMgr</span> <span class="o">=</span> <span class="nx">initDb</span><span class="p">();</span>    
+<span class="c1">//Connect to a specific database    </span>
+<span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">dbName</span><span class="p">,</span> <span class="nx">dbVersion</span><span class="p">);</span>    
+    
+<span class="c1">//Create or extend a schema    </span>
+<span class="c1">//newDbMgr.ddl.dropTable(tableName);    </span>
+<span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">ddl</span><span class="p">.</span><span class="nx">createTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="dl">'</span><span class="s1">messageid</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">//true == auto manage primary key    </span>
+<span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">ddl</span><span class="p">.</span><span class="nx">createIndex</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="dl">'</span><span class="s1">subjectid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text.subject</span><span class="dl">'</span><span class="p">);</span>    
+<span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">ddl</span><span class="p">.</span><span class="nx">createIndex</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="dl">'</span><span class="s1">timeid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">time</span><span class="dl">'</span><span class="p">);</span>    
+<span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">ddl</span><span class="p">.</span><span class="nx">createIndex</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="dl">'</span><span class="s1">usernameid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">user.name</span><span class="dl">'</span><span class="p">);</span>    
+    
+<span class="c1">//Insert some data    </span>
+<span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="p">{</span>    
+  <span class="na">message</span><span class="p">:</span> <span class="p">{</span>    
+    <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span>    
+    <span class="na">text</span><span class="p">:</span> <span class="p">{</span>    
+      <span class="na">fault</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Lorem</span><span class="p">.</span><span class="nx">words</span><span class="p">(),</span>    
+      <span class="na">subject</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Lorem</span><span class="p">.</span><span class="nx">sentence</span><span class="p">(),</span>    
+      <span class="na">description</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Lorem</span><span class="p">.</span><span class="nx">paragraph</span><span class="p">(),</span>    
+    <span class="p">},</span>    
+    <span class="na">user</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Helpers</span><span class="p">.</span><span class="nx">createCard</span><span class="p">(),</span>    
+  <span class="p">},</span>    
+<span class="p">});</span>    
+<span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="p">{</span>    
+  <span class="na">message</span><span class="p">:</span> <span class="p">{</span>    
+    <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span>    
+    <span class="na">text</span><span class="p">:</span> <span class="p">{</span>    
+      <span class="na">fault</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Lorem</span><span class="p">.</span><span class="nx">words</span><span class="p">(),</span>    
+      <span class="na">subject</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Lorem</span><span class="p">.</span><span class="nx">sentence</span><span class="p">(),</span>    
+      <span class="na">description</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Lorem</span><span class="p">.</span><span class="nx">paragraph</span><span class="p">(),</span>    
+    <span class="p">},</span>    
+    <span class="na">user</span><span class="p">:</span> <span class="nx">Faker</span><span class="p">.</span><span class="nx">Helpers</span><span class="p">.</span><span class="nx">createCard</span><span class="p">(),</span>    
+  <span class="p">},</span>    
+<span class="p">});</span>    
+    
+<span class="c1">//Query the data    </span>
+<span class="kd">var</span> <span class="nx">results</span> <span class="o">=</span> <span class="nx">newDbMgr</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">).</span><span class="k">from</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nx">where</span><span class="p">(</span><span class="dl">'</span><span class="s1">user.name</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">=</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">);</span>    
+</code></pre></div></div>
+
+<p>To make it happen, some work needed to be done. First, you need a database connection. I never liked the implementation of “versioning” the database in WebSQL–but conceptually, it is the same mystery bag of disappointments in iDb; so the first step is to abstract and encapsulate the mechanism for opening a database connection and handling the version control events.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">initDb</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>    
+ <span class="kd">var</span> <span class="nx">name</span><span class="p">;</span>    
+ <span class="c1">//Store the last used db name, db version and db connect promise in the closure    </span>
+ <span class="kd">var</span> <span class="nx">version</span><span class="p">,</span> <span class="nx">db</span><span class="p">,</span> <span class="nx">connectPromise</span><span class="p">;</span>    
+ <span class="kd">var</span> <span class="nx">reInit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>    
+    
+ <span class="c1">//The actual connect method to be used in order to establish a connection and/or trigger versioning    </span>
+ <span class="kd">var</span> <span class="nx">connect</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dbName</span><span class="p">,</span> <span class="nx">dbVersion</span><span class="p">,</span> <span class="nx">dbOnUpgrade</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="c1">//Only create a new promise if connecting to a different db name or version; otherwise, the last issued promise is still good.    </span>
+  <span class="nx">reInit</span> <span class="o">=</span> <span class="p">(</span><span class="o">!</span><span class="nx">connectPromise</span> <span class="o">||</span> <span class="nx">dbName</span> <span class="o">!==</span> <span class="nx">name</span> <span class="o">||</span> <span class="nx">dbVersion</span> <span class="o">!==</span> <span class="nx">version</span><span class="p">);</span>    
+  <span class="k">if</span><span class="p">(</span><span class="nx">reInit</span><span class="p">)</span> <span class="p">{</span>    
+   <span class="c1">//Create a new promise from scratch    </span>
+   <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+    
+   <span class="c1">//Cache our state data in the outer closure    </span>
+   <span class="nx">connectPromise</span> <span class="o">=</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+   <span class="nx">version</span> <span class="o">=</span> <span class="nx">dbVersion</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>    
+   <span class="nx">name</span> <span class="o">=</span> <span class="nx">dbName</span><span class="p">;</span>    
+   <span class="nx">dbOnUpgrade</span> <span class="o">=</span> <span class="nx">dbOnUpgrade</span> <span class="o">||</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>    
+    
+   <span class="c1">//Create the connection request. This is an async operation, which the promise will resolve.    </span>
+   <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">indexedDB</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">version</span><span class="p">);</span>    
+    
+   <span class="c1">//Optionally do something when the request is completed (with or without error)    </span>
+   <span class="nx">request</span><span class="p">.</span><span class="nx">oncomplete</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    
+            <span class="p">}</span>    
+    
+   <span class="c1">//Someone or something has explicitly aborted the request    </span>
+            <span class="nx">request</span><span class="p">.</span><span class="nx">onabort</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+                <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection attempt to </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> was aborted. Closing db connection now.</span><span class="dl">'</span><span class="p">);</span>    
+                <span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+            <span class="p">}</span>    
+    
+   <span class="c1">//Connection has timed out    </span>
+            <span class="nx">request</span><span class="p">.</span><span class="nx">ontimeout</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection attempt to </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> timed out. Closing db connection now.</span><span class="dl">'</span><span class="p">);</span>    
+                <span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+            <span class="p">}</span>    
+    
+   <span class="c1">//Another process has a lock on the database    </span>
+   <span class="nx">request</span><span class="p">.</span><span class="nx">onblocked</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="c1">//Resolve the promise with rejection    </span>
+    <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Database error: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">errorCode</span><span class="p">));</span>    
+    <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection attempt to </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> was blocked by another process. Is the db open in another window/tab? Did you forget to close your connection to the db before attempting to version it? Closing db connection now.</span><span class="dl">'</span><span class="p">);</span>    
+    <span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+   <span class="p">};</span>    
+    
+   <span class="c1">//An error occurred at any time during the lifecycle of the request.    </span>
+   <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="c1">//Resolve the promise with rejection    </span>
+    <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Database error: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">errorCode</span><span class="p">));</span>    
+    <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection to </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> failed with error: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">. Closing db connection now.</span><span class="dl">'</span><span class="p">);</span>    
+    <span class="k">if</span><span class="p">(</span><span class="nx">db</span><span class="p">)</span> <span class="p">{</span>    
+     <span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+    <span class="p">}</span>    
+   <span class="p">};</span>    
+    
+   <span class="c1">//Versioning happens before success (promise is not yet resolved, but we have a handle on the db instance)    </span>
+   <span class="nx">request</span><span class="p">.</span><span class="nx">onupgradeneeded</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="nx">db</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>    
+    
+    <span class="nx">dbOnUpgrade</span><span class="p">(</span><span class="nx">db</span><span class="p">);</span>    
+   <span class="p">};</span>    
+    
+   <span class="c1">//Request has succeeded; versioning may or may not have happened; connection to the database is established    </span>
+   <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="nx">db</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>    
+    <span class="c1">//Resolve the promise with success and the db instance    </span>
+    <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">db</span><span class="p">);</span>    
+   <span class="p">};</span>    
+  <span class="p">}</span>    
+    
+  <span class="c1">//Return either the new promise or the existing    </span>
+  <span class="k">return</span> <span class="nx">connectPromise</span><span class="p">;</span>    
+ <span class="p">};</span>    
+    
+ <span class="c1">//More code to follow    </span>
+ <span class="p">....</span>    
+<span class="p">}());</span>    
+</code></pre></div></div>
+
+<p>Hopefully the commentary in the code is sufficient to communicate its meaning. In essence, I’m leveraging Q’s deferred promise wrapper against the resolution of the iDb request’s async callbacks. Of course, if indexedDb simply implemented its many cascading callbacks as promises, this post might not exist.</p>
+
+<p>Once the connection wrapper is defined, I can encapsulate some of the DDL operations into this new API.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//private implementation method    </span>
+<span class="kd">var</span> <span class="nx">createTableImpl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">db</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">tablePkColumnName</span><span class="p">,</span> <span class="nx">autoIncrement</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="c1">//The call to createObjectStore is synchronous--the table is immediately returned    </span>
+  <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">createObjectStore</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="p">{</span>    
+    <span class="na">keyPath</span><span class="p">:</span> <span class="nx">tablePkColumnName</span><span class="p">,</span>    
+    <span class="na">autoIncrement</span><span class="p">:</span> <span class="kc">false</span> <span class="o">!==</span> <span class="nx">autoIncrement</span><span class="p">,</span>    
+  <span class="p">});</span>    
+  <span class="c1">//Cache the table instance for future reference    </span>
+  <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schema</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">table</span><span class="p">);</span>    
+  <span class="k">return</span> <span class="nx">table</span><span class="p">;</span>    
+<span class="p">};</span>    
+    
+<span class="c1">//public method. DDL operations can only happen as part of the versioning event.    </span>
+<span class="c1">//Add the call to create the table to a schema scripts collection which the IndexedDb versioner will iterate.    </span>
+<span class="kd">var</span> <span class="nx">createTable</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">tablePkColumnName</span><span class="p">,</span> <span class="nx">autoIncrement</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="c1">//Create a new promise    </span>
+  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+  <span class="c1">//Push this method into the scripts collection    </span>
+  <span class="nx">schemaScripts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">db</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="k">try</span> <span class="p">{</span>    
+      <span class="c1">//Create the table    </span>
+      <span class="kd">var</span> <span class="nx">objectStore</span> <span class="o">=</span> <span class="nx">createTableImpl</span><span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">db</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">tablePkColumnName</span><span class="p">,</span> <span class="nx">autoIncrement</span><span class="p">);</span>    
+      <span class="c1">//Resolve the promise successful with the table    </span>
+      <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">objectStore</span><span class="p">);</span>    
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>    
+      <span class="c1">//Resolve the promise failed    </span>
+      <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Could not create a new table</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">));</span>    
+    <span class="p">}</span>    
+    <span class="k">return</span> <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schemaschemaschemaschema</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">];</span>    
+  <span class="p">});</span>    
+  <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+<span class="p">};</span>    
+</code></pre></div></div>
+
+<p>If you return to my dream API above, you’ll notice that I placed the DDL operations first. Because this implementation uses promises, the order of operations is extraordinarily flexible. I could just as easily position the calls to DDL operations after a long list of calls to DML operations, and the Q promise layer would just make it work. This is in stark contrast to the iDb event model which is highly dependent upon the execution of functions being in the right place at the right time. Promises allow me, as a developer, to think less about the coordination of sequencing to/from other APIs and more about the order I want my own code to execute.</p>
+
+<p>At any rate, the above is just enough to create some indexedDb tables. Next, the core of indexedDb: <a href="http://grammarist.com/usage/indexes-indices/">indexes</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Private implementation method    </span>
+<span class="kd">var</span> <span class="nx">createIndexImpl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">isUnique</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="c1">//No need to wait on transaction, we have (or should have) the table in memory    </span>
+  <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schemaschemaschemaschema</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">];</span>    
+  <span class="c1">//Create the new index and return it immediately (happens synchronously)    </span>
+  <span class="c1">//It would be nice to cache the index on the cached table instance, but that table instance is actually an indexedDb object and I don't want to mutate--nor do I want to refactor anything at the moment. So eat the cost of fetching a handle on indexes later. Told-you-so's expected.    </span>
+  <span class="k">return</span> <span class="nx">table</span><span class="p">.</span><span class="nx">createIndex</span><span class="p">(</span><span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span> <span class="o">||</span> <span class="nx">columnName</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">Idx</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>    
+    <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span> <span class="o">!==</span> <span class="nx">isUnique</span><span class="p">,</span>    
+  <span class="p">});</span>    
+<span class="p">};</span>    
+    
+<span class="c1">//public method. DDL operations can only happen as part of the versioning event.    </span>
+<span class="c1">//Add the call to create the index to a schema scripts collection which the IndexedDb versioner will iterate.    </span>
+<span class="kd">var</span> <span class="nx">createIndex</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">isUnique</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="c1">//Create a new promise    </span>
+  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+  <span class="c1">//Push this method into the scripts collection    </span>
+  <span class="nx">schemaScripts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    <span class="k">try</span> <span class="p">{</span>    
+      <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">createIndexImpl</span><span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">isUnique</span><span class="p">);</span>    
+      <span class="c1">//Resolve the promise successful with the new index    </span>
+      <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>    
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>    
+      <span class="c1">//Fail the promise    </span>
+      <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Could not create a new index</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">));</span>    
+    <span class="p">}</span>    
+    <span class="k">return</span> <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schemaschemaschemaschema</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">];</span>    
+  <span class="p">});</span>    
+  <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+<span class="p">};</span>    
+</code></pre></div></div>
+
+<p>Very much like the createTable method before it, the createIndex method hooks into the schema scripts collection and executes on the db versioning event. Unlike WebSQL or SQLite, IndexedDb is designed to be a non-necessarily-relational <em>object</em> store. So it stores <em>objects</em>. Objects can be primitive values, arrays or complex Object instances with deeply nested, non-relational tree structures. Indexes are levied against the property names of the values you want to be indexed.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>    
+  <span class="na">str</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>    
+  <span class="na">num</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>    
+  <span class="na">arr</span><span class="p">:</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">],</span>    
+  <span class="na">obj1</span><span class="p">:</span> <span class="p">{</span>    
+    <span class="na">str1</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>    
+    <span class="na">obj2</span><span class="p">:</span> <span class="p">{</span>    
+      <span class="na">str2</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>    
+    <span class="p">},</span>    
+  <span class="p">},</span>    
+<span class="p">};</span>    
+</code></pre></div></div>
+
+<p>So an index on “str2” is as simple as defining an index on “obj1.obj2.str2”. This took me quite a bit of trial and error, so I think it’s worth highlighting how the pathing to an index works.</p>
+
+<p>Finally (for the purpose of this post), you need a way to insert data into the store.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Private implementation method, doesn't yet conform to standard \*Impl paradigm. It's ok; I'm ok; you're ok.    </span>
+<span class="kd">var</span> <span class="nx">insertImpl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="c1">//Promise to insert the data    </span>
+  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+    
+  <span class="k">try</span> <span class="p">{</span>    
+    <span class="c1">//Get a new transaction on the table. This is an insert, so 'readwrite' is implicitly understood by the caller.    </span>
+    <span class="kd">var</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readwrite</span><span class="dl">'</span><span class="p">);</span>    
+    
+    <span class="c1">//Get the object store from the transaction (gods forbid we fetched it from our own handle on the object store...and how the hell does this thing manage concurrency?!)    </span>
+    <span class="kd">var</span> <span class="nx">objectStore</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">tableName</span><span class="p">);</span>    
+    <span class="c1">//Insert the new records    </span>
+    <span class="nx">n$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">records</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rec</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="nx">objectStore</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">rec</span><span class="p">);</span>    
+    <span class="p">});</span>    
+    <span class="c1">//Resolve the promise    </span>
+    <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>    
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>    
+    <span class="c1">//Fail the promise    </span>
+    <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Could not insert records</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">));</span>    
+  <span class="p">}</span>    
+  <span class="c1">//Return the promise    </span>
+  <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+<span class="p">};</span>    
+    
+<span class="c1">//Public insert method    </span>
+<span class="kd">var</span> <span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    <span class="k">return</span> <span class="nx">insertImpl</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">records</span><span class="p">);</span>    
+  <span class="p">};</span>    
+  <span class="c1">//If we have a db instance or if the initial connection promise is resolved (succeeded), then it is safe to insert immediately    </span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">db</span> <span class="o">||</span> <span class="nx">connectPromise</span><span class="p">.</span><span class="nx">isResolved</span><span class="p">())</span> <span class="p">{</span>    
+    <span class="nx">ret</span><span class="p">();</span>    
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    
+    <span class="c1">//else wait for the connection promise to resolve and then do the insert (this seems to be the normal use case)    </span>
+    <span class="nx">connectPromise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>    
+  <span class="p">}</span>    
+  <span class="c1">//Nothing worth returning at this time    </span>
+  <span class="c1">//return ret.promise;    </span>
+<span class="p">};</span>    
+</code></pre></div></div>
+
+<p>I still have to put the finishing touches on some more of this API. Transactions become a bigger deal as you begin to write more complicated queries, and indexes (and their cursors) play a much, much larger role than I have touched upon here; but I think that this provides one alternative to the problem of working with indexedDb that is simple.</p>
+
+<p>This whole abstraction needs to be lazy, and there is another round of refactoring I need to do to move it into a pure functional style; but I think it is more readable and approachable this way.</p>
+
+<p>I hope to have JsPerf tests and an expanded API for my next post. Until then, I’ll leave you with the full example code:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">initDb</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">name</span><span class="p">,</span>    
+    <span class="nx">version</span><span class="p">,</span>    
+    <span class="nx">db</span><span class="p">,</span>    
+    <span class="nx">connectPromise</span><span class="p">,</span>    
+    <span class="nx">upgradeIsRequired</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>    
+  <span class="kd">var</span> <span class="nx">schemaScripts</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">];</span>    
+    
+  <span class="kd">var</span> <span class="nx">connect</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbName</span><span class="p">,</span> <span class="nx">dbVersion</span><span class="p">,</span> <span class="nx">dbOnUpgrade</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="nx">upgradeIsRequired</span> <span class="o">=</span> <span class="o">!</span><span class="nx">connectPromise</span> <span class="o">||</span> <span class="nx">dbName</span> <span class="o">!==</span> <span class="nx">name</span> <span class="o">||</span> <span class="nx">dbVersion</span> <span class="o">!==</span> <span class="nx">version</span><span class="p">;</span>    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">upgradeIsRequired</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+    
+      <span class="nx">connectPromise</span> <span class="o">=</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+    
+      <span class="nx">version</span> <span class="o">=</span> <span class="nx">dbVersion</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>    
+      <span class="nx">name</span> <span class="o">=</span> <span class="nx">dbName</span><span class="p">;</span>    
+      <span class="nx">dbOnUpgrade</span> <span class="o">=</span> <span class="nx">dbOnUpgrade</span> <span class="o">||</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>    
+    
+      <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">indexedDB</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">version</span><span class="p">);</span>    
+    
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onblocked</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">A new version of this page is ready. Please reload!</span><span class="dl">'</span><span class="p">);</span>    
+      <span class="p">};</span>    
+    
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Database error: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">errorCode</span><span class="p">));</span>    
+        <span class="k">if</span> <span class="p">(</span><span class="nx">db</span><span class="p">)</span> <span class="p">{</span>    
+          <span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+        <span class="p">}</span>    
+      <span class="p">};</span>    
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="nx">db</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>    
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">db</span><span class="p">);</span>    
+      <span class="p">};</span>    
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onupgradeneeded</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="nx">db</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>    
+    
+        <span class="k">if</span> <span class="p">(</span><span class="nx">schemaScripts</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>    
+          <span class="nx">n$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">schemaScripts</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">script</span><span class="p">)</span> <span class="p">{</span>    
+            <span class="c1">//debugger;    </span>
+            <span class="nx">script</span><span class="p">(</span><span class="nx">db</span><span class="p">);</span>    
+          <span class="p">});</span>    
+        <span class="p">}</span>    
+    
+        <span class="nx">dbOnUpgrade</span><span class="p">(</span><span class="nx">db</span><span class="p">);</span>    
+      <span class="p">};</span>    
+    <span class="p">}</span>    
+    <span class="k">return</span> <span class="nx">connectPromise</span><span class="p">;</span>    
+  <span class="p">};</span>    
+    
+  <span class="kd">var</span> <span class="nx">disconnect</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">connectPromise</span><span class="p">.</span><span class="nx">isFulfilled</span><span class="p">())</span> <span class="p">{</span>    
+      <span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">db</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="nx">connectPromise</span><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">close</span><span class="p">);</span>    
+    <span class="p">}</span>    
+  <span class="p">};</span>    
+    
+  <span class="kd">var</span> <span class="nx">createTableImpl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">db</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">tablePkColumnName</span><span class="p">,</span> <span class="nx">autoIncrement</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">createObjectStore</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="p">{</span>    
+      <span class="na">keyPath</span><span class="p">:</span> <span class="nx">tablePkColumnName</span><span class="p">,</span>    
+      <span class="na">autoIncrement</span><span class="p">:</span> <span class="kc">false</span> <span class="o">!==</span> <span class="nx">autoIncrement</span><span class="p">,</span>    
+    <span class="p">});</span>    
+    <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schema</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">table</span><span class="p">);</span>    
+    <span class="k">return</span> <span class="nx">table</span><span class="p">;</span>    
+  <span class="p">};</span>    
+    
+  <span class="kd">var</span> <span class="nx">createTable</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">tablePkColumnName</span><span class="p">,</span> <span class="nx">autoIncrement</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+    <span class="nx">schemaScripts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">db</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="k">try</span> <span class="p">{</span>    
+        <span class="kd">var</span> <span class="nx">objectStore</span> <span class="o">=</span> <span class="nx">createTableImpl</span><span class="p">(</span>    
+          <span class="nx">dbWrapper</span><span class="p">,</span>    
+          <span class="nx">db</span><span class="p">,</span>    
+          <span class="nx">tableName</span><span class="p">,</span>    
+          <span class="nx">tablePkColumnName</span><span class="p">,</span>    
+          <span class="nx">autoIncrement</span><span class="p">,</span>    
+        <span class="p">);</span>    
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">objectStore</span><span class="p">);</span>    
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>    
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Could not create a new table</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">));</span>    
+      <span class="p">}</span>    
+      <span class="k">return</span> <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schemaschemaschemaschema</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">];</span>    
+    <span class="p">});</span>    
+    <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+  <span class="p">};</span>    
+    
+  <span class="kd">var</span> <span class="nx">createIndexImpl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">isUnique</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schemaschemaschemaschema</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">];</span>    
+    <span class="k">return</span> <span class="nx">table</span><span class="p">.</span><span class="nx">createIndex</span><span class="p">(</span><span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span> <span class="o">||</span> <span class="nx">columnName</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">Idx</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>    
+      <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span> <span class="o">!==</span> <span class="nx">isUnique</span><span class="p">,</span>    
+    <span class="p">});</span>    
+  <span class="p">};</span>    
+    
+  <span class="kd">var</span> <span class="nx">createIndex</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">isUnique</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+    
+    <span class="nx">schemaScripts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+      <span class="k">try</span> <span class="p">{</span>    
+        <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">createIndexImpl</span><span class="p">(</span><span class="nx">dbWrapper</span><span class="p">,</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">isUnique</span><span class="p">);</span>    
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>    
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>    
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Could not create a new index</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">));</span>    
+      <span class="p">}</span>    
+      <span class="k">return</span> <span class="nx">dbWrapper</span><span class="p">.</span><span class="nx">schemaschemaschemaschema</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">];</span>    
+    <span class="p">});</span>    
+    <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+  <span class="p">};</span>    
+    
+  <span class="kd">var</span> <span class="nx">insertImpl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>    
+    
+    <span class="k">try</span> <span class="p">{</span>    
+      <span class="kd">var</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="err">\</span><span class="p">[</span><span class="nx">tableNametableNametableNametableName</span><span class="err">\</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readwrite</span><span class="dl">'</span><span class="p">);</span>    
+    
+      <span class="kd">var</span> <span class="nx">objectStore</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">tableName</span><span class="p">);</span>    
+      <span class="nx">n$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">records</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rec</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="nx">objectStore</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">rec</span><span class="p">);</span>    
+      <span class="p">});</span>    
+    
+      <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>    
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>    
+      <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Could not insert records</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">));</span>    
+    <span class="p">}</span>    
+    
+    <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>    
+  <span class="p">};</span>    
+    
+  <span class="kd">var</span> <span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+      <span class="k">return</span> <span class="nx">insertImpl</span><span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">records</span><span class="p">);</span>    
+    <span class="p">};</span>    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">db</span> <span class="o">||</span> <span class="nx">connectPromise</span><span class="p">.</span><span class="nx">isResolved</span><span class="p">())</span> <span class="p">{</span>    
+      <span class="nx">ret</span><span class="p">();</span>    
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    
+      <span class="nx">connectPromise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>    
+    <span class="p">}</span>    
+    <span class="c1">//return ret.promise;    </span>
+  <span class="p">};</span>    
+    
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">n$</span><span class="p">.</span><span class="nx">object</span><span class="p">();</span>    
+    <span class="nx">ret</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">connect</span><span class="dl">'</span><span class="p">,</span> <span class="nx">connect</span><span class="p">);</span>    
+    <span class="nx">ret</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">disconnect</span><span class="dl">'</span><span class="p">,</span> <span class="nx">disconnect</span><span class="p">);</span>    
+    <span class="nx">ret</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">schema</span><span class="dl">'</span><span class="p">,</span> <span class="nx">n$</span><span class="p">.</span><span class="nx">object</span><span class="p">());</span>    
+    <span class="nx">ret</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">ddl</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>    
+      <span class="na">createTable</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">tablePkColumnName</span><span class="p">,</span> <span class="nx">autoIncrement</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>    
+        <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>    
+        <span class="k">return</span> <span class="nx">createTable</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>    
+      <span class="p">},</span>    
+      <span class="na">dropTable</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tableName</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>    
+        <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>    
+        <span class="k">return</span> <span class="nx">createTable</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>    
+      <span class="p">},</span>    
+      <span class="na">createIndex</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tableName</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">isUnique</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>    
+        <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>    
+        <span class="k">return</span> <span class="nx">createIndex</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>    
+      <span class="p">},</span>    
+    <span class="p">});</span>    
+    <span class="nx">ret</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">insert</span><span class="dl">'</span><span class="p">,</span> <span class="nx">insert</span><span class="p">);</span>    
+    <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>    
+  <span class="p">};</span>    
+<span class="p">})();</span>    
+</code></pre></div></div>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="crfroehlich/cellar"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://crfroehlich.github.io/cellar/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html';
+    this.page.identifier = 'https://crfroehlich.github.io/cellar/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html';
+  };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+
+    s.src = 'https://luddites.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+    powered by Disqus.</a></noscript><a class="u-url" href="/cellar/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cellar/%20/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/cellar/feed.xml">
+            <svg class="svg-icon blue">
+              <use xlink:href="/cellar/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>rss</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>A journey of one person hiking their desk</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/tquestingbeast" title="tquestingbeast"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer></body>
+
+</html>

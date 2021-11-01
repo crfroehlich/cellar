@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Code Generation: There and Back Again | luddites, inc.</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Code Generation: There and Back Again" />
+<meta name="author" content="CF" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I can’t remember a project engineering or otherwise during which I haven’t paused to ask myself “Why…" />
+<meta property="og:description" content="I can’t remember a project engineering or otherwise during which I haven’t paused to ask myself “Why…" />
+<link rel="canonical" href="https://crfroehlich.github.io/cellar/metadata/retrospective/code/generation/2017/10/24/code-generation-there-and-back-again.html" />
+<meta property="og:url" content="https://crfroehlich.github.io/cellar/metadata/retrospective/code/generation/2017/10/24/code-generation-there-and-back-again.html" />
+<meta property="og:site_name" content="luddites, inc." />
+<meta property="og:image" content="https://crfroehlich.github.io/cellar/images/2017-10-24-code-generation-there-and-back-again.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-10-24T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"I can’t remember a project engineering or otherwise during which I haven’t paused to ask myself “Why…","url":"https://crfroehlich.github.io/cellar/metadata/retrospective/code/generation/2017/10/24/code-generation-there-and-back-again.html","@type":"BlogPosting","headline":"Code Generation: There and Back Again","dateModified":"2017-10-24T00:00:00-05:00","datePublished":"2017-10-24T00:00:00-05:00","author":{"@type":"Person","name":"CF"},"image":"https://crfroehlich.github.io/cellar/images/2017-10-24-code-generation-there-and-back-again.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://crfroehlich.github.io/cellar/metadata/retrospective/code/generation/2017/10/24/code-generation-there-and-back-again.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cellar/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://crfroehlich.github.io/cellar/feed.xml" title="luddites, inc." /><link rel="shortcut icon" type="image/x-icon" href="/cellar/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cellar/">luddites, inc.</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/cellar/about/">About Me</a><a class="page-link" href="/cellar/search/">Search</a><a class="page-link" href="/cellar/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Code Generation: There and Back Again</h1><p class="page-description">I can’t remember a project engineering or otherwise during which I haven’t paused to ask myself “Why...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2017-10-24T00:00:00-05:00" itemprop="datePublished">
+        Oct 24, 2017
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">CF</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/cellar/categories/#metadata">metadata</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#retrospective">retrospective</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#code">code</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#generation">generation</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><p>I can’t remember a project (engineering or otherwise) during which I haven’t paused to ask myself: “Why did I design this thing that way?” Sometimes as a result of this introspection, I find myself feeling remorse or self-loathing, regret or the hollow embrace of ennui. Sometimes the buyer’s remorse can begin to settle in only after years of work. Sometimes the anthropomorphic representation of the design conceit simply lurks in the shadows sewing mischief as it’s able. I’ll defer to future versions of myself to conclude the relative merits or lack thereof of this particular set of concerns.</p>
+
+<p>Every application — from this humble blog to the social behemoths starts with data. Most projects start with a fairly predictable set of questions: what language(s) are we going to write this thing in, what type of application is this, and where are we going to store the data? Vast amounts of our data is purely relational; equal volumes of equally critical data isn’t. At the end of the day, a relational database seemed the right choice — and most grown up databases these days support storing and searching on structured and unstructured data.</p>
+
+<p>I think this choice continues to make sense. Personally, I’ve always found managing relational databases at scale at the lower end of the spectrum of things which bring me joy as a developer. Data migrations, schema changes, wrestling with referential integrity constraints as customer requirements change…the whole mess of managing data leaves a foul taste that’s difficult to rinse out. So a younger version of myself, a rather clever fellow in his own mind, came up with a solution:</p>
+
+<p>Code generation!</p>
+
+<p>Looking back to the earliest commits in our repo, some of the very first were the JSON files that form the backbone of our code generating homunculus. A few simple properties in our library of JSON files are responsible for generating every C# class that backs the tables in our database. Tired of a property? Update a JSON file. Need more tables, more properties, more relationships? It’s all just JSON.</p>
+
+<p>This makes other aspects of developing the architecture rather pleasant. Need to create or maintain a factory? Never write another line of factory code by hand. Need certain classes to implement an interface? Automate it. Need DTO versions of your table classes? Already done. RESTful web services that automatically implement ALL the verbs for every class and every possible relationship between entities? Our homunculus did that for you the day before you asked for it.</p>
+
+<p>Orthogonally, at the database tier, we made a rather nice design choice to use globally unique ids. Our first table committed to code is a simple dictionary of Ids and Types. Every other table inherits from this base table, which means that given any valid Id, I can find the corresponding dog, cat, person or object with no extra information. When it comes to representing these data structures as REST resources, our routes can be as terse or verbose as desired. If we were so inclined, the route to add a dog to a person’s pets collection could be as simple as posting to <em>/api/{personId}/{petId}</em>, although in practice we rarely deviate from RESTful norms (<em>/api/person/{personId}/pets/{petId}</em> is the actual route).</p>
+
+<p>The flexibility that working with globally unique identifiers would be half as pleasant if we could not automatically create and maintain the factories required to fetch an object by id and then cast it to the appropriate implementation class. As objects mature, they often have a tendency to develop greater and deeper relationships with other objects in the database. Automatically generating these relationships and the pathways between them at every tier of our framework has been a boon.</p>
+
+<p>I regret none of this automation. As long as fundamental design choices remain constant (or at least change slowly), vertical changes to the code — changes to the JSON that result in the creation/deletion of code, scales smoothly.</p>
+
+<p>Life gets much more interesting as we scale horizontally — changing the templates that sit between the JSON and the final C# files. Diabolical bugs can lurk by manner of a single typo in a template, waiting to reproduce themselves across hundreds of files with the click of a button. Whitespace changes annoy to the extreme. We can (usually do) anticipate and surmount many of these hurdles. Frequent commits guarantee that noise doesn’t swallow avoidable faults. When refactoring a template, always make sure that optimization changes to the template code always produce identical outputs before other refactorings.</p>
+
+<p>Changes to behavior lead to the nightmarish class of faults that lurk under the bed and are far more insidious: changes to validation logic, unique validation, how objects are cached inside a database transaction, when/how permissions are evaluated. It is trivial to change a template in such a way that crippling performance issues are immediately injected into the app. Fail to properly dispose an object, and the app can begin gradually leaking memory. Hunting down these bugs is time consuming and tedious.</p>
+
+<p>Orthogonally (yet again), the technology choices we made to drive code generation are somewhat dated by today’s standards. T4 would be far easier to maintain than our antiquated format; and we have inconsistencies in where template code is defined: inside the template itself or in an external “code generation” project which has to be compiled before the templates can run. While it all technically works, the cost to maintain the code gen library has only increased over time — and the cost to refactor the project to use modern frameworks is difficult to justify relative to providing new features that someone would be willing to pay for.</p>
+
+<p>We have extracted a tremendous amount of value from this design decision overall, so I cannot condemn the philosophical approach we have taken; but within that bundle of ideas, design and technology choices there are multitudes of tiny decisions that certainly could have been better planned with an eye toward the future. The elegance of the design choices that I admire sadly must coexist with a certain amount of spaghetti, but such is the nature of development at times.</p>
+
+<p>I suspect these dichotomies are somewhat ubiquitous in nature, but I do look forward to the opportunity to either perfect our approach to code generation or discover a superior path forward.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="crfroehlich/cellar"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://crfroehlich.github.io/cellar/metadata/retrospective/code/generation/2017/10/24/code-generation-there-and-back-again.html';
+    this.page.identifier = 'https://crfroehlich.github.io/cellar/metadata/retrospective/code/generation/2017/10/24/code-generation-there-and-back-again.html';
+  };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+
+    s.src = 'https://luddites.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+    powered by Disqus.</a></noscript><a class="u-url" href="/cellar/metadata/retrospective/code/generation/2017/10/24/code-generation-there-and-back-again.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cellar/%20/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/cellar/feed.xml">
+            <svg class="svg-icon blue">
+              <use xlink:href="/cellar/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>rss</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>A journey of one person hiking their desk</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/tquestingbeast" title="tquestingbeast"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer></body>
+
+</html>

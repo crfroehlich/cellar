@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Currying Favor with Partial Application to get JavaScript SQL | luddites, inc.</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Currying Favor with Partial Application to get JavaScript SQL" />
+<meta name="author" content="CF" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Editor’s Note This is an old post from March of 2013 from an old blog Apparently it still gets enoug…" />
+<meta property="og:description" content="Editor’s Note This is an old post from March of 2013 from an old blog Apparently it still gets enoug…" />
+<link rel="canonical" href="https://crfroehlich.github.io/cellar/currying/code/partial/application/2017/02/04/currying-favor-with-partial-application-to-get-java-script-sql.html" />
+<meta property="og:url" content="https://crfroehlich.github.io/cellar/currying/code/partial/application/2017/02/04/currying-favor-with-partial-application-to-get-java-script-sql.html" />
+<meta property="og:site_name" content="luddites, inc." />
+<meta property="og:image" content="https://crfroehlich.github.io/cellar/images/2017-02-04-currying-favor-with-partial-application-to-get-java-script-sql.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-02-04T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Editor’s Note This is an old post from March of 2013 from an old blog Apparently it still gets enoug…","url":"https://crfroehlich.github.io/cellar/currying/code/partial/application/2017/02/04/currying-favor-with-partial-application-to-get-java-script-sql.html","@type":"BlogPosting","headline":"Currying Favor with Partial Application to get JavaScript SQL","dateModified":"2017-02-04T00:00:00-06:00","datePublished":"2017-02-04T00:00:00-06:00","author":{"@type":"Person","name":"CF"},"image":"https://crfroehlich.github.io/cellar/images/2017-02-04-currying-favor-with-partial-application-to-get-java-script-sql.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://crfroehlich.github.io/cellar/currying/code/partial/application/2017/02/04/currying-favor-with-partial-application-to-get-java-script-sql.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cellar/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://crfroehlich.github.io/cellar/feed.xml" title="luddites, inc." /><link rel="shortcut icon" type="image/x-icon" href="/cellar/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cellar/">luddites, inc.</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/cellar/about/">About Me</a><a class="page-link" href="/cellar/search/">Search</a><a class="page-link" href="/cellar/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Currying Favor with Partial Application to get JavaScript SQL</h1><p class="page-description">Editor’s Note This is an old post from March of 2013 from an old blog Apparently it still gets enoug...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2017-02-04T00:00:00-06:00" itemprop="datePublished">
+        Feb 4, 2017
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">CF</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/cellar/categories/#currying">currying</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#code">code</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#partial">partial</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#application">application</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><p><em>Editor’s Note: This is an old post from March of 2013, from an old blog. Apparently it still gets enough hits to need updating as links have changed. Re-posting it here with URL corrections.</em></p>
+
+<p>There is a domain that attends to curry as one of the quintessential elements of regional cuisine. This is not that domain; though in this domain I would argue we need a paprika.</p>
+
+<p>If the terms <em>curry</em> or <em>partial application</em> are at all unfamiliar to you, I highly recommend Reg Braithwaite’s <a href="http://raganwald.com/2013/03/07/currying-and-partial-application.html">latest opus on the subject</a>. Lending support are <a href="http://plus.google.com/112487099551149077731">+Ben Alman</a> with his own <a href="http://benalman.com/news/2012/09/partial-application-in-javascript/">eviscerating tour de force</a> as well as <a href="http://plus.google.com/110516491705475800224">+Axel Rauschmayer</a> with his <a href="http://www.2ality.com/2011/09/currying-vs-part-eval.html">very, extremely, routinely reputable entry</a>. If you’ve ever followed me here before, you may remember a fog surrounding an idea that touched on partial application from <a href="http://hiking.luddites.me/2013/01/good-reads.html">Good Reads</a>, where I linked to (again to Mr. Braithwaite) <a href="https://github.com/raganwald/homoiconic/blob/master/2013/01/practical-applications-of-partial-application.md">the skinny</a>.</p>
+
+<p>Do not be confused, dismayed, disheartened or discouraged. Currying and partial application are not easy-to-grok. The literature on the subject, while vast, is dense. Even in the most skilled hands, attempts to bring these tomes down from Mt. Sinai, have not routinely resulted in greater clarity.</p>
+
+<p>But this is not yet-another-indoctrination on the subject. Defer to the authorities above for that. Here, I’m attempting to exploit the potential for good. Using both ingredients, it is possible to create a semantic for querying JavaScript objects in a syntax that resembles SQL. Are there other solutions to do this? <a href="https://plus.google.com/108988276571177665337/posts/ahm5G625Vix">Yes</a>.</p>
+
+<p>Once you’ve apprehended grokation of the concepts, it should be straightforward to see the implementation of a few partial application standard methods: <a href="http://en.wikipedia.org/wiki/Map_%28higher-order_function%29">map</a>, <a href="http://en.wikipedia.org/wiki/Filter_%28higher-order_function%29">filter</a> and <a href="http://en.wikipedia.org/wiki/Fold_%28higher-order_function%29">fold</a>. Lots of libraries have already done the diligence and written these for us but for the sake of having something to write, let’s implement them again (In the real world, you’re better off taking what <a href="http://wiht.link/FunctionalJS">functional js</a> or <a href="http://fitzgen.github.com/wu.js">wu.js</a> have already built)!</p>
+
+<p>function curryLeft(func) {  <br>
+var slice = Array.prototype.slice;  <br>
+var args = slice.call(arguments, 1);  <br>
+return function() {  <br>
+return func.apply(this, args.concat(slice.call(arguments, 0)));</p>
+
+<p>}  <br>
+}</p>
+
+<p>function foldLeft(func,newArray,oldArray) {  <br>
+var accumulation = newArray;  <br>
+each(oldArray, function(val) {  <br>
+accumulation = func(accumulation, val);  <br>
+});  <br>
+return accumulation;</p>
+
+<p>}</p>
+
+<p>function map(func, array) {  <br>
+var onIteration = function(accumulation, val) {  <br>
+return accumulation.concat(func(val));  <br>
+};  <br>
+return foldLeft(onIteration, [], array)  <br>
+}</p>
+
+<p>function filter(func, array) {  <br>
+var onIteration = function(accumulation, val) {  <br>
+if(func(val)) {  <br>
+return accumulation.concat(val);  <br>
+} else {  <br>
+return accumulation;  <br>
+}  <br>
+};  <br>
+return foldLeft(onIteration, [], array)  <br>
+}</p>
+
+<p>With just these, we can do something that’s almost cool. We can extend the native Array class to add some new methods:</p>
+
+<p>Object.defineProperties(Array.prototype, {  <br>
+‘_where’: {  <br>
+value: function(func) {  <br>
+return filter(func, this);  <br>
+}  <br>
+},  <br>
+‘_select’: {  <br>
+value: function(func) {  <br>
+return map(func, this);  <br>
+}  <br>
+}  <br>
+});</p>
+
+<p>At this point, given an instance of an Array (thanks to <a href="https://github.com/marak/Faker.js/">Faker</a>), like:</p>
+
+<p>var somePeople = [  <br>
+{“FirstName”:”Cristina”, “LastName”:”Quigley”, “PhoneNumber”:”1-189-868-2830”, “Email”:”Imelda@lourdes.ca”, “Id”:0},  <br>
+{“FirstName”:”Eriberto”, “LastName”:”Bailey”, “PhoneNumber”:”1-749-549-2050 x36612”, “Email”:”Pamela_Gaylord@ludie.net”, “Id”:1},  <br>
+{“FirstName”:”Amina”, “LastName”:”Schaden”, “PhoneNumber”:”463-301-9579 x9511”, “Email”:”Conner_Gusikowski@jolie.tv”, “Id”:2}];</p>
+
+<p>If we wanted to select the FirstName of each record, we could do something crude like:</p>
+
+<p>somePeople._select(function(row) { return row.FirstName });</p>
+
+<p>But this is still too obtuse. With a little curry, we can make it better. We used partial application to get to ‘_select’, but we can switch gears to curry to get a better query mechanism. First, let’s define a query method: <em>Update: we technically don’t need curry here, as we’re not abstracting the ‘query’ object as a parameter. Thanks to Thomas Burette in the comments</em>.</p>
+
+<p>var query = function(array) {  <br>
+var tables = [];  <br>
+tables.push(array);  <br>
+var _query = {  <br>
+tables: tables,  <br>
+from: from,  <br>
+select: select,  <br>
+run: run  <br>
+};  <br>
+return _query;  <br>
+};</p>
+
+<p>select and from methods are straightforward:</p>
+
+<p>function select() {  <br>
+var query = this;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var slice = Array.prototype.slice;    
+var args = slice.call(arguments, 0);    
+query.columns = query.columns || \[\];    
+each(args, function(argumentValue) {    
+    query.columns.push(argumentValue);    
+});    
+return query;    
+</code></pre></div></div>
+
+<p>}</p>
+
+<p>function from(array) {  <br>
+var query = this;  <br>
+query.tables.push(array);  <br>
+return query;  <br>
+}</p>
+
+<p>which then only leaves execution. I’ve deliberately not optimized this method for the purpose of illustration: in the absence of the tools, this is what such code looks like. Look at the redundancy and duplication. Marvel at the inelegance. <a href="http://prog21.dadgum.com/169.html">Appreciate the fact that it works</a>.</p>
+
+<p>function run() {  <br>
+var query = this;  <br>
+var ret = [];  <br>
+if (query.columns.length &gt; 0) {  <br>
+var results = [];  <br>
+each(query.columns, function(columnName) {</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        each(query.tables, function(tbl) {    
+            if (Array.isArray(tbl)) {    
+                var res = {};    
+                var val = tbl.\_select(function(val) {    
+                    return val\[columnName\];    
+                });    
+                if (val) {    
+                    res\[columnName\] = val;    
+                    results.push(res);    
+                }    
+            }    
+        }, true);    
+
+    });    
+
+    var returnRows = \[\];    
+    if(results &amp;&amp; results.length &gt; 0) {    
+        var firstResult = results\[0\];    
+
+        each(firstResult, function(val, key) {    
+
+            each(val, function(cell){    
+                var row = {};    
+                row\[key\] = cell;    
+                each(results.slice(1), function(result) {    
+                    each(result, function(v,k){    
+                        each(v, function(c) {    
+                            row\[k\] = c;    
+                        })    
+                    },true)    
+                },true)    
+                returnRows.push(row);    
+            },true);    
+
+        },true)    
+
+    }    
+
+}    
+return returnRows;    
+</code></pre></div></div>
+
+<p>}</p>
+
+<p>Now, this yields a syntax which looks a lot more like SQL:</p>
+
+<p>var newQuery = query(people).select(‘FirstName’, ‘LastName’);  <br>
+var results = newQuery.run();</p>
+
+<p>From here, ‘where’, ‘join’ (yes I said JOIN), ‘orderby’ and ‘groupby’ are all implementation details. This is just a proof-of-concept post, but given some large Faker data sets it already works quite well given its limitations. Refactoring ‘run’ into a method which utilizes partial application will yield mountains.</p>
+
+<p>As always, everything I blog and code is public domain. You can view the source from the <a href="https://github.com/somecallmechief/oj-sql">oj-sql project here</a>, collab with me on <a href="https://c9.io/somecallmechief/oj-sql">c9 here</a>, or do whatever strikes your whim. May the wind that strikes your whim be always at your back.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="crfroehlich/cellar"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://crfroehlich.github.io/cellar/currying/code/partial/application/2017/02/04/currying-favor-with-partial-application-to-get-java-script-sql.html';
+    this.page.identifier = 'https://crfroehlich.github.io/cellar/currying/code/partial/application/2017/02/04/currying-favor-with-partial-application-to-get-java-script-sql.html';
+  };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+
+    s.src = 'https://luddites.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+    powered by Disqus.</a></noscript><a class="u-url" href="/cellar/currying/code/partial/application/2017/02/04/currying-favor-with-partial-application-to-get-java-script-sql.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cellar/%20/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/cellar/feed.xml">
+            <svg class="svg-icon blue">
+              <use xlink:href="/cellar/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>rss</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>A journey of one person hiking their desk</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/tquestingbeast" title="tquestingbeast"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer></body>
+
+</html>

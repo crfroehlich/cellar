@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Currying Favor with Partial Application to get JavaScript SQL | luddites, inc.</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Currying Favor with Partial Application to get JavaScript SQL" />
+<meta name="author" content="CF" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="There is a domain that attends to curry as one of the quintessential elements of regional cuisine Th…" />
+<meta property="og:description" content="There is a domain that attends to curry as one of the quintessential elements of regional cuisine Th…" />
+<link rel="canonical" href="https://crfroehlich.github.io/cellar/code/curry/2013/03/16/currying-favor-with-partial-application-to-get-java-script-sql.html" />
+<meta property="og:url" content="https://crfroehlich.github.io/cellar/code/curry/2013/03/16/currying-favor-with-partial-application-to-get-java-script-sql.html" />
+<meta property="og:site_name" content="luddites, inc." />
+<meta property="og:image" content="https://crfroehlich.github.io/cellar/images/2013-03-16-currying-favor-with-partial-application-to-get-java-script-sql.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-03-16T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"There is a domain that attends to curry as one of the quintessential elements of regional cuisine Th…","url":"https://crfroehlich.github.io/cellar/code/curry/2013/03/16/currying-favor-with-partial-application-to-get-java-script-sql.html","@type":"BlogPosting","headline":"Currying Favor with Partial Application to get JavaScript SQL","dateModified":"2013-03-16T00:00:00-05:00","datePublished":"2013-03-16T00:00:00-05:00","author":{"@type":"Person","name":"CF"},"image":"https://crfroehlich.github.io/cellar/images/2013-03-16-currying-favor-with-partial-application-to-get-java-script-sql.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://crfroehlich.github.io/cellar/code/curry/2013/03/16/currying-favor-with-partial-application-to-get-java-script-sql.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cellar/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://crfroehlich.github.io/cellar/feed.xml" title="luddites, inc." /><link rel="shortcut icon" type="image/x-icon" href="/cellar/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cellar/">luddites, inc.</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/cellar/about/">About Me</a><a class="page-link" href="/cellar/search/">Search</a><a class="page-link" href="/cellar/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Currying Favor with Partial Application to get JavaScript SQL</h1><p class="page-description">There is a domain that attends to curry as one of the quintessential elements of regional cuisine Th...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2013-03-16T00:00:00-05:00" itemprop="datePublished">
+        Mar 16, 2013
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">CF</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/cellar/categories/#code">code</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#curry">curry</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><p>There is a domain that attends to curry as one of the quintessential elements of regional cuisine. This is not that domain; though in this domain I would argue we need a paprika.</p>
+
+<p>If the terms <em>curry</em> or <em>partial application</em> are at all unfamiliar to you, I highly recommend Reg Braithwaite’s <a href="http://raganwald.com/2013/03/07/currying-and-partial-application.html">latest opus on the subject</a>. Lending support are <a href="http://plus.google.com/112487099551149077731">+Ben Alman</a> with his own <a href="http://benalman.com/news/2012/09/partial-application-in-javascript/">eviscerating tour de force</a> as well as <a href="http://plus.google.com/110516491705475800224">+Axel Rauschmayer</a> with his <a href="http://www.2ality.com/2011/09/currying-vs-part-eval.html">very, extremely, routinely reputable entry</a>. If you’ve ever followed me here before, you may remember a fog surrounding an idea that touched on partial application from <a href="http://hiking.luddites.me/2013/01/good-reads.html">Good Reads</a>, where I linked to (again to Mr. Braithwaite) <a href="https://github.com/raganwald/homoiconic/blob/master/2013/01/practical-applications-of-partial-application.md">the skinny</a>.</p>
+
+<p>Do not be confused, dismayed, disheartened or discouraged. Currying and partial application are not easy-to-grok. The literature on the subject, while vast, is dense. Even in the most skilled hands, attempts to bring these tomes down from Mt. Sinai, have not routinely resulted in greater clarity.</p>
+
+<p>But this is not yet-another-indoctrination on the subject. Defer to the authorities above for that. Here, I’m attempting  to exploit the potential for good. Using both ingredients, it is possible to create a semantic for querying JavaScript objects in a syntax that resembles SQL. Are there other solutions to do this? <a href="https://plus.google.com/108988276571177665337/posts/ahm5G625Vix">Yes</a>.</p>
+
+<p>Once you’ve apprehended grokation of the concepts, it should be straightforward to see the implementation of a few partial application standard methods: <a href="http://en.wikipedia.org/wiki/Map_(higher-order_function)">map</a>, <a href="http://en.wikipedia.org/wiki/Filter_(higher-order_function)">filter</a> and <a href="http://en.wikipedia.org/wiki/Fold_(higher-order_function)">fold</a>. Lots of libraries have already done the diligence and written these for us but for the sake of having something to write, let’s implement them again (In the real world, you’re better off taking what <a href="http://osteele.com/sources/javascript/functional/">functional js</a> or <a href="http://fitzgen.github.com/wu.js">wu.js</a> have already built)!</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">curryLeft</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">slice</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">;</span>    
+  <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    <span class="k">return</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">0</span><span class="p">)));</span>    
+  <span class="p">};</span>    
+<span class="p">}</span>    
+    
+<span class="kd">function</span> <span class="nx">foldLeft</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">newArray</span><span class="p">,</span> <span class="nx">oldArray</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">accumulation</span> <span class="o">=</span> <span class="nx">newArray</span><span class="p">;</span>    
+  <span class="nx">each</span><span class="p">(</span><span class="nx">oldArray</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="nx">accumulation</span> <span class="o">=</span> <span class="nx">func</span><span class="p">(</span><span class="nx">accumulation</span><span class="p">,</span> <span class="nx">val</span><span class="p">);</span>    
+  <span class="p">});</span>    
+  <span class="k">return</span> <span class="nx">accumulation</span><span class="p">;</span>    
+<span class="p">}</span>    
+    
+<span class="kd">function</span> <span class="nx">map</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">onIteration</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">accumulation</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="k">return</span> <span class="nx">accumulation</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">val</span><span class="p">));</span>    
+  <span class="p">};</span>    
+  <span class="k">return</span> <span class="nx">foldLeft</span><span class="p">(</span><span class="nx">onIteration</span><span class="p">,</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">],</span> <span class="nx">array</span><span class="p">);</span>    
+<span class="p">}</span>    
+    
+<span class="kd">function</span> <span class="nx">filter</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">onIteration</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">accumulation</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">val</span><span class="p">))</span> <span class="p">{</span>    
+      <span class="k">return</span> <span class="nx">accumulation</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>    
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    
+      <span class="k">return</span> <span class="nx">accumulation</span><span class="p">;</span>    
+    <span class="p">}</span>    
+  <span class="p">};</span>    
+  <span class="k">return</span> <span class="nx">foldLeft</span><span class="p">(</span><span class="nx">onIteration</span><span class="p">,</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">],</span> <span class="nx">array</span><span class="p">);</span>    
+<span class="p">}</span>    
+</code></pre></div></div>
+
+<p>With just these, we can do something that’s almost cool. We can extend the native Array class to add some new methods:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperties</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>    
+  <span class="na">_where</span><span class="p">:</span> <span class="p">{</span>    
+    <span class="na">value</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="k">return</span> <span class="nx">filter</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>    
+    <span class="p">},</span>    
+  <span class="p">},</span>    
+  <span class="na">_select</span><span class="p">:</span> <span class="p">{</span>    
+    <span class="na">value</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>    
+      <span class="k">return</span> <span class="nx">map</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>    
+    <span class="p">},</span>    
+  <span class="p">},</span>    
+<span class="p">});</span>    
+</code></pre></div></div>
+
+<p>At this point, given an instance of an Array (thanks to <a href="https://github.com/marak/Faker.js/">Faker</a>), like:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">somePeople</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span>    
+    <span class="p">{</span><span class="dl">"</span><span class="s2">FirstName</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Cristina</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">LastName</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Quigley</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">PhoneNumber</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">1-189-868-2830</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Email</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Imelda@lourdes.ca</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Id</span><span class="dl">"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>    
+    <span class="p">{</span><span class="dl">"</span><span class="s2">FirstName</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Eriberto</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">LastName</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Bailey</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">PhoneNumber</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">1-749-549-2050 x36612</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Email</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Pamela</span><span class="se">\</span><span class="s2">_Gaylord@ludie.net</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Id</span><span class="dl">"</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span>    
+    <span class="p">{</span><span class="dl">"</span><span class="s2">FirstName</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Amina</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">LastName</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Schaden</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">PhoneNumber</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">463-301-9579 x9511</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Email</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Conner</span><span class="se">\</span><span class="s2">_Gusikowski@jolie.tv</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Id</span><span class="dl">"</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span><span class="err">\</span><span class="p">];</span>    
+</code></pre></div></div>
+
+<p>If we wanted to select the FirstName of each record, we could do something crude like:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">somePeople</span><span class="p">.</span><span class="err">\</span><span class="nx">_select</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">;</span>    
+<span class="p">});</span>    
+</code></pre></div></div>
+
+<p>But this is still too obtuse. With a little curry, we can make it better. We used partial application to get to ‘_select’, but we can switch gears to curry to get a better query mechanism. First, let’s define a query method: <em>Update: we technically don’t need curry here, as we’re not abstracting the ‘query’ object as a parameter. Thanks to Thomas Burette in the comments</em>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">tables</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">];</span>    
+  <span class="nx">tables</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">array</span><span class="p">);</span>    
+  <span class="kd">var</span> <span class="err">\</span><span class="nx">_query</span> <span class="o">=</span> <span class="p">{</span>    
+    <span class="na">tables</span><span class="p">:</span> <span class="nx">tables</span><span class="p">,</span>    
+    <span class="na">from</span><span class="p">:</span> <span class="k">from</span><span class="p">,</span>    
+    <span class="na">select</span><span class="p">:</span> <span class="nx">select</span><span class="p">,</span>    
+    <span class="na">run</span><span class="p">:</span> <span class="nx">run</span><span class="p">,</span>    
+  <span class="p">};</span>    
+  <span class="k">return</span> <span class="err">\</span><span class="nx">_query</span><span class="p">;</span>    
+<span class="p">};</span>    
+</code></pre></div></div>
+
+<p>select and from methods are straightforward:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">select</span><span class="p">()</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>    
+    
+  <span class="kd">var</span> <span class="nx">slice</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">;</span>    
+  <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>    
+  <span class="nx">query</span><span class="p">.</span><span class="nx">columns</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">columns</span> <span class="o">||</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">];</span>    
+  <span class="nx">each</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">argumentValue</span><span class="p">)</span> <span class="p">{</span>    
+    <span class="nx">query</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">argumentValue</span><span class="p">);</span>    
+  <span class="p">});</span>    
+  <span class="k">return</span> <span class="nx">query</span><span class="p">;</span>    
+<span class="p">}</span>    
+    
+<span class="kd">function</span> <span class="k">from</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>    
+  <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>    
+  <span class="nx">query</span><span class="p">.</span><span class="nx">tables</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">array</span><span class="p">);</span>    
+  <span class="k">return</span> <span class="nx">query</span><span class="p">;</span>    
+<span class="p">}</span>    
+</code></pre></div></div>
+
+<p>which then only leaves execution. I’ve deliberately not optimized this method for the purpose of illustration: in the absence of the tools, this is what such code looks like. Look at the redundancy and duplication. Marvel at the inelegance. <a href="http://prog21.dadgum.com/169.html">Appreciate the fact that it works</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>    
+    <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>    
+    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">];</span>    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="kd">var</span> <span class="nx">results</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">];</span>    
+        <span class="nx">each</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">columns</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">columnName</span><span class="p">)</span> <span class="p">{</span>    
+    
+            <span class="nx">each</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">tables</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tbl</span><span class="p">)</span> <span class="p">{</span>    
+                <span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">tbl</span><span class="p">))</span> <span class="p">{</span>    
+                    <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="p">{};</span>    
+                    <span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="nx">tbl</span><span class="p">.</span><span class="err">\</span><span class="nx">_select</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>    
+                        <span class="k">return</span> <span class="nx">val</span><span class="err">\</span><span class="p">[</span><span class="nx">columnName</span><span class="err">\</span><span class="p">];</span>    
+                    <span class="p">});</span>    
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>    
+                        <span class="nx">res</span><span class="err">\</span><span class="p">[</span><span class="nx">columnName</span><span class="err">\</span><span class="p">]</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>    
+                        <span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>    
+                    <span class="p">}</span>    
+                <span class="p">}</span>    
+            <span class="p">},</span> <span class="kc">true</span><span class="p">);</span>    
+    
+        <span class="p">});</span>    
+    
+        <span class="kd">var</span> <span class="nx">returnRows</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">];</span>    
+        <span class="k">if</span><span class="p">(</span><span class="nx">results</span> <span class="o">&amp;&amp;</span> <span class="nx">results</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>    
+            <span class="kd">var</span> <span class="nx">firstResult</span> <span class="o">=</span> <span class="nx">results</span><span class="err">\</span><span class="p">[</span><span class="mi">0</span><span class="err">\</span><span class="p">];</span>    
+    
+            <span class="nx">each</span><span class="p">(</span><span class="nx">firstResult</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>    
+    
+                <span class="nx">each</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cell</span><span class="p">){</span>    
+                    <span class="kd">var</span> <span class="nx">row</span> <span class="o">=</span> <span class="p">{};</span>    
+                    <span class="nx">row</span><span class="err">\</span><span class="p">[</span><span class="nx">key</span><span class="err">\</span><span class="p">]</span> <span class="o">=</span> <span class="nx">cell</span><span class="p">;</span>    
+                    <span class="nx">each</span><span class="p">(</span><span class="nx">results</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>    
+                        <span class="nx">each</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="nx">k</span><span class="p">){</span>    
+                            <span class="nx">each</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>    
+                                <span class="nx">row</span><span class="err">\</span><span class="p">[</span><span class="nx">k</span><span class="err">\</span><span class="p">]</span> <span class="o">=</span> <span class="nx">c</span><span class="p">;</span>    
+                            <span class="p">})</span>    
+                        <span class="p">},</span><span class="kc">true</span><span class="p">)</span>    
+                    <span class="p">},</span><span class="kc">true</span><span class="p">)</span>    
+                    <span class="nx">returnRows</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>    
+                <span class="p">},</span><span class="kc">true</span><span class="p">);</span>    
+    
+            <span class="p">},</span><span class="kc">true</span><span class="p">)</span>    
+    
+        <span class="p">}</span>    
+    
+    <span class="p">}</span>    
+    <span class="k">return</span> <span class="nx">returnRows</span><span class="p">;</span>    
+<span class="p">}</span>    
+</code></pre></div></div>
+
+<p>Now, this yields a syntax which looks a lot more like SQL:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">newQuery</span> <span class="o">=</span> <span class="nx">query</span><span class="p">(</span><span class="nx">people</span><span class="p">).</span><span class="nx">select</span><span class="p">(</span><span class="dl">'</span><span class="s1">FirstName</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">LastName</span><span class="dl">'</span><span class="p">);</span>    
+<span class="kd">var</span> <span class="nx">results</span> <span class="o">=</span> <span class="nx">newQuery</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span>    
+</code></pre></div></div>
+
+<p>From here, ‘where’, ‘join’ (yes I said JOIN), ‘orderby’ and ‘groupby’ are all implementation details. This is just a proof-of-concept post, but given some large Faker data sets it already works quite well given its limitations. Refactoring ‘run’ into a method which utilizes partial application will yield mountains.</p>
+
+<p>As always, everything I blog and code is public domain. You can view the source from the <a href="https://github.com/somecallmechief/oj-sql">oj-sql project here</a>, collab with me on <a href="https://c9.io/somecallmechief/oj-sql">c9 here</a>, or do whatever strikes your whim. May the wind that strikes your whim be always at your back.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="crfroehlich/cellar"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://crfroehlich.github.io/cellar/code/curry/2013/03/16/currying-favor-with-partial-application-to-get-java-script-sql.html';
+    this.page.identifier = 'https://crfroehlich.github.io/cellar/code/curry/2013/03/16/currying-favor-with-partial-application-to-get-java-script-sql.html';
+  };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+
+    s.src = 'https://luddites.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+    powered by Disqus.</a></noscript><a class="u-url" href="/cellar/code/curry/2013/03/16/currying-favor-with-partial-application-to-get-java-script-sql.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cellar/%20/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/cellar/feed.xml">
+            <svg class="svg-icon blue">
+              <use xlink:href="/cellar/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>rss</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>A journey of one person hiking their desk</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/tquestingbeast" title="tquestingbeast"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer></body>
+
+</html>

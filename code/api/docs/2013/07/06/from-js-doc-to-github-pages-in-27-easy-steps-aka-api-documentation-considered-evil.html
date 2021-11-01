@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>From JsDoc to Github Pages in 27 easy steps (aka API Documentation Considered Evil)? | luddites, inc.</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="From JsDoc to Github Pages in 27 easy steps (aka API Documentation Considered Evil)?" />
+<meta name="author" content="CF" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I ask the question because I assume it must be considered evilon the subsequent assumption that if i…" />
+<meta property="og:description" content="I ask the question because I assume it must be considered evilon the subsequent assumption that if i…" />
+<link rel="canonical" href="https://crfroehlich.github.io/cellar/code/api/docs/2013/07/06/from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.html" />
+<meta property="og:url" content="https://crfroehlich.github.io/cellar/code/api/docs/2013/07/06/from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.html" />
+<meta property="og:site_name" content="luddites, inc." />
+<meta property="og:image" content="https://crfroehlich.github.io/cellar/images/2013-07-06-from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-07-06T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"I ask the question because I assume it must be considered evilon the subsequent assumption that if i…","url":"https://crfroehlich.github.io/cellar/code/api/docs/2013/07/06/from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.html","@type":"BlogPosting","headline":"From JsDoc to Github Pages in 27 easy steps (aka API Documentation Considered Evil)?","dateModified":"2013-07-06T00:00:00-05:00","datePublished":"2013-07-06T00:00:00-05:00","author":{"@type":"Person","name":"CF"},"image":"https://crfroehlich.github.io/cellar/images/2013-07-06-from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://crfroehlich.github.io/cellar/code/api/docs/2013/07/06/from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cellar/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://crfroehlich.github.io/cellar/feed.xml" title="luddites, inc." /><link rel="shortcut icon" type="image/x-icon" href="/cellar/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cellar/">luddites, inc.</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/cellar/about/">About Me</a><a class="page-link" href="/cellar/search/">Search</a><a class="page-link" href="/cellar/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">From JsDoc to Github Pages in 27 easy steps (aka API Documentation Considered Evil)?</h1><p class="page-description">I ask the question because I assume it must be considered evilon the subsequent assumption that if i...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2013-07-06T00:00:00-05:00" itemprop="datePublished">
+        Jul 6, 2013
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">CF</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/cellar/categories/#code">code</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#api">api</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/cellar/categories/#docs">docs</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#the-short-version">The short version</a></li>
+<li class="toc-entry toc-h2"><a href="#the-long-version">The long version</a></li>
+</ul><p>I ask the question, because I assume it must be (considered evil)–on the subsequent assumption that if it were not (considered evil) that <em>someone</em>, <strong>somewhere</strong>, somehow would have made it easy. I had a simple vision: take JsDocs from my <a href="https://github.com/somecallmechief/oj">project</a>, convert them to an <a href="https://github.com/jsdoc3/jsdoc">API document</a>, publish that document to my <a href="http://somecallmechief.github.io/oj/">Github pages</a> place.</p>
+
+<p>Impossible is <a href="http://www.youtube.com/watch?v=R7Kboormk3Y">nothing</a>.</p>
+
+<h2 id="the-short-version">
+<a class="anchor" href="#the-short-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>The short version</h2>
+
+<ol>
+  <li>Document your code using the <a href="http://usejsdoc.org/">JsDoc v3 API</a>.
+    <ol>
+      <li>Follow this API with religious fervor. It is itself not well-documented.</li>
+      <li>The use (or omission) of certain tags can have undocumented side effects. The old <a href="https://code.google.com/p/jsdoc-toolkit/wiki/TagReference">JsDoc v2 Toolkit</a> is still valuable as a reference.</li>
+      <li>JsDoc will emit very few exceptions, other than raw syntax exceptions. You can call the jsdoc NPM directly with the –debug flag to hook into the Rhino debugger, but this didn’t help me identify the issues.</li>
+      <li>I finally stumbled on <a href="http://www.kajabity.com/2012/02/how-i-introduced-jsdoc-into-a-javascript-project-and-found-my-eclipse-outline/">a post by Simon William</a>, which gave me the clues I needed to <a href="https://github.com/krampstudio/grunt-jsdoc-plugin/issues/46">find the faults in OJ’s documentation</a>.</li>
+    </ol>
+  </li>
+  <li>Install the <a href="https://github.com/krampstudio/grunt-jsdoc-plugin">grunt-jsdoc-plugin</a>. Note: this plugin is a thin wrapper around the <a href="https://npmjs.org/package/jsdoc">jsdoc</a> NPM. Nearly every fault you experience will result from jsdoc, not from the grunt-jsdoc-plugin.</li>
+  <li>
+<a href="http://plus.google.com/109947886575868463460">+Eugene Krevenets</a> has a good starter <a href="http://pressanykeytocreate.blogspot.com/2013/05/creation-of-documentation-for.html">post on how to extend this base task</a> in order to skin the 1.put. This will get you closer to controlling the final skin of your API.</li>
+  <li>If you use Eugene’s steps (which I recommend), there is a gotchya inside the configuration file “.jsdocrc”. The path of the plugins you specify will use either <a href="http://usejsdoc.org/about-plugins.html">a relative or an absolute path</a>, which as implemented is actually the worst of both worlds.</li>
+  <li>Configure your grunt-jsdoc task to use <a href="https://github.com/terryweiss/docstrap">DocStrap</a> for theming. This is a set of Boostrap themes configured to work on jsdoc output.</li>
+  <li>I have not found a grunt task to automate this, so opted simply to copy the DocStrap project into a folder of my own project and link to it internally. The CSS styling is not as advertised, but it’s better than trying to build my own 1.nt task to solve the problem.</li>
+  <li>Sync the API doc output with Github using the Grunt <a href="https://github.com/thanpolas/grunt-github-pages">githubPages</a> task. This was actually straightforward and just worked out of the box.</li>
+</ol>
+
+<h2 id="the-long-version">
+<a class="anchor" href="#the-long-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>The long version</h2>
+
+<p>A brief backstory. Early last year, we were expanding the team at ChemSW, and I wanted to be able to machine generate documentation from the the XML code comments across our various .NET projects. Aside: I had to look the date up, assuming it was years and years ago–shocking to find in the cold, hard, unrelenting truth of code commits that it was really just July, 01 2012 when I made my first commit on the subject. In spare time over 6-8 weeks or so, I scoured the inter-tubes for a tool which would do such a thing.</p>
+
+<p>After all, Microsoft does this and they make .NET. How hard could it be? <a href="http://stackoverflow.com/questions/665925/what-are-some-good-net-code-documentation-tools">Hard</a>. <em>Note: Supposedly GhostDoc could (presumably still does) this; but I’m not interested in negotiating purchase authority.</em> Most paths still lead to <a href="http://www.codeplex.com/Sandcastle">Sandcastle</a>, or one of the many forks thereof. As best I remember, Sandcastle was a solution to problems which haven’t been imagined yet. In the end, I finally found a tool called <a href="http://docu.jagregory.com/">Doco</a>, which I was able to <a href="https://github.com/somecallmechief/docu">fork</a> and make use of. All of this, of course, was for .NET only and didn’t include documentation for JavaScript.</p>
+
+<p>For JavaScript, I chose the VsDoc style of documentation, because it purported to support some form of IntelliSense in Visual Studio. It does, and that feature works great until you add your 2nd JS file to the project.</p>
+
+<p>So back to the present. A theme emerges. I recently started breaking new ground on OJ, and I wanted to generate API documentation. I did some research, and the Internet gave me full faith and confidence that JsDoc was finally the format of choice and machines were ready to eat it and spew out well formed HTML.</p>
+
+<p>A few things have happened since then. First, the Chrome Dev team has made it drop-dead simple to debug your CoffeeScript and IcedScript and SASS and Less inside the dev tools. Second, Microsoft abandoned VsDocs when they embraced their own TypeScript. Third, since Grunt is now a de facto standard all its own, it’s easier than ever to write your own niche NodeJs task and parse a few thousands files according to whatever regex you want. So more languages, more tools, more variation and a lower-than-ever bar to entry to roll-your-own solutions.</p>
+
+<p>For the past week, I have wrestled with getting various tools to comply with my core requirement: go make me some API docs. I started with the one and only jsdoc Grunt plugin, jsdoc. <a href="https://github.com/krampstudio/grunt-jsdoc-plugin/issues/46">It didn’t work</a>. If you search the <a href="http://gruntjs.com/plugins/doc">Grunt plugins</a> for ‘doc’, I think you’ll find a long list of other well meaning tools, each of which in their own, niche ways also don’t work.</p>
+
+<p>There’s <a href="https://npmjs.org/package/grunt-docco2">docco</a>, a tool which dutifully generates a beautiful UI representing your standard comments next to code–it also mangles your actual code documentation comments with the associated code. I get that it’s easy to parse out all lines starting with “//” and that it’s hard to parse start “/**” and end “*/”, but it does not mean I’m interested in the solution to the easy problem.</p>
+
+<p>There’s <a href="https://npmjs.org/package/grunt-apidoc">apidoc</a>, a tool which promises to generate the beautiful API docs I want, using a jsdoc-like syntax. In almost every way, the semantics for this documentation is jsdoc, except every tag begins “api” + {tagName}, and it ignores all other tags.</p>
+
+<p>After vetting nearly every other tool out there, I circled back to grunt-jsdoc-plugin and filed a bug. Just 2 days later, and I finally have the problem clearly identified. My code is not explicit enough for JsDoc, by itself, to parse.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="err">\</span><span class="o">*</span><span class="err">\</span><span class="o">*</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="nx">Method</span> <span class="nx">to</span> <span class="k">do</span> <span class="nx">something</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="p">@</span><span class="nd">return</span> <span class="p">{</span><span class="nb">Array</span><span class="p">}</span> <span class="nx">An</span> <span class="nx">array</span>    
+<span class="err">\</span><span class="o">*</span><span class="sr">/   </span><span class="err"> 
+</span><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">nameSpace</span><span class="p">,</span> <span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>    
+ <span class="na">value</span><span class="p">:</span>    
+  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    
+  <span class="p">}</span>    
+<span class="p">});</span>    
+    
+</code></pre></div></div>
+
+<p>In plain JavaScript, I’m simply writing:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="err">\</span><span class="o">*</span><span class="err">\</span><span class="o">*</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="nx">Method</span> <span class="nx">to</span> <span class="k">do</span> <span class="nx">something</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="p">@</span><span class="nd">return</span> <span class="p">{</span><span class="nb">Array</span><span class="p">}</span> <span class="nx">An</span> <span class="nx">array</span>    
+<span class="err">\</span><span class="o">*</span><span class="sr">/   </span><span class="err"> 
+</span><span class="nx">nameSpace</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{}</span>    
+</code></pre></div></div>
+
+<p>which JsDoc knows how to interpolate as it parses the AST. In my case, by using Object.defineProperty, I am “obfuscating” the assignment, the name of the property assigned and the type of the value being assigned, JsDoc iterates over this block and sees nothing to report. In this case, it is possible to instruct JsDoc what to do by defining the appropriate tags:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="err">\</span><span class="o">*</span><span class="err">\</span><span class="o">*</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="p">@</span><span class="nd">desc</span> <span class="nx">Method</span> <span class="nx">to</span> <span class="k">do</span> <span class="nx">something</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="p">@</span><span class="nd">name</span> <span class="nx">method</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="p">@</span><span class="nd">return</span> <span class="p">{</span><span class="nb">Array</span><span class="p">}</span> <span class="nx">An</span> <span class="nx">array</span>    
+ <span class="err">\</span><span class="o">*</span> <span class="p">@</span><span class="nd">memberOf</span> <span class="nx">nameSpace</span>    
+<span class="err">\</span><span class="o">*</span><span class="sr">/   </span><span class="err"> 
+</span><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">nameSpace</span><span class="p">,</span> <span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>    
+ <span class="na">value</span><span class="p">:</span>    
+  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>    
+    
+  <span class="p">}</span>    
+<span class="p">});</span>    
+    
+</code></pre></div></div>
+
+<p>Presto.</p>
+
+<p>Still. This time I solved the problem the traditional “right” way. By figuring out how to make the existing, seemingly proven tools work. I still have to refactor every code comment in my library before it will begin appearing in the documentation. Would it have been faster to grunt-force my own solution? Maybe next time.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="crfroehlich/cellar"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://crfroehlich.github.io/cellar/code/api/docs/2013/07/06/from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.html';
+    this.page.identifier = 'https://crfroehlich.github.io/cellar/code/api/docs/2013/07/06/from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.html';
+  };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+
+    s.src = 'https://luddites.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+    powered by Disqus.</a></noscript><a class="u-url" href="/cellar/code/api/docs/2013/07/06/from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cellar/%20/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/cellar/feed.xml">
+            <svg class="svg-icon blue">
+              <use xlink:href="/cellar/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>rss</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>A journey of one person hiking their desk</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/crfroehlich" title="crfroehlich"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/tquestingbeast" title="tquestingbeast"><svg class="svg-icon grey"><use xlink:href="/cellar/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer></body>
+
+</html>
