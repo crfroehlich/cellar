@@ -10,7 +10,7 @@ description: >-
 draft: false
 image: images/2004-07-17-area-man-confused-by-obscure-mullis-references.jpg
 layout: post
-title: Area Man Confused By Obscure "Mullis" References
+title: "Area Man Confused By Obscure 'Mullis' References"
 toc: true
 ---
     

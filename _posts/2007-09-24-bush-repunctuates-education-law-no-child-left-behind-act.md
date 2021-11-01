@@ -11,7 +11,7 @@ draft: false
 image: images/2007-09-24-bush-repunctuates-education-law-no-child-left-behind-act.jpg
 layout: post
 subtitle: ' "No! Child... ''Left Behind''?" Act'
-title: 'Bush Repunctuates Education Law: "No! Child... ''Left Behind''?" Act'
+title: "Bush Repunctuates Education Law: 'No! Child... Left Behind?' Act"
 toc: true
 ---
     

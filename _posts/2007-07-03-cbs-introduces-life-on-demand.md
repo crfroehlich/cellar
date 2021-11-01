@@ -9,7 +9,7 @@ description: >-
 draft: false
 image: images/2007-07-03-cbs-introduces-life-on-demand.jpg
 layout: post
-title: CBS Introduces "Life on Demand"
+title: "CBS Introduces 'Life on Demand'"
 toc: true
 ---
     

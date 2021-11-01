@@ -11,7 +11,7 @@ draft: false
 image: images/2007-09-06-pope-announces-life-begins-at-lust.webp
 layout: post
 subtitle: ' "Life Begins at Lust"'
-title: 'Pope Announces: "Life Begins at Lust"'
+title: "Pope Announces: 'Life Begins at Lust'"
 toc: true
 ---
     

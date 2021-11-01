@@ -10,7 +10,7 @@ description: >-
 draft: false
 image: images/2007-09-24-pope-announces-revolutionary-abstinence-only-education.jpg
 layout: post
-title: Pope Announces Revolutionary "Abstinence Only Education"
+title: "Pope Announces Revolutionary 'Abstinence Only Education'"
 toc: true
 ---
     
