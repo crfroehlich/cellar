@@ -1,1 +1,1 @@
-Sitemap: https://luddites.me/cellar/sitemap.xml
+Sitemap: https://luddites.me/sitemap.xml
