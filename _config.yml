@@ -37,7 +37,7 @@ url: "https://luddites.me" # the base hostname & protocol for your site, e.g. ht
 #
 # 3. You must replace the parameter `baseurl` in _action_files/settings.ini with the same value as you set here but WITHOUT QUOTES.
 #
-baseurl: "/cellar" # the subpath of your site, e.g. "/blog".
+baseurl: "/" # the subpath of your site, e.g. "/blog".
 
 twitter_username: tquestingbeast
 orcid_id: 0000-0001-6652-5940
