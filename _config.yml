@@ -2,30 +2,33 @@
 #
 # This config file is meant for settings that affect your whole blog.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: luddites, inc.
-description: A journey of one person hiking their desk
+title: "ЛУДДИТЫ, INC."
+description: "One man's journey to hike his desk'"
+logo: images/logo.png
+background_image:   "/cellar/images/bg.jpg"
+copyright: "Adapted from [Oriol Abril's blog](https://oriolabril.github.io/oriol_unraveled/), which is powered by [fastpages](https://fastpages.fast.ai/) running with [Basically Basic](https://mmistakes.github.io/jekyll-theme-basically-basic/) on an infinite number of box turtles."
 github_username: crfroehlich
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "cellar"
 
 # OPTIONAL: override baseurl and url if using a custom domain
-# Note: leave out the trailing / from this value. 
-url: "https://crfroehlich.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+# Note: leave out the trailing / from this value.
+url: "https://luddites.me" # the base hostname & protocol for your site, e.g. http://example.com
 
 ###########################################################
 #########  Special Instructions for baseurl ###############
 #
 #### Scenario One: If you do not have a Custom Domain #####
 #    -  if you are not using a custom domain, the baseurl *must* be set to your repo name
-# 
+#
 ####  Scenario Two: If you have a Custom Domain #####
 # 1. If your domain does NOT have a subpath, this leave this value as ""
-# 2. If your domain does have a subpath, you must preceed the value with a / and NOT have a / at the end.  
-#      For example: 
+# 2. If your domain does have a subpath, you must preceed the value with a / and NOT have a / at the end.
+#      For example:
 #           "" is valid
 #           "/blog"        is valid
 #            "/blog/site/" is invalid  ( / at the end)
@@ -36,15 +39,9 @@ url: "https://crfroehlich.github.io" # the base hostname & protocol for your sit
 #
 baseurl: "/cellar" # the subpath of your site, e.g. "/blog".
 
-# Github and twitter are optional:
-minima:
-  social_links:
-    twitter: tquestingbeast
-    github: crfroehlich
-    linkedin: crfroehlich
-
-# Set this to true to get LaTeX math equation support
-use_math: 
+twitter_username: tquestingbeast
+orcid_id: 0000-0001-6652-5940
+google_scholar_id: j3---DAAAAAJ
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
@@ -59,7 +56,7 @@ annotations: true
 show_tags: true
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics: 
+google_analytics: G-WZTYEG3VZJ
 
 exclude:
   - docker-compose.yml
@@ -82,7 +79,6 @@ html_escape:
 
 # Everything below here should be left alone. Modifications may break fastpages
 future: true
-theme: minima
 plugins:
   - jekyll-feed
   - jekyll-gist
@@ -101,7 +97,10 @@ plugins:
 paginate: 5
 paginate_path: /page:num/
 
-remote_theme: jekyll/minima
+feed:
+  path: atom.xml
+
+remote_theme: jekyllup/jekyll-theme-massively
 
 titles_from_headings:
   enabled:     true
@@ -117,14 +116,15 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-# to limit size of xml as it can grow quite large.
-feed:
-  posts_limit: 5 #default posts_limit: 10
-  excerpt_only: false
-
 disqus:
   shortname: luddites
-
-
-exclude:
-  - settings.ini
+# Front Matter Defaults
+defaults:
+  # _posts
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      read_time: true
+      twitter_large_image: false
+      use_math: false
