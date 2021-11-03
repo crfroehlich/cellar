@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="twitter:card" content="summary" /><title>Blogging to the Oldies | ЛУДДИТЫ, INC.</title>
 <meta name="description" content="Reality Meet Opportunity...">
 
-<!-- SEO and meta information for twitter/whatsupp cards --><!-- Begin Jekyll SEO tag v2.6.1 -->
+<!-- SEO and meta information for twitter/whatsupp cards --><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Blogging to the Oldies | ЛУДДИТЫ, INC.</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Blogging to the Oldies" />
 <meta name="author" content="CF" />
 <meta property="og:locale" content="en_US" />
@@ -20,8 +20,11 @@
 <meta property="og:image" content="https://luddites.me/images/2020-10-04-blogging-to-the-oldies.jpg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-10-04T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://luddites.me/images/2020-10-04-blogging-to-the-oldies.jpg" />
+<meta property="twitter:title" content="Blogging to the Oldies" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"CF"},"datePublished":"2020-10-04T00:00:00-05:00","headline":"Blogging to the Oldies","mainEntityOfPage":{"@type":"WebPage","@id":"https://luddites.me/logging/code/tech/2020/10/04/blogging-to-the-oldies.html"},"image":"https://luddites.me/images/2020-10-04-blogging-to-the-oldies.jpg","description":"Reality Meet Opportunity…","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://luddites.me/images/logo.png"},"name":"CF"},"@type":"BlogPosting","url":"https://luddites.me/logging/code/tech/2020/10/04/blogging-to-the-oldies.html","dateModified":"2020-10-04T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"CF"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://luddites.me/images/logo.png"},"name":"CF"},"description":"Reality Meet Opportunity…","@type":"BlogPosting","url":"https://luddites.me/logging/code/tech/2020/10/04/blogging-to-the-oldies.html","image":"https://luddites.me/images/2020-10-04-blogging-to-the-oldies.jpg","headline":"Blogging to the Oldies","dateModified":"2020-10-04T00:00:00-05:00","datePublished":"2020-10-04T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://luddites.me/logging/code/tech/2020/10/04/blogging-to-the-oldies.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <!-- Feed --><link type="application/atom+xml" rel="alternate" href="https://luddites.me/atom.xml" title="ЛУДДИТЫ, INC." /><!-- CSS --><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://luddites.me/assets/css/main.css" />
@@ -54,8 +57,6 @@
 
             <ul class="links">
   <li class=""><a href="https://luddites.me/">Home</a></li>
-  <li class=""><a href="https://luddites.me/blog/">Blog</a></li>
-  <li class=""><a href="https://luddites.me/tags/">Tags</a></li>
   <li class=""><a href="https://luddites.me/categories/">Categories</a></li>
   <li class=""><a href="https://luddites.me/about/">About me</a></li>
 </ul>
@@ -104,13 +105,13 @@
     
       <p class="category-tags"><i class="fa fa-folder category-tags-icon"></i></i>
       
-        <a class="category-tags-link" href="//categories/#logging">logging</a>
+        <a class="category-tags-link" href="/categories/#logging">logging</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#code">code</a>
+        <a class="category-tags-link" href="/categories/#code">code</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#tech">tech</a>
+        <a class="category-tags-link" href="/categories/#tech">tech</a>
         
       
       </p>
@@ -121,7 +122,7 @@
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <ul class="section-nav">
+    <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2"><a href="#reality-meet-opportunity">Reality, Meet Opportunity</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#goals">Goals</a></li>
@@ -195,7 +196,7 @@
 
 <ul>
   <li>
-<a href="https://pages.github.com/">Github Pages</a>: a free static content website based on the content of a branch of your repository. Commonly the <code class="highlighter-rouge">gh-pages</code> branch, which is how this blog is served.</li>
+<a href="https://pages.github.com/">Github Pages</a>: a free static content website based on the content of a branch of your repository. Commonly the <code class="language-plaintext highlighter-rouge">gh-pages</code> branch, which is how this blog is served.</li>
   <li>
 <a href="https://github.com/features/actions">Github Actions</a>: Manage your updates to Github Pages automatically</li>
   <li>
@@ -211,7 +212,7 @@
 <h3 id="getting-there">
 <a class="anchor" href="#getting-there" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting There</h3>
 
-<p>I did some basic soul googling for <code class="highlighter-rouge">blog github pages -jekyll</code> and quickly found <a href="https://codesandtags.github.io/blog/creating-my-blog-with-gatsby-and-github-pages">Creating my blog with Gatsby and Github Pages</a>, which was more than enough to get me going. I explored a variety of <a href="https://www.gatsbyjs.com/starters/?v=2">Gatsby Templates</a> (once I had decided that Gatsby would meet all my needs) and I picked the <a href="https://www.gatsbyjs.com/starters/hasura/gatsby-gitbook-starter/">Gitbook Starter</a> template as a base. There were a variety of things I needed to change–most notably the logic for generating the sidebar tree, which required comparing the <a href="https://github.com/hasura/gatsby-gitbook-starter">template repo</a> with the <a href="https://github.com/hasura/learn-graphql/tree/master/tutorials/graphql/intro-graphql/tutorial-site">demo repo</a>.</p>
+<p>I did some basic soul googling for <code class="language-plaintext highlighter-rouge">blog github pages -jekyll</code> and quickly found <a href="https://codesandtags.github.io/blog/creating-my-blog-with-gatsby-and-github-pages">Creating my blog with Gatsby and Github Pages</a>, which was more than enough to get me going. I explored a variety of <a href="https://www.gatsbyjs.com/starters/?v=2">Gatsby Templates</a> (once I had decided that Gatsby would meet all my needs) and I picked the <a href="https://www.gatsbyjs.com/starters/hasura/gatsby-gitbook-starter/">Gitbook Starter</a> template as a base. There were a variety of things I needed to change–most notably the logic for generating the sidebar tree, which required comparing the <a href="https://github.com/hasura/gatsby-gitbook-starter">template repo</a> with the <a href="https://github.com/hasura/learn-graphql/tree/master/tutorials/graphql/intro-graphql/tutorial-site">demo repo</a>.</p>
 
 <p>Most of my time was occupied fixing annoyances–I spent more than a few hours wrestling with the <a href="https://github.com/tschaub/gh-pages">gh-pages</a> module that I use for automating deploys to, you guessed it, Github Pages. The production build process for Gatsby is much slower than I would like, which is especially annoying in the early phases of development when you’re making lots of minor tweaks and changes. Combine that with trying to guarantee that I cache bust my site with new deploys, the general speed of build+deploy, local caching issues, remote caching issues–and I easily spent most of a day refreshing my browser in a state of uncertainty as to whether I was testing the right version of my code. Once I generally worked through my self-inflicted CI/CD pipeline issues, I am very satisfied with what I was able to throw together over a day and a half.</p>
 
@@ -235,15 +236,7 @@
 
 <p>If any of this has been interesting, please let me know in the comments or in <a href="https://github.com/crfroehlich/blog">the code, which is the blog, which is the code, which…</a>!</p>
 
-  </div><!-- from https://github.com/utterance/utterances -->
-<script src="https://utteranc.es/client.js"
-        repo="crfroehlich/cellar"
-        issue-term="title"
-        label="blogpost-comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script><a class="u-url" href="/logging/code/tech/2020/10/04/blogging-to-the-oldies.html" hidden></a>
+  </div><a class="u-url" href="/logging/code/tech/2020/10/04/blogging-to-the-oldies.html" hidden></a>
 </article>
 </p>
           </section>
@@ -252,7 +245,6 @@
             <footer>
               <ul class="actions">
                 <li><a href="https://luddites.me/" class="button">Home</a></li>
-                <li><a href="https://luddites.me/blog/" class="button">Blog</a></li>
               </ul>
             </footer>
           </div>

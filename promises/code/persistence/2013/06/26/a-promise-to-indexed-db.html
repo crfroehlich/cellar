@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="twitter:card" content="summary" /><title>A Promise to IndexedDb | ЛУДДИТЫ, INC.</title>
 <meta name="description" content="Quite a bit of my free time in the last 8 months has slipped away into [OJ]httpsomecallmechiefgithub...">
 
-<!-- SEO and meta information for twitter/whatsupp cards --><!-- Begin Jekyll SEO tag v2.6.1 -->
+<!-- SEO and meta information for twitter/whatsupp cards --><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>A Promise to IndexedDb | ЛУДДИТЫ, INC.</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="A Promise to IndexedDb" />
 <meta name="author" content="CF" />
 <meta property="og:locale" content="en_US" />
@@ -20,8 +20,11 @@
 <meta property="og:image" content="https://luddites.me/images/2013-06-26-a-promise-to-indexed-db.jpeg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2013-06-26T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://luddites.me/images/2013-06-26-a-promise-to-indexed-db.jpeg" />
+<meta property="twitter:title" content="A Promise to IndexedDb" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"CF"},"datePublished":"2013-06-26T00:00:00-05:00","headline":"A Promise to IndexedDb","mainEntityOfPage":{"@type":"WebPage","@id":"https://luddites.me/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html"},"image":"https://luddites.me/images/2013-06-26-a-promise-to-indexed-db.jpeg","description":"Quite a bit of my free time in the last 8 months has slipped away into [OJ]httpsomecallmechiefgithub…","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://luddites.me/images/logo.png"},"name":"CF"},"@type":"BlogPosting","url":"https://luddites.me/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html","dateModified":"2013-06-26T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"CF"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://luddites.me/images/logo.png"},"name":"CF"},"description":"Quite a bit of my free time in the last 8 months has slipped away into [OJ]httpsomecallmechiefgithub…","@type":"BlogPosting","url":"https://luddites.me/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html","image":"https://luddites.me/images/2013-06-26-a-promise-to-indexed-db.jpeg","headline":"A Promise to IndexedDb","dateModified":"2013-06-26T00:00:00-05:00","datePublished":"2013-06-26T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://luddites.me/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <!-- Feed --><link type="application/atom+xml" rel="alternate" href="https://luddites.me/atom.xml" title="ЛУДДИТЫ, INC." /><!-- CSS --><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://luddites.me/assets/css/main.css" />
@@ -54,8 +57,6 @@
 
             <ul class="links">
   <li class=""><a href="https://luddites.me/">Home</a></li>
-  <li class=""><a href="https://luddites.me/blog/">Blog</a></li>
-  <li class=""><a href="https://luddites.me/tags/">Tags</a></li>
   <li class=""><a href="https://luddites.me/categories/">Categories</a></li>
   <li class=""><a href="https://luddites.me/about/">About me</a></li>
 </ul>
@@ -104,13 +105,13 @@
     
       <p class="category-tags"><i class="fa fa-folder category-tags-icon"></i></i>
       
-        <a class="category-tags-link" href="//categories/#promises">promises</a>
+        <a class="category-tags-link" href="/categories/#promises">promises</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#code">code</a>
+        <a class="category-tags-link" href="/categories/#code">code</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#persistence">persistence</a>
+        <a class="category-tags-link" href="/categories/#persistence">persistence</a>
         
       
       </p>
@@ -121,7 +122,7 @@
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <ul class="section-nav">
+    <ul id="toc" class="section-nav">
 </ul><p>Quite a bit of my free time in the last 8 months has slipped away into <a href="http://somecallmechief.github.io/oj/">OJ</a>, my solution to the hell of dynamic form creation (based on arbitrary data inputs and accordingly arbitrary data outputs). Folks at <a href="http://www.wufoo.com/">WuFoo</a> and <a href="https://bootsnipp.com/index.php/forms">Bootsnip</a> have some nice prototypes of runtime manipulatable engines; while each looks like excellent work, neither solves my problem of generating entire workflows based on data. I want the data to drive the UI; the UI should simply read the data and generate the necessary rich form content necessary to provide slick, intuitive, addictive user experiences.</p>
 
 <p>In the pursuit of this heffalump, I had recently been working on decomposing <a href="http://www.youtube.com/user/karnevalCom">Martin Orth</a>’s <a href="http://www.youtube.com/watch?v=QJwlEry_ER4">query builder</a> into classes in the OJ framework (see it on <a href="https://github.com/somecallmechief/oj">Github</a>, in <a href="https://npmjs.org/package/ojs">NPM</a>, and collaborate with me in <a href="https://c9.io/somecallmechief/oj">Cloud9</a>). This body of work depends upon <a href="http://www.sencha.com/products/extjs">ExtJs</a>, which is a powerful but extraordinarily inscrutable framework. I spend a frustrating amount of time comparing the inputs into Ext from OJ vs the inputs in Sencha’s examples or their documentation. It’s tedious and fragile as seeming minor changes can produce difficult to track bugs which go unobserved across several commits.</p>
@@ -591,15 +592,7 @@
 <span class="p">})();</span>    
 </code></pre></div></div>
 
-  </div><!-- from https://github.com/utterance/utterances -->
-<script src="https://utteranc.es/client.js"
-        repo="crfroehlich/cellar"
-        issue-term="title"
-        label="blogpost-comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script><a class="u-url" href="/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html" hidden></a>
+  </div><a class="u-url" href="/promises/code/persistence/2013/06/26/a-promise-to-indexed-db.html" hidden></a>
 </article>
 </p>
           </section>
@@ -608,7 +601,6 @@
             <footer>
               <ul class="actions">
                 <li><a href="https://luddites.me/" class="button">Home</a></li>
-                <li><a href="https://luddites.me/blog/" class="button">Blog</a></li>
               </ul>
             </footer>
           </div>

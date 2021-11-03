@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="twitter:card" content="summary" /><title>How to Subclass an Array (Not Really) | ЛУДДИТЫ, INC.</title>
 <meta name="description" content="Update I don't recommend following the advice in this post The 5minuteago version of my self was hat...">
 
-<!-- SEO and meta information for twitter/whatsupp cards --><!-- Begin Jekyll SEO tag v2.6.1 -->
+<!-- SEO and meta information for twitter/whatsupp cards --><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>How to Subclass an Array (Not Really) | ЛУДДИТЫ, INC.</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="How to Subclass an Array (Not Really)" />
 <meta name="author" content="CF" />
 <meta property="og:locale" content="en_US" />
@@ -20,8 +20,11 @@
 <meta property="og:image" content="https://luddites.me/images/2012-01-27-how-to-subclass-an-array-not-really.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2012-01-27T00:00:00-06:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://luddites.me/images/2012-01-27-how-to-subclass-an-array-not-really.png" />
+<meta property="twitter:title" content="How to Subclass an Array (Not Really)" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"CF"},"datePublished":"2012-01-27T00:00:00-06:00","headline":"How to Subclass an Array (Not Really)","mainEntityOfPage":{"@type":"WebPage","@id":"https://luddites.me/class/code/array/subclass/mistake/2012/01/27/how-to-subclass-an-array-not-really.html"},"image":"https://luddites.me/images/2012-01-27-how-to-subclass-an-array-not-really.png","description":"Update I don’t recommend following the advice in this post The 5minuteago version of my self was hat…","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://luddites.me/images/logo.png"},"name":"CF"},"@type":"BlogPosting","url":"https://luddites.me/class/code/array/subclass/mistake/2012/01/27/how-to-subclass-an-array-not-really.html","dateModified":"2012-01-27T00:00:00-06:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"CF"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://luddites.me/images/logo.png"},"name":"CF"},"description":"Update I don’t recommend following the advice in this post The 5minuteago version of my self was hat…","@type":"BlogPosting","url":"https://luddites.me/class/code/array/subclass/mistake/2012/01/27/how-to-subclass-an-array-not-really.html","image":"https://luddites.me/images/2012-01-27-how-to-subclass-an-array-not-really.png","headline":"How to Subclass an Array (Not Really)","dateModified":"2012-01-27T00:00:00-06:00","datePublished":"2012-01-27T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://luddites.me/class/code/array/subclass/mistake/2012/01/27/how-to-subclass-an-array-not-really.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <!-- Feed --><link type="application/atom+xml" rel="alternate" href="https://luddites.me/atom.xml" title="ЛУДДИТЫ, INC." /><!-- CSS --><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://luddites.me/assets/css/main.css" />
@@ -54,8 +57,6 @@
 
             <ul class="links">
   <li class=""><a href="https://luddites.me/">Home</a></li>
-  <li class=""><a href="https://luddites.me/blog/">Blog</a></li>
-  <li class=""><a href="https://luddites.me/tags/">Tags</a></li>
   <li class=""><a href="https://luddites.me/categories/">Categories</a></li>
   <li class=""><a href="https://luddites.me/about/">About me</a></li>
 </ul>
@@ -104,19 +105,19 @@
     
       <p class="category-tags"><i class="fa fa-folder category-tags-icon"></i></i>
       
-        <a class="category-tags-link" href="//categories/#class">class</a>
+        <a class="category-tags-link" href="/categories/#class">class</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#code">code</a>
+        <a class="category-tags-link" href="/categories/#code">code</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#array">array</a>
+        <a class="category-tags-link" href="/categories/#array">array</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#subclass">subclass</a>
+        <a class="category-tags-link" href="/categories/#subclass">subclass</a>
         &nbsp;
       
-        <a class="category-tags-link" href="//categories/#mistake">mistake</a>
+        <a class="category-tags-link" href="/categories/#mistake">mistake</a>
         
       
       </p>
@@ -127,7 +128,7 @@
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <ul class="section-nav">
+    <ul id="toc" class="section-nav">
 </ul><p><strong>Update: I don’t recommend following the advice in this post</strong>. The 5-minute-ago version of my self was hatsy, arrogant, foolish and a bad dinner guest. <a href="http://hiking.luddites.me/2013/03/revisiting-how-to-subclass-array-really.html">I recommend the recently updated version of this post from the 1-minute-ago version of my self</a>. He seems to be more well mannered and even keeled–I like him. However, if you’re interested in what advice I used to be capable of delivering, please go on.</p>
 
 <p>If you’ve ever written more than a few lines of JavaScript, you’ve probably instanced and iterated an Array or two. As you’ve done this, you may have even thought to yourself, “<a href="http://answers.yahoo.com/question/index?qid=20080921002559AAcxT82">Gee willikers</a>, wouldn’t it be keen to hook a contains() method on the Array prototype to simplify that awful indexOf(val) !== -1 <a href="http://en.wikipedia.org/wiki/Shenanigans">shenanigans</a>?”</p>
@@ -146,15 +147,7 @@
 
 <p>As always, your mileage may vary.</p>
 
-  </div><!-- from https://github.com/utterance/utterances -->
-<script src="https://utteranc.es/client.js"
-        repo="crfroehlich/cellar"
-        issue-term="title"
-        label="blogpost-comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script><a class="u-url" href="/class/code/array/subclass/mistake/2012/01/27/how-to-subclass-an-array-not-really.html" hidden></a>
+  </div><a class="u-url" href="/class/code/array/subclass/mistake/2012/01/27/how-to-subclass-an-array-not-really.html" hidden></a>
 </article>
 </p>
           </section>
@@ -163,7 +156,6 @@
             <footer>
               <ul class="actions">
                 <li><a href="https://luddites.me/" class="button">Home</a></li>
-                <li><a href="https://luddites.me/blog/" class="button">Blog</a></li>
               </ul>
             </footer>
           </div>
