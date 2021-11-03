@@ -108,6 +108,9 @@ body.vscode-dark {
   max-width: 700px !important;
 }
 
+ul.actions li {
+  vertical-align: top !important;
+}
 
 .xr-text-repr-fallback {
   /* fallback to plain text repr when CSS is not injected (untrusted notebook) */

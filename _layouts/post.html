@@ -39,7 +39,7 @@ layout: page
     {% if page.categories.size > 0 and site.show_tags %}
       <p class="category-tags"><i class="fa fa-folder category-tags-icon"></i></i>
       {% for category in  page.categories  %}
-        <a class="category-tags-link" href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
+        <a class="category-tags-link" href="/categories/#{{category|slugize}}">{{category}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
       </p>
@@ -48,7 +48,7 @@ layout: page
     {% if page.tags.size > 0 and site.show_tags %}
       <p class="category-tags"><i class="fa fa-tags category-tags-icon"></i></i>
       {% for tag in  page.tags  %}
-        <a class="category-tags-link" href="{{site.baseurl}}/tags/#{{tag|slugize}}">{{tag}}</a>
+        <a class="category-tags-link" href="/tags/#{{tag|slugize}}">{{tag}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
       </p>
@@ -69,7 +69,7 @@ layout: page
     {{ content | toc  }}
   </div>
   {%- if page.comments -%}
-    {%- include utterances.html -%}
+    
   {%- endif -%}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
