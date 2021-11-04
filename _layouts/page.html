@@ -46,6 +46,10 @@
               </div>
             </footer>
           </div>
+        
+        {% if page.layout == 'page' %}
+          {%- include disqus_comments.html -%}
+        {% endif %} 
 
         <!-- Footer -->
         {% include foot.html %}
