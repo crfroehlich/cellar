@@ -12,7 +12,7 @@ draft: false
 image: images/2008-11-26-thanksgiving.jpeg
 layout: post
 title: Thanksgiving
-toc: true
+toc: false
 ---
     
 I read a bit recently that described thanks as gratitude for that which one did not earn (to which I would also attach, 'deserve'). In my mind, this perfectly fits the Pilgrim's myth which we iterate each year at this time: the benevolent stranger gives the weary passenger a bed, a roof, and a loaf of bread. The myth survives (I hope), because it still occurs. Those without obvious merit and means are given means without regard for merit.    

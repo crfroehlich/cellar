@@ -11,7 +11,7 @@ draft: false
 image: images/2004-06-03-area-man-blows-second-chance-at-life-hopes-for-third.jpg
 layout: post
 title: 'Area Man Blows Second Chance at Life, Hopes for Third'
-toc: true
+toc: false
 ---
     
 Area man, Donald Thisbit, appeared shaken Wednesday afternoon after his close encounter with death. "I feel like I've been given a second chance at life," Thisbit told reporters. "I mean, if my friends hadn't pointed out the cholesterol content of that Burger King Whopper (tm) to me, I might not be here right now. I was moments away from biting into certain death, when heaven smiled upon me. I know now that I have to give back some of what's been given to me."    

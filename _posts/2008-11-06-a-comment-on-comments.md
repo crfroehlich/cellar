@@ -11,7 +11,7 @@ draft: false
 image: images/2008-11-06-a-comment-on-comments.jpg
 layout: post
 title: a comment on comments
-toc: true
+toc: false
 ---
     
 It's too early (by the pundint's reconing) to call, but I've had my first comment.    

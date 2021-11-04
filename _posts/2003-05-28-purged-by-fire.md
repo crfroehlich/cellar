@@ -9,7 +9,7 @@ draft: false
 image: images/2003-05-28-purged-by-fire.jpg
 layout: post
 title: Purged By Fire
-toc: true
+toc: false
 ---
     
 Friends of family, family of friends, and persons unconnected to either,    

@@ -12,7 +12,7 @@ draft: false
 image: images/2008-10-28-this-present-opaqueness.jpg
 layout: post
 title: this present opaqueness
-toc: true
+toc: false
 ---
     
 There was within me a quiet comfort in the belief that some all knowing force guided the hands of man in the daily doings of human kind, a relief and respite in the faith that it was not truly up to \*us\* to guide the resolutions of issues of strife and hunger and cruelty.    

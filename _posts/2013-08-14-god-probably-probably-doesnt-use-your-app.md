@@ -11,7 +11,7 @@ draft: false
 image: images/2013-08-14-god-probably-probably-doesnt-use-your-app.jpg
 layout: post
 title: 'God Probably, *Probably*, Doesn''''t Use Your App'
-toc: true
+toc: false
 ---
     
 I propose we immediately deprecate the word "administrator", and its diminutive form "admin", from language. All language. And languages.    

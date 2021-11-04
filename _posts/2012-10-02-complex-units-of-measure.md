@@ -11,7 +11,7 @@ draft: false
 image: images/2012-10-02-complex-units-of-measure.jpg
 layout: post
 title: Complex Units of Measure
-toc: true
+toc: false
 ---
     
 I embrace the [Stevie's Home](http://www.thesneeze.com/mt-archives/000831.php) approach to life, and my return home from work usually looks more like a cathartic reconciliation between Carnivorous Vulgaris and Accelleratii Incredibus than a rational re entry to domestic life. On Monday, immobilized by my three pronged, [patent-pending](http://www.techdirt.com/articles/20121001/11435420558/why-it-could-make-sense-to-get-rid-patents-entirely-even-if-they-work-few-cases.shtml), tickle attack, Eli cried out, "Dad!! I exercise *EVERY DAY*. Why can't I escape?"    

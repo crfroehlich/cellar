@@ -10,7 +10,7 @@ draft: false
 image: images/2009-02-28-palin-should-have-won.jpg
 layout: post
 title: palin should have won
-toc: true
+toc: false
 ---
     
 at the end of the day, obama cannot be all of the things he promised to be, be the person we imagined him to be, or create a world that mirrors our dreams for an obama-lead nation.  he has already failed to deliver on much of his platform, from his promises of openness and transparency to his pledge to drive reform like a wedge into the body of this government.    

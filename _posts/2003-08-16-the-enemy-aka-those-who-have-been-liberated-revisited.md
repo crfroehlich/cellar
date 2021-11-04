@@ -11,7 +11,7 @@ draft: false
 image: images/2003-08-16-the-enemy-aka-those-who-have-been-liberated-revisited.jpeg
 layout: post
 title: The Enemy (AKA Those Who Have Been Liberated) Revisited
-toc: true
+toc: false
 ---
     
 Lest you, in your idle wonderings throughout the day, chance upon the grave and fundamentally flawed notion that we soldiers on the front line experience any moments of levity or relaxation from the near-insurmountable challenges of life in a combat zone, let me begin by relating the story of my journey to send this very email. As 3rd ID abandoned us 1st AD folks, leaving us to the wolves and would-be wolves, the not-quite-yet wolves, and the wolves-with-better-things-to-do-than-wolfing wolves, the enemy (aka those who had been liberated) again bared his teeth, showing his continued resistance to the march of democracy, revealing his hidden alliances to the former regime, practically admitting to the private production of chemical weapons with the intent of killing sweet, innocent American babies, by suggesting that he, the enemy (aka those who had been liberated) himself, would shut down this fine computer lab due to "decreased demand." Why, these fellows haven't caught on to the whole point of capitalism at all. If Smith tells us anything, it's that it doesn't matter whether demand be real or perceived--create it if you must, but never--EVER claim that it doesn't exist! People will buy because you tell them they must. This is the moral foundation of our great nation. This is why we wage wars. This is why the Enemy (aka those who have been liberated) lost, and the Enemy (aka those who have been liberated) must change!    

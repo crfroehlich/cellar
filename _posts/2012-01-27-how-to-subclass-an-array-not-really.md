@@ -14,7 +14,7 @@ draft: false
 image: images/2012-01-27-how-to-subclass-an-array-not-really.png
 layout: post
 title: How to Subclass an Array (Not Really)
-toc: true
+toc: false
 ---
     
 **Update: I don't recommend following the advice in this post**. The 5-minute-ago version of my self was hatsy, arrogant, foolish and a bad dinner guest. [I recommend the recently updated version of this post from the 1-minute-ago version of my self](http://hiking.luddites.me/2013/03/revisiting-how-to-subclass-array-really.html). He seems to be more well mannered and even keeled--I like him. However, if you're interested in what advice I used to be capable of delivering, please go on.    

@@ -12,7 +12,7 @@ draft: false
 image: images/2007-08-03-laziness-breeds.jpg
 layout: post
 title: laziness breeds
-toc: true
+toc: false
 ---
     
 ![image not found](http://bp0.blogger.com/_NHWs1LwT47s/RrLIcqG62mI/AAAAAAAADlc/SawVTgr4PZ4/s1600-h/Peanut+at+15+Weeks.jpg) He's in there, lollygagging about, twiddling the old thumbs as he mocks me. I see him, in his wee chair, leaning back against his tiny gravity, reading his mini New York Times late edition and sipping a barely visible cup of Chai. It disgusts me. I've already planned the first speech: day one, hour one, minute one, second 25 (give him a moment with Mom before setting things down)    

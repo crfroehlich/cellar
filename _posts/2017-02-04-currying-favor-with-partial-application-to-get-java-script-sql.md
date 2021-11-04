@@ -14,7 +14,7 @@ image: >-
   images/2017-02-04-currying-favor-with-partial-application-to-get-java-script-sql.jpeg
 layout: post
 title: Currying Favor with Partial Application to get JavaScript SQL
-toc: true
+toc: false
 ---
     
 _Editor’s Note: This is an old post from March of 2013, from an old blog. Apparently it still gets enough hits to need updating as links have changed. Re-posting it here with URL corrections._    

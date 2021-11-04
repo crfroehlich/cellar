@@ -13,7 +13,7 @@ draft: false
 image: images/2011-05-19-some-people-climb-everest-i-hike-my-desk.png
 layout: post
 title: Some People Climb Everest; I Hike My Desk
-toc: true
+toc: false
 ---
     
 It's been said that behind every great man is a [Tenzing Norgay](http://en.wikipedia.org/wiki/Tenzing_Norgay). Behind me are ten.    

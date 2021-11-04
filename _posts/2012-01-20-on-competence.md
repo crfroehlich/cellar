@@ -14,7 +14,7 @@ draft: false
 image: images/2012-01-20-on-competence.jpg
 layout: post
 title: On Competence
-toc: true
+toc: false
 ---
     
 Years ago, one of my dearest friends, [Jennifer Elms](https://plus.google.com/100156336256357757639/posts), and I were discussing a [short bit of prose that I had written](https://docs.google.com/document/d/1j5VYxBe-6nTMMt8Gm4ajcoYjryVYjefDOrJDsMaEacI/edit). She had just finished reading it, and I had asked for her opinion.    

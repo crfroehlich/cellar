@@ -10,7 +10,7 @@ draft: false
 image: images/2004-05-15-local-news.png
 layout: post
 title: Local News
-toc: true
+toc: false
 ---
     
 ## HEADLINES: Mullis Sightings in Hong-Kong Continue (page 7)    

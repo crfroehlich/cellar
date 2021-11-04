@@ -10,7 +10,7 @@ draft: false
 image: images/2003-11-05-wishing-wells-away.jpg
 layout: post
 title: Wishing Wells Away
-toc: true
+toc: false
 ---
     
 Comrades,    

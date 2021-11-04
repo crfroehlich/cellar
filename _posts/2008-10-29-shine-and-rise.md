@@ -12,7 +12,7 @@ draft: false
 image: images/2008-10-29-shine-and-rise.jpg
 layout: post
 title: shine and rise
-toc: true
+toc: false
 ---
     
 mornings are like little deaths; the gaping jawl of the reaper, his teeth both rotting and sharpened, looming above the head of the wakened, threating to consume it    

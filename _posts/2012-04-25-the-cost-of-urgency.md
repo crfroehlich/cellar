@@ -13,7 +13,7 @@ draft: false
 image: images/2012-04-25-the-cost-of-urgency.jpg
 layout: post
 title: The Cost of Urgency
-toc: true
+toc: false
 ---
     
 Sandstorms are spectacular creatures. From less-than-ether, they arise, demolish and vanish.    

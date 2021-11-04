@@ -9,7 +9,7 @@ draft: false
 image: images/2006-10-09-cant-see-my-tale.jpg
 layout: post
 title: can't see my tale
-toc: true
+toc: false
 ---
     
 Nothing.    

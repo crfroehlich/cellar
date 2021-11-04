@@ -8,7 +8,7 @@ draft: false
 image: images/2008-07-25-awesome-pitiable-envy.jpg
 layout: post
 title: awesome pitiable envy
-toc: true
+toc: false
 ---
     
 ants tunnel into the crops, eroding the soil and spoiling the harvest    

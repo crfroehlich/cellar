@@ -10,7 +10,7 @@ draft: false
 image: images/2011-05-21-equipment-failure.jpg
 layout: post
 title: Equipment Failure
-toc: true
+toc: false
 ---
     
 When you've been hiking as long as I have, you know instinctively that [equipment failure is a guarantee](https://www.huffpost.com/entry/playstation-network-down-may-15_n_862212). Since the early days of my hiking career, I have kept a vigilant log of my successes based on the readings of my trusty pedometer. Yesterday, after a catastrophic mid-afternoon pedometer failure, I lost all of the data for the day's progress.    

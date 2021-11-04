@@ -12,7 +12,7 @@ draft: false
 image: images/2008-11-07-the-folly-of-age.jpg
 layout: post
 title: the folly of age
-toc: true
+toc: false
 ---
     
 My brother, Timothy, wise beyond his years, hipped me to an [email conversation with our grandparents](http://oftim.blogspot.com/2008/11/filler.html).  I consider it worth reading.    

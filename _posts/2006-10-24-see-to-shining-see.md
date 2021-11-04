@@ -9,7 +9,7 @@ draft: false
 image: images/2006-10-24-see-to-shining-see.png
 layout: post
 title: See to Shining See
-toc: true
+toc: false
 ---
     
 It takes a moment to find Calliope. Urgency predicates motion.    

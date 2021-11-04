@@ -10,7 +10,7 @@ draft: false
 image: images/2007-07-10-quit-me-thisly.jpg
 layout: post
 title: quit me thisly
-toc: true
+toc: false
 ---
     
 squalor tempests beneath the artificial breeze    

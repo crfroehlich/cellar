@@ -10,7 +10,7 @@ draft: false
 image: images/1998-08-11-lamplight.jpg
 layout: post
 title: Lamplight
-toc: true
+toc: false
 ---
     
 The lamplight.. it plays with your mind, dances from its    

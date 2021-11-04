@@ -14,7 +14,7 @@ draft: false
 image: images/2007-10-05-put-these-into-my-car.jpg
 layout: post
 title: Put These Into My Car
-toc: true
+toc: false
 ---
     
 Every day that I drive, stuck in traffic, I find myself wishing for little things--often simple things to make my drive faster, safer, more enjoyable. I doubt anyone's listening, but by golly gershwin I'm going to write them down.    

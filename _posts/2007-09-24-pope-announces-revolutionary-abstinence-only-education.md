@@ -11,7 +11,7 @@ draft: false
 image: images/2007-09-24-pope-announces-revolutionary-abstinence-only-education.jpg
 layout: post
 title: "Pope Announces Revolutionary 'Abstinence Only Education'"
-toc: true
+toc: false
 ---
     
 In a radical move from the Vatican, part-time Archbishop Donald Thisbit told Reuters reporters this morning, "It is time to take a program that has worked effectively for 6,000 years and adapt it to a changing world. 'Abstinence Only' has defeated AIDS; 'Abstinence Only' has cured deformed relationship patterns, and the Vatican today believes that education itself may only need abstinence."    

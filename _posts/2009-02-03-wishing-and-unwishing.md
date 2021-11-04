@@ -10,7 +10,7 @@ draft: false
 image: images/2009-02-03-wishing-and-unwishing.jpg
 layout: post
 title: wishing and unwishing
-toc: true
+toc: false
 ---
     
 my uncle once said something true.    

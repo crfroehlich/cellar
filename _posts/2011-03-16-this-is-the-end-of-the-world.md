@@ -10,7 +10,7 @@ draft: false
 image: images/2011-03-16-this-is-the-end-of-the-world.jpg
 layout: post
 title: this is the end of the world
-toc: true
+toc: false
 ---
     
 The world is a small, flat rock which rests evenly in the palm of your hand. As you toss it lightly into the air, the accompanying thump against your palm inspires confidence.    

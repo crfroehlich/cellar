@@ -12,7 +12,7 @@ draft: false
 image: images/2011-05-25-seeing-the-tree-for-the-forest.jpg
 layout: post
 title: Seeing the Tree for the Forest
-toc: true
+toc: false
 ---
     
 My hike today spanned the 3500 km of the Appalachian Trail. The journey I embarked when I began hiking my desk has already connected me with remote corners of the world, and as I reflect on the truths these excursions have imparted, I am wont to ponder the [details that I have missed](http://www.youtube.com/watch?v=vJG698U2Mvo).    

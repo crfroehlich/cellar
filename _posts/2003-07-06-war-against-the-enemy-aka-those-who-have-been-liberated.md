@@ -11,7 +11,7 @@ draft: false
 image: images/2003-07-06-war-against-the-enemy-aka-those-who-have-been-liberated.jpg
 layout: post
 title: War Against the Enemy (AKA Those Who Have Been Liberated)
-toc: true
+toc: false
 ---
     
 The time will come, dear friends, when I shall be forced to recount the long stories of my youth spent in the desert, wandering through the wasteland, journeying toward purpose and mission and Baghdad. And lo! did I there arrive, observe, and subjugate. But in the days and years to come, from the comfort of an easy chair, I may allow myself to recount a few words about my experiences, some of which are still in the proverbial oven, and puffing a bit on one of Tennessee's finer pipe-tobaccos, I will spare a few, meaningful phrases about the hardships, the difficult victories, speaking at no long length of pain and loss.    

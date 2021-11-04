@@ -12,7 +12,7 @@ draft: false
 image: images/2012-01-24-out-with-the-old-in-with-the-new-profile.jpg
 layout: post
 title: 'Out With the Old, In With the New (Profile)'
-toc: true
+toc: false
 ---
     
 At the launch meeting for our new team blog, [Object Reference Not Set](http://objrefnotset.blogspot.com/), we pledged to enforce only one rule:    

@@ -10,7 +10,7 @@ draft: false
 image: images/2005-09-15-i-fought-the-giant-lizard-today.jpeg
 layout: post
 title: I fought the giant lizard today
-toc: true
+toc: false
 ---
     
 I knew going into that den of fear that my battle would not be one of fortunate ease. At first, he clung cleverly to the side of the refrigerator. A bold move. One I would not forget. I countered from the counter, swinging my spatula of justice toward his forbidable frame. "Check!" I cried. He bounded from the fridge to the wall to the floor to the ceiling to the door. Bolder still. "But I control the exits here, my friend. You cannot escape. You leave either dead or vanquished!" His eyes flitted to and fro. I hurled myself against the door, mighty weapon already weaving painful swirls of judgement down upon him; but he loosed a fearsome scowl and lept yet again into the dark crevasses of the couch.    

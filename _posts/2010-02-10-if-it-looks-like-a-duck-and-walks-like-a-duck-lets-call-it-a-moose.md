@@ -12,7 +12,7 @@ image: >-
   images/2010-02-10-if-it-looks-like-a-duck-and-walks-like-a-duck-lets-call-it-a-moose.jpeg
 layout: post
 title: 'if it looks like a duck and walks like a duck, let''''s call it a moose'
-toc: true
+toc: false
 ---
     
 I grew up writing laundry lists and never developed an adequate talent for other forms of literature.  The lists I gathered into bundles, which I stacked neatly in the corners of the attic of my parents' home.  What happened to them afterward, I couldn't begin to speculate.    

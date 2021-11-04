@@ -10,7 +10,7 @@ draft: false
 image: images/2008-07-09-circles-twice-removed.jpeg
 layout: post
 title: circles twice removed
-toc: true
+toc: false
 ---
     
 Time bends in unpredictable ways with children.  Eli is almost 6 months old, and he's the most amazing little person, which always strikes me as an odd thing to realize.  It seems like there's this wealth of common knowledge, generally in these seemingly obvious observations, "Children change your life", "My child is the best thing to ever happen" or any number of different (even radically different) observations, which are impossible to apprehend (or at least I chose not to try) in the absence of the actual experience.    

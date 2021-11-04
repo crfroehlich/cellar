@@ -6,12 +6,12 @@ categories:
   - code
   - tech
 comments: true
-description: Reality Meet Opportunity...
+description: "For quite a while now, I have wanted to update my blog..."
 draft: false
 image: images/2020-10-04-blogging-to-the-oldies.jpg
 layout: post
 title: Blogging to the Oldies
-toc: true
+toc: false
 ---
     
 ## Reality, Meet Opportunity    

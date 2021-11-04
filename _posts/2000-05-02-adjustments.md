@@ -9,7 +9,7 @@ draft: false
 image: images/2000-05-02-adjustments.jpg
 layout: post
 title: adjustments
-toc: true
+toc: false
 ---
     
 When the world has begun to spin    

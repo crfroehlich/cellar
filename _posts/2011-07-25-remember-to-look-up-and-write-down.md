@@ -11,7 +11,7 @@ draft: false
 image: images/2011-07-25-remember-to-look-up-and-write-down.jpg
 layout: post
 title: Remember to Look Up and Write Down
-toc: true
+toc: false
 ---
     
 To hike the mountain of lïf is to know peace. You, the hiker, cease to move. You are motionless, but the world begins to move around you. To hike lïf is to become truly still.    

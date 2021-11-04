@@ -12,7 +12,7 @@ draft: false
 image: images/2007-10-04-open-p-2-p-peer-to-peer-to-life.jpg
 layout: post
 title: Open P2P (Peer to Peer) to Life
-toc: true
+toc: false
 ---
     
 I'm just one fellow, and not terribly educated at that; so my opinions may not be grounded in actuality. Nonetheless, I've been thinking of a few ideas, wondering if anyone else has thought of them and if they're any good.    

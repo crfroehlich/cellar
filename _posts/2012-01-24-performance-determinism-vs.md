@@ -12,7 +12,7 @@ draft: false
 image: images/2012-01-24-performance-determinism-vs.jpg
 layout: post
 title: Performance! Determinism. Vs?
-toc: true
+toc: false
 ---
     
 [David Ungar](http://en.wikipedia.org/wiki/David_Ungar) (co-creator of [Self](http://selflanguage.org/), the forefather to my favorite language, JavaScript) had an interesting talk at SPLASH 2011, which is [nicely summarized here](http://my-inner-voice.blogspot.com/2012/01/many-core-processors-everything-you.html) (post-talk [interview here](http://channel9.msdn.com/Blogs/Charles/SPLASH-2011-David-Ungar-Self-ManyCore-and-Embracing-Non-Determinism)).    

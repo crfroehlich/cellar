@@ -11,7 +11,7 @@ draft: false
 image: images/2011-09-06-the-audacity-of-despair.jpg
 layout: post
 title: The Audacity of Despair
-toc: true
+toc: false
 ---
     
 I began this over one year ago (July 28, 2010), but never finished. I've lost the creative tingle, here--but rather than trash the bit, I'll post it. It's raw, but there's a rough in its diamond.    

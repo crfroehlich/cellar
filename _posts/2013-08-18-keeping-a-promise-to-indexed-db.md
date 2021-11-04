@@ -12,7 +12,7 @@ draft: false
 image: images/2013-08-18-keeping-a-promise-to-indexed-db.jpg
 layout: post
 title: Keeping a Promise to IndexedDb
-toc: true
+toc: false
 ---
     
 APIs are hellish things: inconstant moons, inconsistent interfaces, intolerable incompatibility. If you have not watched [Bret Victor's latest epic](http://worrydream.com/dbx), I do recommend it. As he channels the spirit of innovation from the 1970s, he notes that it would be horrible if, 40 years from then, the only way two systems could communicate were through predefined and agreed upon interfaces. Indeed. What a terrible thing that would be it is.    

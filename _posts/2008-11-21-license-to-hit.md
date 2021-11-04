@@ -10,7 +10,7 @@ draft: false
 image: images/2008-11-21-license-to-hit.jpg
 layout: post
 title: License to *hit
-toc: true
+toc: false
 ---
     
 The subject of the latest email from Dean. Indulging him:    

@@ -9,7 +9,7 @@ draft: false
 image: images/2006-08-29-tails-of-the-apocalypse.png
 layout: post
 title: tails of the apocalypse
-toc: true
+toc: false
 ---
     
 Bukowski, we miss hating you.    

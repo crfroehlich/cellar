@@ -9,7 +9,7 @@ draft: false
 image: images/2000-05-01-blastphemy.jpg
 layout: post
 title: blastphemy
-toc: true
+toc: false
 ---
     
 Of all the emptiness and disdain -    

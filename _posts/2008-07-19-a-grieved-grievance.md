@@ -12,7 +12,7 @@ draft: false
 image: images/2008-07-19-a-grieved-grievance.jpg
 layout: post
 title: a grieved grievance
-toc: true
+toc: false
 ---
     
 I've been very excited about upgrading my iPhone to the new iPhone 3G. This morning, I called the Apple Store at the Syracuse, NY mall to see if any were in stock. Lo, 16GB Whites were in stock. So, I packed up the family for a trip to the mall and drove the 2 hours to Syracuse. Eagerly, I went into the Apple store and boldly asked, "Please, sell me an iPhone."    

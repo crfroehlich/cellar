@@ -12,7 +12,7 @@ draft: false
 image: images/2008-06-19-in-the-waking-hours.jpg
 layout: post
 title: in the waking hours
-toc: true
+toc: false
 ---
     
 There is within me this horribly perverse desire to hoard away little minutes here and thither for my own squandering. Fatherhood robs you of your selfishness, and I want it back. I linger fondly over memories of gross self indulgence, filling my belly with late night television and sleeping until noon after noon. There were these rare but ghastly glimpses into a future filled with stale potato chips and beer cans stacked to the ceiling and dripping disorder across the room, and the vague notion of eternity in this foul stench of a vision; but these were easily squashed by the audacity of self import.    

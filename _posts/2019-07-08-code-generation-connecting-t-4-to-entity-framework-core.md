@@ -6,15 +6,13 @@ categories:
   - code
   - generation
 comments: true
-description: >-
-  I have enjoyed working with
-  [T4]httpsdocsmicrosoftcomenusvisualstudiomodelingcodegenerationandt4text...
+description: "I have enjoyed working with T4 templates..."
 draft: false
 image: images/2019-07-08-code-generation-connecting-t-4-to-entity-framework-core.png
 layout: post
 subtitle: ' Connecting T4 to Entity Framework Core'
 title: 'Code Generation: Connecting T4 to Entity Framework Core'
-toc: true
+toc: false
 ---
     
 I have enjoyed working with [T4](https://docs.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2019) in my .NET projects, and I have wanted to start exploring Entity Framework Core with ASP.NET Core. Fortunately, Microsoft has an excellent [suite of tutorials](https://docs.asp.net/en/latest/data/ef-mvc/intro.html) which makes it dead simple to get a sample project up and running. I jumped straight to the end and began by copying down the project code from the [ASP.NET Core Documentation](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final) repo and I started my own git repo my new and intuitively named [AutoEcMvc](https://github.com/crfroehlich/AutoEcMvc) (Automatic EF Core over MVC) project. I even went the extra mile and set up a free Azure account to host the project at [https://autoecmvc.luddites.me](https://autoecmvc.luddites.me/). The challenges of connecting the GitHub project to a CI/CD pipeline for hosting on Azure will be addressed in a follow up blog post.    

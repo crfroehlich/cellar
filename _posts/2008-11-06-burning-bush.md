@@ -8,7 +8,7 @@ draft: false
 image: images/2008-11-06-burning-bush.jpg
 layout: post
 title: burning bush
-toc: true
+toc: false
 ---
     
 the agony of waiting for it all to end    

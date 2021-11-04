@@ -6,14 +6,12 @@ categories:
   - ελλάς
   - short story
 comments: true
-description: >-
-  The mechanic paused to wipe the grease from his hands across the murky surface
-  of his coveralls befo...
+description: "The mechanic paused to wipe the grease from his hands across the murky surface of his coveralls befo..."
 draft: false
 image: images/2017-07-14-arkhe-by-heraclitus-of-ephesus.jpg
 layout: post
 title: Arkhē by Heraclitus of Ephesus
-toc: true
+toc: false
 ---
     
 The mechanic paused to wipe the grease from his hands across the murky surface of his coveralls before he grabbed the x-ray from the rack overhead. A cigarette clung precariously to his bottom lip as he held the x-ray up against the light of a lone, white light bulb swinging at the end of a length of electrical wire. Looking away from the x-ray toward a chart posted against the wall, the mechanic walked steadily towards the man on the operating table.    

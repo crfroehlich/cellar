@@ -11,7 +11,7 @@ draft: false
 image: images/2008-12-15-like-father-like-father.jpg
 layout: post
 title: like father like father
-toc: true
+toc: false
 ---
     
 heather and i ran into a woman who attends my father's church at the mall today.  "you don't look anything like your father," she said, "but you have your mother's smile."    

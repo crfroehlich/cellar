@@ -12,7 +12,7 @@ draft: false
 image: images/2004-05-28-public-concern-rises-as-treatment-of-prisoners-declines.jpeg
 layout: post
 title: Public Concern Rises as Treatment of Prisoners Declines
-toc: true
+toc: false
 ---
     
 Despite increased attention and criticism from the Press and the United Nations, conditions are worsening for Iraqi detainees. Sources on the ground have indicated that conditions vary from camp to camp; and, while most U.S. military forces fully comply with Geneva Convention regulations and the Law of Land Warfare, certain groups continue to ignore the policies and regulations of the U.S. government. Camp Duke, in particular, has seen a dramatic increase in the number of complaints from detainees.    

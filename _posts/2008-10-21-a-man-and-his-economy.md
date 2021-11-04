@@ -11,7 +11,7 @@ draft: false
 image: images/2008-10-21-a-man-and-his-economy.png
 layout: post
 title: a man and his economy
-toc: true
+toc: false
 ---
     
 ![money management](https://github.com/crfroehlich/cdn/raw/main/images/IMG_1158.JPG) It's hard times for the discerning investor.    

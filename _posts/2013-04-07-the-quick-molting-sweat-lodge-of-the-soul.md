@@ -10,7 +10,7 @@ draft: false
 image: images/2013-04-07-the-quick-molting-sweat-lodge-of-the-soul.png
 layout: post
 title: 'The Quick, Molting Sweat Lodge of the Soul'
-toc: true
+toc: false
 ---
     
 It was the spring of our discontent.    

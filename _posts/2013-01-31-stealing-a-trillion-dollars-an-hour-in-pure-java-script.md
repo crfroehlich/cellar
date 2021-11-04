@@ -9,7 +9,7 @@ draft: false
 image: images/2013-01-31-stealing-a-trillion-dollars-an-hour-in-pure-java-script.jpg
 layout: post
 title: Stealing a Trillion Dollars an Hour in Pure JavaScript
-toc: true
+toc: false
 ---
     
 ### The Heist    

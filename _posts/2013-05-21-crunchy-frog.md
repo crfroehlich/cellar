@@ -8,7 +8,7 @@ draft: false
 image: images/2013-05-21-crunchy-frog.jpg
 layout: post
 title: Crunchy Frog
-toc: true
+toc: false
 ---
     
 I was musing over the usual eloquence of Mr. Hague's recent post [Stumbling Into the Cold Expanse of Real Programming](http://prog21.dadgum.com/173.html), when the following logical progression occurred to me. Very few of us intend to ship [Spring Surprise](http://www.youtube.com/watch?v=Dy6uLfermPU) out into the real world, rather we more often find ourselves in the quagmire that is the collision between what we knew 10 minutes ago and what we now know.    

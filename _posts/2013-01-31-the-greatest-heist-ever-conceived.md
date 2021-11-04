@@ -9,7 +9,7 @@ draft: false
 image: images/2013-01-31-the-greatest-heist-ever-conceived.jpg
 layout: post
 title: The Greatest Heist Ever Conceived
-toc: true
+toc: false
 ---
     
 ### The Heist    

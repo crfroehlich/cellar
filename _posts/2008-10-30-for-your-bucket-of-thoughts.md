@@ -13,7 +13,7 @@ draft: false
 image: images/2008-10-30-for-your-bucket-of-thoughts.jpeg
 layout: post
 title: for your bucket of thoughts
-toc: true
+toc: false
 ---
     
 If you ask the Jew, the average practicing Jew or even a cross section of Rabis on the question of the afterlife, you'll find that they generally don't believe in one. The question doesn't interest them very much. If you drill down, they'll admit they believe in Sheol, this place where everyone (Jews and non-Jews) go when they die; and it's a bit like Pergatory--nothing particularly good or bad happens there, it's just a holding cell for a time.    

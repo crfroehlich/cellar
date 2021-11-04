@@ -5,14 +5,12 @@ categories:
   - translation
   - ελλάς
 comments: true
-description: >-
-  Mr George Pyncheon bolted upright in bed and stared at the ceiling for a
-  moment before he reached to...
+description: "Mr George Pyncheon bolted upright in bed and stared at the ceiling for a moment before he reached to..."
 draft: false
 image: images/2017-07-15-the-tetraktys-by-pythagoras.jpg
 layout: post
 title: The Tetraktys by Pythagoras
-toc: true
+toc: false
 ---
     
 Mr. George Pyncheon bolted upright in bed and stared at the ceiling for a moment, before he reached to the corner stand at his bedside to pick up the phone. His fingers trembled in the spaces between the buttons on the phone as he hastily tried to dial his office. The trembling in his fingers had shifted to his voice.    

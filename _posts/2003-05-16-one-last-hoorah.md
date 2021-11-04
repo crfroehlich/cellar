@@ -9,7 +9,7 @@ draft: false
 image: images/2003-05-16-one-last-hoorah.png
 layout: post
 title: One Last Hoorah
-toc: true
+toc: false
 ---
     
 Friends of the U.S. Armed Forces,    

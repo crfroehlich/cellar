@@ -8,7 +8,7 @@ draft: false
 image: images/2000-04-27-on-bubbles.jpg
 layout: post
 title: on bubbles
-toc: true
+toc: false
 ---
     
 How would one justify the extent of the madness -    

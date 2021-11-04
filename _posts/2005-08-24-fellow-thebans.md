@@ -10,7 +10,7 @@ draft: false
 image: images/2005-08-24-fellow-thebans.jpg
 layout: post
 title: Fellow Thebans
-toc: true
+toc: false
 ---
     
 This winter has been especially harsh and long. With temperatures plummeting to record lows and heat expenditures on the rise, I find myself with my fellow citizens: pulling the wool blanket a little bit closer, holding the hot chocolate a little bit longer, and above all, staying indoors as much as possible.    

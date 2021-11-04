@@ -10,7 +10,7 @@ draft: false
 image: images/2013-06-26-a-promise-to-indexed-db.jpeg
 layout: post
 title: A Promise to IndexedDb
-toc: true
+toc: false
 ---
     
 Quite a bit of my free time in the last 8 months has slipped away into [OJ](http://somecallmechief.github.io/oj/), my solution to the hell of dynamic form creation (based on arbitrary data inputs and accordingly arbitrary data outputs). Folks at [WuFoo](http://www.wufoo.com/) and [Bootsnip](https://bootsnipp.com/index.php/forms) have some nice prototypes of runtime manipulatable engines; while each looks like excellent work, neither solves my problem of generating entire workflows based on data. I want the data to drive the UI; the UI should simply read the data and generate the necessary rich form content necessary to provide slick, intuitive, addictive user experiences.    

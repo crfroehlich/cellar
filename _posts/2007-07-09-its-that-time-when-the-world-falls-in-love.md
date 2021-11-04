@@ -10,7 +10,7 @@ draft: false
 image: images/2007-07-09-its-that-time-when-the-world-falls-in-love.jpeg
 layout: post
 title: It's that time when the world falls in love
-toc: true
+toc: false
 ---
     
 She sleeps with her mouth open and kicks when I brush against her legs. It's an effort not to want to gently touch her stomach.    

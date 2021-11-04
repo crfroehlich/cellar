@@ -13,7 +13,7 @@ draft: false
 image: images/2011-05-26-how-to-build-a-mountain.jpeg
 layout: post
 title: How to Build a Mountain
-toc: true
+toc: false
 ---
     
 The decision to climb [Mount Vesuvius](http://en.wikipedia.org/wiki/Mount_Vesuvius) probably does not come lightly to most. Our inner Ahab thirsts for our outer [toska](http://www.wordnik.com/words/toska), but what to do?    

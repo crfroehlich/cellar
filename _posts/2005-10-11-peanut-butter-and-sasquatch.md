@@ -10,7 +10,7 @@ draft: false
 image: images/2005-10-11-peanut-butter-and-sasquatch.png
 layout: post
 title: Peanut Butter and Sasquatch
-toc: true
+toc: false
 ---
     
 So little has happened in the last 48 hours that I cannot use few enough words to describe it. Perhaps an ellipses will settle the matter.    

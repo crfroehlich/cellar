@@ -12,7 +12,7 @@ draft: false
 image: images/2012-07-08-communicating-and-why-i-quit-email-episode-1.jpg
 layout: post
 title: Communicating and Why I Quit Email (Episode 1)
-toc: true
+toc: false
 ---
     
 In the early 90s, the constraints imposed by dial-up speeds made email my primary interface for interacting with the Internet. Services like Juno made it even easier to connect, subscribe to listservs, and to surf the self-curated content that was the Web--in my inbox. Had I been born a little earlier than 1980 or had I a more computer-sciency bias imposed by my parents or peers, I might just as easily started with Usenet. But. I did not, and email was my entry point to online communications.    

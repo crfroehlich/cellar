@@ -9,7 +9,7 @@ draft: false
 image: images/2012-05-24-physical-books-and-such.png
 layout: post
 title: Physical Books (and Such)
-toc: true
+toc: false
 ---
     
 I don't read as many books as I used to, and I wonder why.    

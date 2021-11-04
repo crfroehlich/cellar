@@ -8,7 +8,7 @@ draft: false
 image: images/2011-05-20-sir-george-mountain.jpeg
 layout: post
 title: Sir George Mountain
-toc: true
+toc: false
 ---
     
 Reflection    

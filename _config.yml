@@ -102,6 +102,8 @@ feed:
 
 remote_theme: jekyllup/jekyll-theme-massively
 
+permalink: /:year-:month-:day-:title/
+
 titles_from_headings:
   enabled:     true
   strip_title: true

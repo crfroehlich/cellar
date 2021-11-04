@@ -8,7 +8,7 @@ draft: false
 image: images/2008-11-08-full-disclosure.jpg
 layout: post
 title: full disclosure
-toc: true
+toc: false
 ---
     
 never before and never since have I awoken with the force of another man's fist in my face.  there is a time, in my past, when I woke to the blurred forms of socks filled with soap and padlocks flying toward my restrained form.  there is no one to hear that scream.    

@@ -10,7 +10,7 @@ draft: false
 image: images/2004-05-09-local-news.jpg
 layout: post
 title: Local News
-toc: true
+toc: false
 ---
     
 ## HEADLINES (Politics)    

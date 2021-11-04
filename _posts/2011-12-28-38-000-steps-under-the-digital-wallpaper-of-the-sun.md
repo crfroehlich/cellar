@@ -10,7 +10,7 @@ draft: false
 image: images/2011-12-28-38-000-steps-under-the-digital-wallpaper-of-the-sun.jpg
 layout: post
 title: '38,000 Steps Under the Digital Wallpaper of the Sun'
-toc: true
+toc: false
 ---
     
 ## The Trailhead    
@@ -50,33 +50,33 @@ JavaScript supports a standard set of operators:
     
 #### Arithmetic    
     
-|   |   |   |   |   |    
-|---|---|---|---|---|    
-| `+` | `-` | `*` | `/` | `%` |    
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+| `+` | `-` | `*` | `/` | `%` |
     
 #### Comparison    
     
-|    |     |    |     |   |    |   |    |    
-|----|-----|----|-----|---|----|---|----|    
-| `==` | `===` | `!=` | `!==` | `<` | `<=` | `>` | `>=` |    
+|      |       |      |       |     |      |     |      |
+| ---- | ----- | ---- | ----- | --- | ---- | --- | ---- |
+| `==` | `===` | `!=` | `!==` | `<` | `<=` | `>` | `>=` |
     
 #### Logical    
     
-|    |    |   |    
-|----|----|---|    
-| `&&` | `||` | `!` |    
+|      |      |     |
+| ---- | ---- | --- |
+| `&&` | `||` | `!` |
     
 #### Bitwise    
     
-|     |     |     |      |       |      |    
-|-----|-----|-----|------|-------|------|    
-| `&` | `|` | `^` | `>>` | `>>>` | `<<` |    
+|     |     |     |      |       |      |
+| --- | --- | --- | ---- | ----- | ---- |
+| `&` | `|` | `^` | `>>` | `>>>` | `<<` |
     
 #### Ternary    
     
-|     |     |    
-|-----|-----|    
-| `?` | `:` |    
+|     |     |
+| --- | --- |
+| `?` | `:` |
     
 ### Equality    
     
@@ -133,16 +133,16 @@ When your intention is to increment use the += 1/-=1 metaphor.
     
 typeof returns unexpected results if handed null or an array. As such, it should be used with extreme caution. This is the return table for typeof:    
     
-| Type | typeof returns |    
-|------|----------------|    
-| Object | 'object'|    
-| Function | 'function' |    
-| Array | 'object' |    
-| Number | 'number' |    
-| String | 'string' |    
-| Boolean | 'boolean' |    
-| Null | 'object' |    
-| undefined | 'undefined' |    
+| Type      | typeof returns |
+| --------- | -------------- |
+| Object    | 'object'       |
+| Function  | 'function'     |
+| Array     | 'object'       |
+| Number    | 'number'       |
+| String    | 'string'       |
+| Boolean   | 'boolean'      |
+| Null      | 'object'       |
+| undefined | 'undefined'    |
     
 #### instanceof    
     
@@ -713,11 +713,11 @@ Console is accessible in the DOM, which means that console calls can be placed i
     
 - log(context, arg1, arg2, n): Write an object to the console. log can take an arbitrary number of parameters (which it will concatenate together), and it supports inline parameter definition in the style of printf:    
   - `console.log("This function is %s %s.","foo","bar");//This function is foo bar.`    
-  - | Pattern | Type |    
-    |---------|------|    
-    | %s      | String |    
-    | %d %i   | Number |    
-    | %o      | Object |    
+  | -     | Pattern | Type |
+  | ----- | ------- |
+  | %s    | String  |
+  | %d %i | Number  |
+  | %o    | Object  |
     
 - debug(context, arg1, arg2, n): console.log an object to the console with a link to the line number of execution.    
   - In Chrome, log === debug === info    

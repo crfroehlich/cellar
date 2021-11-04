@@ -12,7 +12,7 @@ draft: false
 image: images/2008-11-22-i-pity-them.jpg
 layout: post
 title: i pity them
-toc: true
+toc: false
 ---
     
 family is a strange thing. this is overly generic. family is an evolved concept, evolved out of necessity for the preservation of species. it is both a biological connection between generations and a social grouping, collecting different biological chains together into one label. this can be extraordinarily useful as members of the group assist the survival of each other.    

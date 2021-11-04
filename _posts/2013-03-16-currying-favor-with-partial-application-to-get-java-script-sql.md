@@ -12,7 +12,7 @@ image: >-
   images/2013-03-16-currying-favor-with-partial-application-to-get-java-script-sql.jpeg
 layout: post
 title: Currying Favor with Partial Application to get JavaScript SQL
-toc: true
+toc: false
 ---
     
 There is a domain that attends to curry as one of the quintessential elements of regional cuisine. This is not that domain; though in this domain I would argue we need a paprika.    
