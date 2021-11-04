@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About Me
+title: обо мне
 permalink: /about/
 ---
 
-I'm a simple man with a simple goal: to finish hiking my desk before the clock runs out. With any luck, I might just make it.
+In the late twentieth century, one man began a journey to hike his desk. This the story of the hands holding the pens writing upon the paper on the desk beneath the man behind that journey.
