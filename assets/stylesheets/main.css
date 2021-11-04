@@ -417,6 +417,12 @@ p { margin: .9rem 0 .9rem 0; }
 
 .entry-times ul > li { display: inline-block; }
 
+.PageNavigation { font-size: 14px; display: block; width: auto; overflow: hidden; }
+
+.PageNavigation a { display: block; width: 50%; float: left; margin: 1em 0; }
+
+.PageNavigation .next { text-align: right; }
+
 /* CSS stylesheet for displaying xarray objects in jupyterlab. */
 :root { --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1)); --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54)); --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38)); --xr-border-color: var(--jp-border-color2, #e0e0e0); --xr-disabled-color: var(--jp-layout-color3, #bdbdbd); --xr-background-color: var(--jp-layout-color0, white); --xr-background-color-row-even: var(--jp-layout-color1, white); --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee); }
 
