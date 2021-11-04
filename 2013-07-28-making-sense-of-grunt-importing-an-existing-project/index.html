@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="twitter:card" content="summary" /><title>Making Sense of Grunt: Importing an Existing Project | походы на моем столе</title>
+<meta name="description" content="Last year I saw [+Paul Irish]httpplusgooglecom113127438179392830442's introduction to [Yeoman]httpye...">
+
+<!-- SEO and meta information for twitter/whatsupp cards --><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Making Sense of Grunt: Importing an Existing Project | походы на моем столе</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Making Sense of Grunt: Importing an Existing Project" />
+<meta name="author" content="CF" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Last year I saw [+Paul Irish]httpplusgooglecom113127438179392830442’s introduction to [Yeoman]httpye…" />
+<meta property="og:description" content="Last year I saw [+Paul Irish]httpplusgooglecom113127438179392830442’s introduction to [Yeoman]httpye…" />
+<link rel="canonical" href="https://luddites.me/2013-07-28-making-sense-of-grunt-importing-an-existing-project/" />
+<meta property="og:url" content="https://luddites.me/2013-07-28-making-sense-of-grunt-importing-an-existing-project/" />
+<meta property="og:site_name" content="походы на моем столе" />
+<meta property="og:image" content="https://luddites.me/images/2013-07-28-making-sense-of-grunt-importing-an-existing-project.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-07-28T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://luddites.me/images/2013-07-28-making-sense-of-grunt-importing-an-existing-project.jpg" />
+<meta property="twitter:title" content="Making Sense of Grunt: Importing an Existing Project" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"CF"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://luddites.me/images/logo.png"},"name":"CF"},"description":"Last year I saw [+Paul Irish]httpplusgooglecom113127438179392830442’s introduction to [Yeoman]httpye…","@type":"BlogPosting","image":"https://luddites.me/images/2013-07-28-making-sense-of-grunt-importing-an-existing-project.jpg","url":"https://luddites.me/2013-07-28-making-sense-of-grunt-importing-an-existing-project/","dateModified":"2013-07-28T00:00:00-05:00","datePublished":"2013-07-28T00:00:00-05:00","headline":"Making Sense of Grunt: Importing an Existing Project","mainEntityOfPage":{"@type":"WebPage","@id":"https://luddites.me/2013-07-28-making-sense-of-grunt-importing-an-existing-project/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Feed --><link type="application/atom+xml" rel="alternate" href="https://luddites.me/atom.xml" title="походы на моем столе" /><!-- CSS --><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://luddites.me/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="https://luddites.me/assets/css/noscript.css" /></noscript>
+<link rel="stylesheet" href="https://luddites.me/assets/stylesheets/main.css" />
+<link rel="stylesheet" href="https://luddites.me/assets/css/academicons.min.css"/>
+
+<!-- Analytics --><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','G-NZGZJTW03Q','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<!-- Math -->
+
+
+  </head>
+  <body class="is-loading">
+
+    <!-- Wrapper -->
+      <div id="wrapper" class="fade-in">
+
+        <!-- Header -->
+        <header id="header">
+          <a title="Hiking my desk" href="https://luddites.me/" class="logo">походы на моем столе</a>
+        </header>
+
+        <!-- Nav -->
+          <nav id="nav">
+
+            <ul class="links">
+  <li class=""><a href="https://luddites.me/">Home</a></li>
+  <li class=""><a href="https://luddites.me/categories/">Categories</a></li>
+  <li class=""><a href="https://luddites.me/about/">обо мне</a></li>
+</ul>
+
+<ul class="icons">
+  <li class=""><a href="https://luddites.me/search" class="icon fa-search"><span class="label">Search</span></a></li>
+  <li><a href="https://github.com/crfroehlich" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+  <li><a href="https://twitter.com/tquestingbeast" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+  <li>
+    
+      <a href="/atom.xml" title="Atom Feed" class="icon fa-rss">
+        <span class="label">Subscribe</span>
+      </a>
+    
+  </li>
+</ul>
+
+
+          </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+          <!-- Post -->
+          <section class="post">
+            
+            <p><article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Making Sense of Grunt: Importing an Existing Project</h1>
+    
+    <p class="post-meta post-meta-title"><time class="dt-published" datetime="2013-07-28T00:00:00-05:00" itemprop="datePublished">
+        Jul 28, 2013
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">CF</span></span>• 
+
+
+
+<span class="read-time" title="Estimated read time">
+
+  7 min read
+
+</span>
+
+    </p>
+
+    
+    <section>  
+    <p class="category-tags"><i class="fa fa-folder category-tags-icon"></i></i>
+      
+        <a class="category-tags-link" href="/categories/#tools">tools</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#code">code</a>
+        
+      
+      </p>
+      </section>
+    
+
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Last year, I saw <a href="http://plus.google.com/113127438179392830442">+Paul Irish</a>’s introduction to <a href="http://yeoman.io/">Yeoman</a> in <a href="http://www.youtube.com/watch?v=Mk-tFn2Ix6g">the Google I/O 2012 session</a>, and I instantly knew that I was fundamentally doing something wrong. Yeoman did not exist yet; but it was easy to find Grunt, which was already close to being well baked. However. All of the documentation for <a href="http://gruntjs.com/">Grunt</a>, its cousin <a href="http://brunch.io/">Brunch</a>, and the now available Yeoman seems to be geared toward starting new projects.</p>
+
+<p>Not yet grokking how the whole system worked, I wanted a simple, straightforward explanation for migrating an existing project into Grunt. I have not yet found one, and a search for “import existing project into Grunt” still returns <a href="http://stackoverflow.com/questions/11404971/import-an-existing-javascript-project-into-a-grunt-brunch-project">my SO question for the same</a> in the top 10. So, this is my guide to taking a project and making it grunt.</p>
+
+<p>I already knew my JavaScript project was becoming a mess, but I didn’t yet know how to fix it. I had a few problems:</p>
+
+<ol>
+  <li>I had to manually manage the dev and Production versions of all my HTML pages. Any changes to 3rd party libraries had to be changed in at least two places. Any JS file add/drop/renames had to be manually managed.</li>
+  <li>I was using a pretty crude Perl script to assemble my source files and pass them into Google Closure Compiler. This, too, had to be manually managed.</li>
+  <li>Google Closure Compiler hadn’t kept up with the language. As I began to rely more heavily on features in EcmaScript 5 as well as polyfills from ES6, Closure Compiler couldn’t keep up. I eventually had to rely on whitespace compilation only.</li>
+  <li>Instructions to update Closure Compiler had to be manually propagated across the team.</li>
+  <li>Repeat these issues with CSS compilation. I was using YUI Compressor.</li>
+</ol>
+
+<p>My system had multiple, parallel points of failure. It was fragile. Management was entirely manual. I saw the potential that Grunt had to offer, but it took me awhile to trial-and-error my way to yes. <em>NOTE: The <a href="http://gruntjs.com/getting-started">Grunt documentation</a> is good, and I do recommend using it heavily.</em></p>
+
+<h3 id="step-1-what-is-grunt">Step 1: What is Grunt</h3>
+
+<p><em><a href="http://nodejs.org/">NodeJS</a>, the server-side JavaScript platform, is the secret to this sauce and <a href="https://npmjs.org/">NPM</a> is the package manager for Node (think Ruby RubyGems, Python pip, Perl PPM, Go… etc). Grunt is an npm package, which you’ll install.</em></p>
+
+<p>At its core, Grunt is a task runner. You define a set of plain-vanilla, private functions that you want Grunt to execute. Then you define plain-vanilla JavaScript objects, which Grunt will then pass as parameters to these functions. Then you define a public superset of these functions that you want to allow Grunt to execute from the command-line. Then you can execute Grunt.</p>
+
+<ol>
+  <li>Install <a href="http://nodejs.org/">NodeJS</a></li>
+  <li>(if on Windows, I recommend using <a href="http://chocolatey.org/">Chocolatey</a>)</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cinst nodejs.install    
+</code></pre></div></div>
+
+<ol>
+  <li>Globally install the Grunt command line (<a href="http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation/">global vs local</a>):</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> grunt-cli    
+</code></pre></div></div>
+
+<h3 id="step-2-your-project-is-now-an-npm-package">Step 2: Your Project is Now an NPM Package</h3>
+
+<p>The former incarnation of my project was a sprawling mass of files and folders, but Grunt requires that your content be packageable for NPM. In the end, you will even need to use NPM to install your package. For now, this means designating a root folder and creating a package file. Initially, you can think of your content structured in two categories: the content that <strong>you</strong> modify vs the content <strong>Grunt</strong> modifies.</p>
+
+<ol>
+  <li>Designate a root folder for your content <em>(e.g. /web/)</em></li>
+  <li>Copy your assets into an assets folder in the root <em>(e.g. /web/app/)</em>
+    <ol>
+      <li>It is customary to split assets according to type <em>(e.g. /web/app/css/, /web/app/js/, /web/app/img/, etc.)</em></li>
+    </ol>
+  </li>
+  <li>Designate a folder for Grunt to output content <em>(e.g. /web/release/)</em></li>
+  <li>Create the NPM package file, named package.json <em>(e.g./web/package.json)</em></li>
+</ol>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">    
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+  </span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">    
+  </span><span class="p">},</span><span class="w">    
+  </span><span class="nl">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">    
+  </span><span class="p">},</span><span class="w">    
+  </span><span class="nl">"bugs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">    
+  </span><span class="p">},</span><span class="w">    
+  </span><span class="nl">"licenses"</span><span class="p">:</span><span class="w"> </span><span class="err">\</span><span class="p">[{</span><span class="w">    
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">    
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">    
+  </span><span class="p">}</span><span class="err">\</span><span class="p">],</span><span class="w">    
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+    </span><span class="nl">"grunt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.4.1"</span><span class="p">,</span><span class="w">    
+    </span><span class="nl">"grunt-contrib-clean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="p">,</span><span class="w">    
+    </span><span class="nl">"grunt-contrib-cssmin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="p">,</span><span class="w">    
+    </span><span class="nl">"grunt-contrib-uglify"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="w">    
+  </span><span class="p">},</span><span class="w">    
+  </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+    
+  </span><span class="p">},</span><span class="w">    
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">],</span><span class="w">    
+  </span><span class="nl">"engines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+    </span><span class="nl">"node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.8.x"</span><span class="p">,</span><span class="w">    
+    </span><span class="nl">"npm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.1.x"</span><span class="w">    
+  </span><span class="p">}</span><span class="w">    
+</span><span class="p">}</span><span class="w">    
+</span></code></pre></div></div>
+
+<p>Should you ever want to publish your package to NPM, the whole file should be fleshed out. For now, the most important properties are <strong>dependencies</strong> and <strong>devDependencies</strong>. <a href="https://npmjs.org/doc/json.html#dependencies">Dependencies</a> are the names and versions of the NPM packages which must be installed for your project to execute. These are normally installed by calling</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span>  <span class="nt">--save</span>    
+</code></pre></div></div>
+
+<p><a href="https://npmjs.org/doc/json.html#devDependencies">DevDependencies</a> are the optional packages you need only to run non-essential tasks, install by calling</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span>  <span class="nt">--save-dev</span>    
+</code></pre></div></div>
+
+<p>Most of the common things you will want to do are defined in the context of Grunt plugins. Plugins are NPM packages tailored specifically to run as Grunt tasks.</p>
+
+<h3 id="step-3-identify-your-files">Step 3: Identify Your Files</h3>
+
+<p>Grunt has access to the file system, but it does not know which files to process or how to think about them, so you must define the set of files you want Grunt to operate on. There are various ways to do this, but I prefer managing files in a dedicated configuration file.</p>
+
+<ol>
+  <li>Create an asset list <em>(e.g. /web/files.js)</em></li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">app</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span>    
+      <span class="dl">'</span><span class="s1">app/js/NameSpace.js</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">app/js/</span><span class="se">\</span><span class="s1">*</span><span class="se">\</span><span class="s1">*/</span><span class="se">\</span><span class="s1">*.js</span><span class="dl">'</span>    
+  <span class="err">\</span><span class="p">];</span>    
+    
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">css</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span>    
+      <span class="dl">'</span><span class="s1">app/css/</span><span class="se">\</span><span class="s1">*</span><span class="se">\</span><span class="s1">*/</span><span class="se">\</span><span class="s1">*.css</span><span class="dl">'</span>    
+  <span class="err">\</span><span class="p">];</span>    
+    
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">vendorMin</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/modernizr-2.6.2.min.js</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/es5-shim.min.js</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/jquery-2.0.3.min.js</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/q.min.js</span><span class="dl">'</span>    
+  <span class="err">\</span><span class="p">];</span>    
+    
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">vendor</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/modernizr-2.6.2.js</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/es5-shim.js</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/jquery-2.0.3.js</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">vendor/js/q.js</span><span class="dl">'</span>    
+  <span class="err">\</span><span class="p">];</span>    
+    
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">images</span> <span class="o">=</span> <span class="err">\</span><span class="p">[</span>    
+      <span class="dl">'</span><span class="s1">app/img/</span><span class="se">\</span><span class="s1">*</span><span class="se">\</span><span class="s1">*/</span><span class="se">\</span><span class="s1">*.png</span><span class="dl">'</span><span class="p">,</span>    
+      <span class="dl">'</span><span class="s1">app/img/</span><span class="se">\</span><span class="s1">*</span><span class="se">\</span><span class="s1">*/</span><span class="se">\</span><span class="s1">*.gif</span><span class="dl">'</span>    
+  <span class="err">\</span><span class="p">];</span>    
+</code></pre></div></div>
+
+<p>We’ll later instruct Grunt to consume this file into a variable, and the `modules.exports` syntax will instruct Grunt to export each property as a member of the return object. Grunt also supports a range of globbing patterns–’**’ is the simplest way to include all files and folders beneath the path, recursively.</p>
+
+<h3 id="step-4-create-the-gruntfile">Step 4: Create the Gruntfile</h3>
+
+<p>The Gruntfile is by far the most complex piece, so for the purpose of this guide, I’ll focus on only three tasks: compiling JavaScript, compiling CSS and cleaning the release folder.</p>
+
+<ol>
+  <li>Create a file named Gruntfile.js <em>(e.g. /web/Gruntfile.js)</em></li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="err">\</span><span class="o">*</span><span class="nb">global</span> <span class="nx">module</span><span class="p">:</span><span class="kc">false</span><span class="err">\</span><span class="o">*</span><span class="sr">/   </span><span class="err"> 
+</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>    
+    
+    <span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./files</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//Load files.js into a local variable    </span>
+    
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>    
+  <span class="na">files</span><span class="p">:</span> <span class="nx">files</span><span class="p">,</span> <span class="c1">//store the files variable inside the grunt config object    </span>
+    
+  <span class="na">pkg</span><span class="p">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">readJSON</span><span class="p">(</span><span class="dl">'</span><span class="s1">package.json</span><span class="dl">'</span><span class="p">),</span>    
+    
+        <span class="na">clean</span><span class="p">:</span> <span class="err">\</span><span class="p">[</span><span class="dl">'</span><span class="s1">release</span><span class="dl">'</span><span class="err">\</span><span class="p">],</span>    
+    
+        <span class="na">cssmin</span><span class="p">:</span> <span class="p">{</span>    
+            <span class="na">files</span><span class="p">:</span> <span class="p">{</span>    
+                <span class="na">src</span><span class="p">:</span> <span class="nx">files</span><span class="p">.</span><span class="nx">css</span><span class="p">,</span>    
+                <span class="na">dest</span><span class="p">:</span> <span class="dl">'</span><span class="s1">release/mycss.min.css</span><span class="dl">'</span>    
+            <span class="p">}</span>    
+        <span class="p">},</span>    
+    
+        <span class="na">uglify</span><span class="p">:</span> <span class="p">{</span>    
+            <span class="na">files</span><span class="p">:</span> <span class="p">{</span>    
+                <span class="na">src</span><span class="p">:</span> <span class="nx">files</span><span class="p">.</span><span class="nx">app</span><span class="p">,</span>    
+                <span class="na">dest</span><span class="p">:</span> <span class="dl">'</span><span class="s1">release/myjs.min.js</span><span class="dl">'</span>    
+            <span class="p">}</span>    
+        <span class="p">}</span>    
+    <span class="p">});</span>    
+    
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="dl">'</span><span class="s1">grunt-contrib-clean</span><span class="dl">'</span><span class="p">);</span>    
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="dl">'</span><span class="s1">grunt-contrib-cssmin</span><span class="dl">'</span><span class="p">);</span>    
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="dl">'</span><span class="s1">grunt-contrib-uglify</span><span class="dl">'</span><span class="p">);</span>    
+    
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="dl">'</span><span class="s1">compile</span><span class="dl">'</span><span class="p">,</span> <span class="err">\</span><span class="p">[</span><span class="dl">'</span><span class="s1">clean</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cssmin</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">uglify</span><span class="dl">'</span><span class="err">\</span><span class="p">]);</span>    
+<span class="p">};</span>    
+</code></pre></div></div>
+
+<p>I keep my Gruntfile broken into three purely conceptual sections. First, there is the variable initialization before calling `<em>grunt.initConfig</em>`. This just makes it clear that I am assigning some content outside of the Grunt init.</p>
+
+<p>Second, there is the required call to `<em>grunt.initConfig</em>`. This is the core of the file. All common task configuration is done here. The names of the properties in this object usually map to the names of the associated task to run.</p>
+
+<p>Third, there is the task initialization and task identification section. Here, `<em>grunt.loadNpmTasks</em>` is called to load a plugin for use in Grunt. This plugin must be installed and identified as a dependency in package.json. (installation happens automatically when you install your project). You can also define additional tasks to run by calling `grunt.registerTask`</p>
+
+<p>The <a href="https://npmjs.org/package/grunt-contrib-clean">clean</a> task is the most straightforward. Given an array of folder names, it will delete their contents. <a href="https://npmjs.org/package/grunt-contrib-cssmin">Cssmin</a> will concatenate and compile CSS files into a single, compressed file. Likewise, <a href="https://npmjs.org/package/grunt-contrib-uglify">uglify</a> will take your JS files, concatenate and compile them into a minified file.</p>
+
+<p>My custom task, ‘compile’ simply cleans the ‘release’ folder and then compiles the CSS and JS back into release.</p>
+
+<h3 id="step-5-release">Step 5: Release</h3>
+
+<p>Once the pieces are in place, putting them together is a one-two:</p>
+
+<ol>
+  <li>cd into the project directory (e.g./web/)</li>
+  <li>Install the project</li>
+  <li><code class="language-plaintext highlighter-rouge">npm install</code></li>
+  <li>Compile the project</li>
+  <li><code class="language-plaintext highlighter-rouge">grunt compile</code></li>
+</ol>
+
+<p>I’m sure most of this was quite obvious to rest of the community, but it took me some considerable iteration to get it right. While it seems intuitive to me now, I thought it worth documenting from my own experience. You can see the entire <a href="https://github.com/somecallmechief/oj/blob/master/Gruntfile.js">Grunt configuration</a> for my own project, <a href="https://github.com/somecallmechief/oj/">OJ</a> on Github.</p>
+
+<p>These steps are enough to begin making headway, but they are by no means enough to get your entire project fully migrated into Grunt. Next time, I’ll discuss how to dynamically generate my project’s HTML using Grunt tasks.</p>
+
+  </div>
+  <a class="u-url" href="/2013-07-28-making-sense-of-grunt-importing-an-existing-project/" hidden></a>
+</article>
+</p>
+          </section>
+
+          <!-- Footer -->
+            <footer>
+              <ul class="actions">
+                <li><a href="#header" title="Back to Top" class="button">Наверх</a></li>
+              </ul>
+              <div class="PageNavigation">
+                  
+                    <a class="prev" href="/2013-07-06-from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil/">&laquo; From JsDoc to Github Pages in 27 easy steps (aka API Documentation Considered Evil)?</a>
+                  
+                  
+                    <a class="next" href="/2013-08-14-god-probably-probably-doesnt-use-your-app/">God Probably, *Probably*, Doesn''t Use Your App &raquo;</a>
+                  
+              </div>
+            </footer>
+          </div>
+        
+         
+
+        <!-- Footer -->
+        <!-- Copyright -->
+<div id="copyright">
+  <ul>
+    <li>
+      <a href="https://github.com/crfroehlich" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a> |
+      <a href="https://twitter.com/tquestingbeast" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a> |
+      <a href="https://orcid.org/0000-0001-6652-5940" class="ai ai-orcid" rel="nofollow"><span class="label">ORCID</span></a> |
+      <a href="https://scholar.google.es/citations?user=j3---DAAAAAJ" class="ai ai-google-scholar" rel="nofollow"><span class="label">Google Scholar</span></a> |
+      
+      <a href="/atom.xml" title="Atom Feed" class="icon fa-rss" rel="nofollow">
+        <span class="label">Subscribe</span>
+      </a>
+      
+    </li>
+    <li>Powered by <a href="https://fastpages.fast.ai/">fastpages</a></li>
+    <li>Design by <a href="https://html5up.net" rel="nofollow">HTML5 UP</a> &
+      <a href="https://github.com/mmistakes/jekyll-theme-basically-basic">Basically Basic</a></li>
+    <li>Jekyll Integration by <a href="https://jekyllup.com/">JekyllUp</a> </li>
+    <li>Please take generously</li>
+  </ul>
+</div>
+
+
+      </div>
+
+    <!-- Scripts -->
+    <!-- DYN -->
+<script src="https://luddites.me/assets/js/jquery.min.js"></script>
+<script src="https://luddites.me/assets/js/jquery.scrollex.min.js"></script>
+<script src="https://luddites.me/assets/js/jquery.scrolly.min.js"></script>
+<script src="https://luddites.me/assets/js/skel.min.js"></script>
+<script src="https://luddites.me/assets/js/util.js"></script>
+<script src="https://luddites.me/assets/js/main.js"></script>
+
+
+  </body>
+</html>
