@@ -1,5 +1,5 @@
 # Defines https://hub.docker.com/repository/docker/hamelsmu/fastpages-jekyll
-FROM jekyll/jekyll:4.0.1
+FROM jekyll/jekyll:4.2.0
 # FROM hamelsmu/fastpages-jekyll
 
 COPY . .
