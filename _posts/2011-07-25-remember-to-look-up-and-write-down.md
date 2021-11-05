@@ -4,9 +4,7 @@ categories:
   - lïf
   - writing
 comments: true
-description: >-
-  To hike the mountain of lïf is to know peace You the hiker cease to move You
-  are motionless but the ...
+description: "To hike the mountain of lïf is to know peace. You, the hiker, cease to move. You are motionless but the..."
 draft: false
 image: images/2011-07-25-remember-to-look-up-and-write-down.jpg
 layout: post

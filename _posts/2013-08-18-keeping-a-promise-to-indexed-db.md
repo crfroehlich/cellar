@@ -7,7 +7,7 @@ categories:
   - promises
   - lïf
 comments: true
-description: "APIs are hellish things inconstant moons inconsistent interfaces intolerable\_incompatibility If you ..."
+description: "APIs are hellish things: inconstant moons, inconsistent interfaces, intolerable incompatibility. If you..."
 draft: false
 image: images/2013-08-18-keeping-a-promise-to-indexed-db.jpg
 layout: post

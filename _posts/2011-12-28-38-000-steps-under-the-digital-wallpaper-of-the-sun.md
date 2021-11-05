@@ -5,7 +5,7 @@ categories:
   - code
   - lïf
 comments: true
-description: The Trailhead...
+description: "The Trailhead..."
 draft: false
 image: images/2011-12-28-38-000-steps-under-the-digital-wallpaper-of-the-sun.jpg
 layout: post

@@ -3,7 +3,7 @@ author: CF
 categories:
   - code
 comments: true
-description: "I was musing over the usual eloquence of Mr Hague's recent post\_[Stumbling Into the Cold Expanse of ..."
+description: "I was musing over the usual eloquence of Mr Hague's recent post 'Stumbling Into the Cold Expanse of..."
 draft: false
 image: images/2013-05-21-crunchy-frog.jpg
 layout: post

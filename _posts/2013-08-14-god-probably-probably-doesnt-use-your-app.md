@@ -4,9 +4,7 @@ categories:
   - göd
   - code
 comments: true
-description: >-
-  I propose we immediately deprecate the word "administrator" and its diminutive
-  form "admin" from lan...
+description: "I propose we immediately deprecate the word \"administrator\" and its diminutive form \"admin\" from language..."
 draft: false
 image: images/2013-08-14-god-probably-probably-doesnt-use-your-app.jpg
 layout: post

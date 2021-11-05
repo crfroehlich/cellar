@@ -6,9 +6,7 @@ categories:
   - hyper
   - bole
 comments: true
-description: >-
-  A confluence of events have me pondering a kernel of an idea [Prometheus
-  decapitated anticipation]ht...
+description: "A confluence of events have me pondering a kernel of an idea..."
 draft: false
 image: images/2012-06-16-your-hyperbole-is-too-large.jpg
 layout: post

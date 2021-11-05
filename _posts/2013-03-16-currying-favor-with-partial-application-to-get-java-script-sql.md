@@ -4,9 +4,7 @@ categories:
   - code
   - curry
 comments: true
-description: >-
-  There is a domain that attends to curry as one of the quintessential elements
-  of regional cuisine Th...
+description: "There is a domain that attends to curry as one of the quintessential elements of regional cuisine. This is not that..."
 draft: false
 image: >-
   images/2013-03-16-currying-favor-with-partial-application-to-get-java-script-sql.jpeg

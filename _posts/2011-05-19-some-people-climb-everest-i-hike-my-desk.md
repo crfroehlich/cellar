@@ -6,9 +6,7 @@ categories:
   - optimism
   - desk
 comments: true
-description: >-
-  It's been said that behind every great man is a [Tenzing
-  Norgay]httpenwikipediaorgwikiTenzingNorgay ...
+description: "It's been said that behind every great man is a Tenzing Norgay..."
 draft: false
 image: images/2011-05-19-some-people-climb-everest-i-hike-my-desk.png
 layout: post

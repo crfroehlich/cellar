@@ -5,9 +5,7 @@ categories:
   - lïf
   - sailing
 comments: true
-description: >-
-  Selfconsciousness is generally loathsome though it doesn't stop me from
-  trepidating on its doorstep ...
+description: "Self-consciousness is generally loathsome, though it doesn't stop me from trepidating on its doorstep..."
 draft: false
 image: images/2008-11-24-out-of-mind-of-sight.jpg
 layout: post

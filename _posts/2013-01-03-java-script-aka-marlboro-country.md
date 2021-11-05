@@ -3,9 +3,7 @@ author: CF
 categories:
   - code
 comments: true
-description: >-
-  Sometimes JavaScript land just feels like Marlboro Country The sales pitch
-  certainly feels similar...
+description: "Sometimes JavaScript land just feels like Marlboro Country The sales pitch certainly feels similar..."
 draft: false
 image: images/2013-01-03-java-script-aka-marlboro-country.jpg
 layout: post

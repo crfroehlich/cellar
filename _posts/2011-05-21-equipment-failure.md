@@ -5,7 +5,7 @@ categories:
   - failure
   - equipment
 comments: true
-description: "When you've been hiking as long as I have you know instinctively that\_[equipment failure is a guaran..."
+description: "When you've been hiking as long as I have you know instinctively that equipment failure is a guaran..."
 draft: false
 image: images/2011-05-21-equipment-failure.jpg
 layout: post

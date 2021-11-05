@@ -5,7 +5,7 @@ categories:
   - winter
   - squid
 comments: true
-description: "The Squid TSS lives at the South Pole, this much we know. How she came to live there or her reasons for..."
+description: "She lives at the South Pole, this much we know. How she came to live there or her reasons for..."
 draft: false
 image: images/2018-12-20-the-solstice-squid.png
 layout: post

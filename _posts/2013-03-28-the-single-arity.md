@@ -5,9 +5,7 @@ categories:
   - communication
   - lïf
 comments: true
-description: >-
-  Aside In all I'd much rather elaborate on [wheres joins and orders
-  by]httphikingludditesme201303curr...
+description: "Laying here as I fade in and out of scope over the waves of recovery from back surgery..."
 draft: false
 image: images/2013-03-28-the-single-arity.png
 layout: post

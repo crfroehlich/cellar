@@ -9,7 +9,7 @@ comments: true
 description: >-
   If you ask the Jew the average practicing Jew or even a cross section of Rabis
   on the question of th...
-draft: false
+hide: true
 image: images/2008-10-30-for-your-bucket-of-thoughts.jpeg
 layout: post
 title: for your bucket of thoughts

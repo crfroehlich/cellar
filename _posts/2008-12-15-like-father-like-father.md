@@ -6,7 +6,7 @@ categories:
   - lïf
   - father
 comments: true
-description: "heather and i ran into a woman who attends my father's church at the mall today\_ \"you don't look any..."
+description: "heather and i ran into a woman who attends my father's church at the mall today..."
 draft: false
 image: images/2008-12-15-like-father-like-father.jpg
 layout: post

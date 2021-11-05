@@ -3,9 +3,7 @@ author: CF
 categories:
   - poetry
 comments: true
-description: >-
-  The world is a small flat rock which rests evenly in the palm of your hand As
-  you toss it lightly in...
+description: "The world is a small flat rock which rests evenly in the palm of your hand. As you toss it lightly..."
 draft: false
 image: images/2011-03-16-this-is-the-end-of-the-world.jpg
 layout: post

@@ -4,7 +4,7 @@ categories:
   - tools
   - code
 comments: true
-description: "Last year I saw\_[+Paul Irish]httpplusgooglecom113127438179392830442's introduction to [Yeoman]httpye..."
+description: "Last year I saw Paul Irish's introduction to Yeoman..."
 draft: false
 image: images/2013-07-28-making-sense-of-grunt-importing-an-existing-project.jpg
 layout: post
@@ -20,10 +20,10 @@ Not yet grokking how the whole system worked, I wanted a simple, straightforward
 I already knew my JavaScript project was becoming a mess, but I didn't yet know how to fix it. I had a few problems:    
     
 1. I had to manually manage the dev and Production versions of all my HTML pages. Any changes to 3rd party libraries had to be changed in at least two places. Any JS file add/drop/renames had to be manually managed.    
-1. I was using a pretty crude Perl script to assemble my source files and pass them into Google Closure Compiler. This, too, had to be manually managed.    
-1. Google Closure Compiler hadn't kept up with the language. As I began to rely more heavily on features in EcmaScript 5 as well as polyfills from ES6, Closure Compiler couldn't keep up. I eventually had to rely on whitespace compilation only.    
-1. Instructions to update Closure Compiler had to be manually propagated across the team.    
-1. Repeat these issues with CSS compilation. I was using YUI Compressor.    
+2. I was using a pretty crude Perl script to assemble my source files and pass them into Google Closure Compiler. This, too, had to be manually managed.    
+3. Google Closure Compiler hadn't kept up with the language. As I began to rely more heavily on features in EcmaScript 5 as well as polyfills from ES6, Closure Compiler couldn't keep up. I eventually had to rely on whitespace compilation only.    
+4. Instructions to update Closure Compiler had to be manually propagated across the team.    
+5. Repeat these issues with CSS compilation. I was using YUI Compressor.    
     
 My system had multiple, parallel points of failure. It was fragile. Management was entirely manual. I saw the potential that Grunt had to offer, but it took me awhile to trial-and-error my way to yes. _NOTE: The [Grunt documentation](http://gruntjs.com/getting-started) is good, and I do recommend using it heavily._    
     

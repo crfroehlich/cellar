@@ -4,9 +4,7 @@ categories:
   - lïf
   - home
 comments: true
-description: >-
-  I embrace the [Stevie's Home]httpwwwthesneezecommtarchives000831php approach
-  to life and my return h...
+description: "I embrace the 'Stevie's Home' approach to life..."
 draft: false
 image: images/2012-10-02-complex-units-of-measure.jpg
 layout: post

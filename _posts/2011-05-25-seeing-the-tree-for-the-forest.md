@@ -5,9 +5,7 @@ categories:
   - journey
   - details
 comments: true
-description: >-
-  My hike today spanned the 3500 km of the Appalachian Trail The journey I
-  embarked when I began hikin...
+description: "My hike today spanned the 3500 km of the Appalachian Trail. The journey I embarked when I began hiking..."
 draft: false
 image: images/2011-05-25-seeing-the-tree-for-the-forest.jpg
 layout: post

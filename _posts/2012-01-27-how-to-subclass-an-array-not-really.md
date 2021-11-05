@@ -7,9 +7,7 @@ categories:
   - subclass
   - mistake
 comments: true
-description: >-
-  Update I don't recommend following the advice in this post The 5minuteago
-  version of my self was hat...
+description: "Update: I don't recommend following the advice in this post..."
 draft: false
 image: images/2012-01-27-how-to-subclass-an-array-not-really.png
 layout: post

@@ -5,9 +5,7 @@ categories:
   - communication
   - email
 comments: true
-description: >-
-  In the early 90s the constraints imposed by dialup speeds made email my
-  primary interface for intera...
+description: "In the early 90s the constraints imposed by dialup speeds made email my primary interface for intera..."
 draft: false
 image: images/2012-07-08-communicating-and-why-i-quit-email-episode-1.jpg
 layout: post
@@ -24,8 +22,8 @@ In the early days of AOL, they implemented this fantastic feature on their propr
 For me, the problem with IMAP/POP3/SMTP (Exchange/ActiveSync, BlackBerry, iCloud, etc)... the problem with email is that it doesn't solve any real (actual or imagined) problem well. Email provides this thin service:    
     
 1. The Sender is allowed to send any arbitrary text message (permitted length not always known/guaranteed, UI rendering of content not known/guaranteed) with a (sometimes permitted) optional binary attachment(s) (availability of which to 1.ipient depending upon client is unknowable) to a valid Recipient (string'@'string'.'string).    
-1. If an Author sends a valid message to an invalid Recipient or if a trapped error occurs during delivery, the mail exchanger will return an error.    
-1. The Recipient is guaranteed to receive all valid messages sent to the Recipient's address, if the delivery attempt succeeded.    
+2. If an Author sends a valid message to an invalid Recipient or if a trapped error occurs during delivery, the mail exchanger will return an error.    
+3. The Recipient is guaranteed to receive all valid messages sent to the Recipient's address, if the delivery attempt succeeded.    
     
 That's it. While various clients (GMail, Thunderbird, etc) have (sometimes greatly) improved upon components of email's core weaknesses, none has succeeded in being more than a really good band-aid on untenable platform. I have used email to try to solve notifications, scheduling, reminders, planning, archiving, bartering, trading and so, so on. Email has failed to solve no other problem quite so spectacularly as it fails to solve the problem of communication.    
     

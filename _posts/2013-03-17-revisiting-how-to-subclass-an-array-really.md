@@ -3,7 +3,7 @@ author: CF
 categories:
   - code
 comments: true
-description: "Update\_[+Axel Rauschmayer]httpplusgooglecom110516491705475800224\_has an [even more succinct post on ..."
+description: "In the course of building out my SQL prototype..."
 draft: false
 image: images/2013-03-17-revisiting-how-to-subclass-an-array-really.jpg
 layout: post

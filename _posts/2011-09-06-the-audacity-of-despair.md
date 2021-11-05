@@ -4,9 +4,7 @@ categories:
   - lïf
   - logging
 comments: true
-description: >-
-  I began this over one year ago July 28 2010 but never finished I've lost the
-  creative tingle herebut...
+description: "I began this over one year ago July 28 2010 but never finished I've lost the creative tingle herebut..."
 draft: false
 image: images/2011-09-06-the-audacity-of-despair.jpg
 layout: post

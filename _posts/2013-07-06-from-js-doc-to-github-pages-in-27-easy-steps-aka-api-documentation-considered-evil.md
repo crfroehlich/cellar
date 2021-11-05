@@ -5,9 +5,7 @@ categories:
   - api
   - docs
 comments: true
-description: >-
-  I ask the question because I assume it must be considered evilon the
-  subsequent assumption that if i...
+description: "I ask the question because I assume it must be considered evilon the subsequent assumption that if i..."
 draft: false
 image: >-
   images/2013-07-06-from-js-doc-to-github-pages-in-27-easy-steps-aka-api-documentation-considered-evil.jpeg

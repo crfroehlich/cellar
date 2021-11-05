@@ -5,7 +5,7 @@ categories:
   - code
   - persistence
 comments: true
-description: "Quite a bit of my free time in the last 8 months has slipped away into\_[OJ]httpsomecallmechiefgithub..."
+description: "Quite a bit of my free time in the last 8 months has slipped away into OJ..."
 draft: false
 image: images/2013-06-26-a-promise-to-indexed-db.jpeg
 layout: post

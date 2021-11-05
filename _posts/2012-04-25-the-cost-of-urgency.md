@@ -6,9 +6,7 @@ categories:
   - action
   - reaction
 comments: true
-description: >-
-  Sandstorms are spectacular creatures From lessthanether they arise demolish
-  and vanish...
+description: "Sandstorms are spectacular creatures From lessthanether they arise demolish and vanish..."
 draft: false
 image: images/2012-04-25-the-cost-of-urgency.jpg
 layout: post

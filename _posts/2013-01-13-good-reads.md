@@ -5,9 +5,7 @@ categories:
   - competence
   - code
 comments: true
-description: >-
-  Of the part of the day I don't spend eating sleeping or enjoyingsurviving my
-  family [I spend it in r...
+description: "Of the part of the day I don't spend eating sleeping or enjoying/surviving my family..."
 draft: false
 image: images/2013-01-13-good-reads.jpg
 layout: post

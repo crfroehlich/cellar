@@ -5,9 +5,7 @@ categories:
   - social
   - media
 comments: true
-description: >-
-  At the launch meeting for our new team blog [Object Reference Not
-  Set]httpobjrefnotsetblogspotcom we...
+description: "At the launch meeting for our new team blog 'Object Reference Not Set' we..."
 draft: false
 image: images/2012-01-24-out-with-the-old-in-with-the-new-profile.jpg
 layout: post

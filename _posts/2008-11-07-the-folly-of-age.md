@@ -5,9 +5,7 @@ categories:
   - family
   - country
 comments: true
-description: >-
-  My brother Timothy wise beyond his years hipped me to an [email conversation
-  with our grandparents]h...
+description: "My brother, Timothy, wise beyond his years hipped me to an email conversation with our grandparents..."
 draft: false
 image: images/2008-11-07-the-folly-of-age.jpg
 layout: post

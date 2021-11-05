@@ -6,9 +6,7 @@ categories:
   - knol
   - bubonics
 comments: true
-description: >-
-  The [illfated knol
-  project]httpwwwtechdirtcomarticles2011011915120412735failureknolshowsagainthatbig...
+description: "Bu\\`bon´ics    (bũ\\`bǒn´ĭks)..."
 draft: false
 image: images/2011-11-22-affectation-without-action.jpg
 layout: post

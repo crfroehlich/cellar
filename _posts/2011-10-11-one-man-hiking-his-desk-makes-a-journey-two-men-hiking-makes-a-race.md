@@ -3,7 +3,7 @@ author: CF
 categories:
   - void
 comments: true
-description: No one is first and you're last...
+description: "No one is first and you're last..."
 draft: false
 image: >-
   images/2011-10-11-one-man-hiking-his-desk-makes-a-journey-two-men-hiking-makes-a-race.jpg

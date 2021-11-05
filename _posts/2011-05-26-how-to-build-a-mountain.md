@@ -6,9 +6,7 @@ categories:
   - standing
   - desk
 comments: true
-description: >-
-  The decision to climb [Mount Vesuvius]httpenwikipediaorgwikiMountVesuvius
-  probably does not come lig...
+description: "The decision to climb Mount Vesuvius probably does not come lightly..."
 draft: false
 image: images/2011-05-26-how-to-build-a-mountain.jpeg
 layout: post
@@ -23,9 +21,9 @@ Fortunately, Olympus is [easier to build than to find](http://www.cfa.harvard.ed
 First, you need a free stretch of wall approximately 5' wide by 7' tall. This of course will vary according to your stature and appetite for adventure, so you should measure accordingly.    
     
 1. Standing with your legs apart, even with your shoulders. Hold an [imaginary notepad](http://www.amazon.com/She-Liked-Imaginary-Men-Notepad/dp/0811839656) in your hands, with your elbows in as if to write.    
-1. Measure (probably with the assistance of another person) the distance between your elbows. This (plus 6-12") is the width of your space.    
-1. Measure the distance between the floor and your wrists. This (plus or minus 2") is the height of your keyboard platform.    
-1. You can approximate the additional distance between the keyboard platform and your monitor platform, but the rails are fully adjustable and your first measurements are likely to be wrong anyway.    
+2. Measure (probably with the assistance of another person) the distance between your elbows. This (plus 6-12") is the width of your space.    
+3. Measure the distance between the floor and your wrists. This (plus or minus 2") is the height of your keyboard platform.    
+4. You can approximate the additional distance between the keyboard platform and your monitor platform, but the rails are fully adjustable and your first measurements are likely to be wrong anyway.    
     
 Second, assembly the artillery.    
     

@@ -6,9 +6,7 @@ categories:
   - donald thisbit
   - liberation
 comments: true
-description: >-
-  Money the desire for money we might naively think is the great unifier We all
-  want it as much of it ...
+description: "Money (the desire for money), we might naively think, is the great unifier. We all want it as much of it..."
 draft: false
 image: images/2013-11-09-the-audacity-of-trying.jpg
 layout: post

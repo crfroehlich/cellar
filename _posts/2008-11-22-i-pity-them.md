@@ -5,9 +5,7 @@ categories:
   - family
   - lïf
 comments: true
-description: >-
-  family is a strange thing this is overly generic family is an evolved concept
-  evolved out of necessi...
+description: "family is a strange thing..."
 draft: false
 image: images/2008-11-22-i-pity-them.jpg
 layout: post

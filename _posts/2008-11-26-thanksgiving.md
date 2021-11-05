@@ -5,9 +5,7 @@ categories:
   - lïf
   - holiday
 comments: true
-description: >-
-  I read a bit recently that described thanks as gratitude for that which one
-  did not earn to which I ...
+description: "I read a bit recently that described thanks as gratitude for that which one did not earn to which I..."
 draft: false
 image: images/2008-11-26-thanksgiving.jpeg
 layout: post

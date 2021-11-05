@@ -4,9 +4,7 @@ categories:
   - fiction
   - short story
 comments: true
-description: >-
-  My father lives in an old army footlocker that lies in the attic of our home
-  Faded rusted and rottin...
+description: "My father lives in an old army footlocker that lies in the attic of our home. Faded rusted and rotting..."
 draft: false
 image: images/2009-10-13-meeting-melchizedek.jpg
 layout: post

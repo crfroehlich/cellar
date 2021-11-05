@@ -7,9 +7,7 @@ categories:
   - lïf
   - writing
 comments: true
-description: >-
-  Years ago one of my dearest friends [Jennifer
-  Elms]httpsplusgooglecom100156336256357757639posts and ...
+description: "Years ago one of my dearest friends, Jennifer Elms and I..."
 draft: false
 image: images/2012-01-20-on-competence.jpg
 layout: post

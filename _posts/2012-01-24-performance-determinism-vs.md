@@ -5,9 +5,7 @@ categories:
   - measurements
   - speed
 comments: true
-description: >-
-  [David Ungar]httpenwikipediaorgwikiDavidUngar cocreator of
-  [Self]httpselflanguageorg the forefather ...
+description: "David Ungar had an interesting talk..."
 draft: false
 image: images/2012-01-24-performance-determinism-vs.jpg
 layout: post

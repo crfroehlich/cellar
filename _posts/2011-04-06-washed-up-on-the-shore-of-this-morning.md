@@ -3,9 +3,7 @@ author: CF
 categories:
   - poetry
 comments: true
-description: >-
-  Uncle Petrov once swore that snow in April forebode a good summer catch
-  Summers and minnows followed...
+description: "Uncle Petrov once swore that snow in April forebode a good summer catch. Summers and minnows followed..."
 draft: false
 image: images/2011-04-06-washed-up-on-the-shore-of-this-morning.jpg
 layout: post

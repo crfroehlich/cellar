@@ -4,9 +4,7 @@ categories:
   - lïf
   - logging
 comments: true
-description: >-
-  I grew up writing laundry lists and never developed an adequate talent for
-  other forms of literature...
+description: "I grew up writing laundry lists and never developed an adequate talent for other forms of literature..."
 draft: false
 image: >-
   images/2010-02-10-if-it-looks-like-a-duck-and-walks-like-a-duck-lets-call-it-a-moose.jpeg

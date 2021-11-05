@@ -3,9 +3,7 @@ author: CF
 categories:
   - regret
 comments: true
-description: >-
-  at the end of the day obama cannot be all of the things he promised to be be
-  the person we imagined ...
+description: "at the end of the day obama cannot be all of the things he promised to be, be the person we imagined..."
 draft: false
 image: images/2009-02-28-palin-should-have-won.jpg
 layout: post

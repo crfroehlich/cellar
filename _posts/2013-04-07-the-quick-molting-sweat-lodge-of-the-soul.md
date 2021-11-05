@@ -5,7 +5,7 @@ categories:
   - sweat
   - lodge
 comments: true
-description: It was the spring of our discontent...
+description: "It was the spring of our discontent..."
 draft: false
 image: images/2013-04-07-the-quick-molting-sweat-lodge-of-the-soul.png
 layout: post

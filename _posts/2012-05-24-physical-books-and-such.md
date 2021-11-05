@@ -4,7 +4,7 @@ categories:
   - inventory
   - meandering
 comments: true
-description: I don't read as many books as I used to and I wonder why...
+description: "I don't read as many books as I used to and I wonder why..."
 draft: false
 image: images/2012-05-24-physical-books-and-such.png
 layout: post
