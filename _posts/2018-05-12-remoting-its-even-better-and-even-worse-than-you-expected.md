@@ -5,7 +5,7 @@ categories:
   - work
   - tech
 comments: true
-description: "Billions of gallons of ink have been spilled on this subject Google if you want any other perspective..."
+description: "Billions of gallons of ink have been spilled on this subject. Google if you want any other perspective..."
 draft: false
 image: images/2018-05-12-remoting-its-even-better-and-even-worse-than-you-expected.webp
 layout: post

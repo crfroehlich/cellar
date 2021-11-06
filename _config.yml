@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: "походы на моем столе"
-description: "Hiking my desk"
+description: "Hiking My Desk"
 logo: images/logo.png
 background_image:   "images/bg.jpg"
 copyright: "Adapted from [Oriol Abril's blog](https://oriolabril.github.io/oriol_unraveled/), which is powered by [fastpages](https://fastpages.fast.ai/) running with [Basically Basic](https://mmistakes.github.io/jekyll-theme-basically-basic/) on an infinite number of box turtles."

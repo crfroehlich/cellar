@@ -3,14 +3,14 @@
   <head>
     {% include head.html %}
   </head>
-  <body>
-
+  <body class="is-loading">
+  
     <!-- Wrapper -->
-      <div>
+    <div id="wrapper" class="fade-in">
 
         <!-- Header -->
         <header id="header">
-          <a title="{{site.description}}" href="{{ "/" | absolute_url }}" class="logo">{{site.title}}</a>
+          <a title="{{ site.description }}" href="{{ "/" | absolute_url }}" class="logo">{{site.title}}</a>
         </header>
 
         <!-- Nav -->

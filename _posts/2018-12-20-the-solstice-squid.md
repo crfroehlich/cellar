@@ -7,7 +7,7 @@ categories:
 comments: true
 description: "She lives at the South Pole, this much we know. How she came to live there or her reasons for..."
 draft: false
-image: images/2018-12-20-the-solstice-squid.png
+image: images/2018-12-20-the-solstice-squid.jpg
 layout: post
 title: The Solstice Squid
 toc: false
