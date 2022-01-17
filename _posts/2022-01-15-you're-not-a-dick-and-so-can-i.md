@@ -14,15 +14,15 @@ toc: false
 
 Already half way (or more) through my brief consciousness of this earth, and I still cannot quite wrap my head around what I must now conclude to be normative or perhaps even inevitable behavior. I see this exchange (or one very much like it) played out almost every day of my life. Imagine two people introducing themselves. Social context does not matter, neither does the medium--this could be in person or on a video call or by email.
 
-> "Hi, my name is Richard."
-> "Nice to meet you, Dick. My name is..."
+> "Hi, my name is Richard."  
+> "Nice to meet you, Dick. My name is..."  
 
 Were `dick` red and `richard` black, I could make a tidy fortune at roulette. It's the near mathematical certainy of this outcome that is perhaps so perplexing to me. If you have followed the gentle ebb and flow of my musings and so far not apprehended the conundrum, that is no doubt further evidence in support of the argument for socio-normative behavior. Yet, still. 
 
 The simplicity of it confounds me. Richard presents their name, "Richard". Person B, without any hesitation, immediately begins speaking back to Richard using a name that is not "Richard". To me, it seems intuitively obvious that when I present some other person with a name and an assignment for that name, e.g. "Hello, here is this name 'Richard', and I assign this name to myself by way of saying 'My name is Richard'. So you now have a covenient label by which to refer to me, specifically, and distinguish that reference from all the other things in this room or the universe at large about which we might want to speak." I posit that many (if not most) people would find an exchange like this somewhat untennable:
 
-> "This wall needs to be painted viridian."
-> "Great, I'll go get some green paint."
+> "This wall needs to be painted viridian."  
+> "Great, I'll go get some green paint."  
 
 Generally, labels are not loosely interchangeable with each other and in the course of normal human interactions, we assume that we can rely on the shared vocabulary and grammar of our peers to converse. We might disgree about whether or not this particular color is viridian, but we generally agree that having colors named things like viridian and vermilion can be useful when it comes to talking about what to paint walls or cars or houses. I think it then follows that if I were to ask for a wall to be painted viridian and that if that wall were painted some other not-viridian color, that I would be in the right to say the job has not been completed.
 
@@ -42,8 +42,8 @@ It just boggles. I don't know if I subscribe to any generalizations about the na
 
 As someone who has difficulty remembering names, I spend a lot of time thinking about introductions. Repeating someone's name aloud helps it stick a little, so I find myself repeating this pattern:
 
-> "I'm Javier."
-> "Javier? Did you say, Javier? Nice to meet you Javier."
+> "I'm Javier."  
+> "Javier? Did you say, Javier? Nice to meet you Javier."  
 
 So, it is perhaps my hyper-attention to these little moments that raises my awareness of and sensitivity to these abberations in patterns that may be imperciptible to others. I do not know.
 
