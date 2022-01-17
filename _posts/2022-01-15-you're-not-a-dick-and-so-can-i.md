@@ -31,6 +31,7 @@ There is, of course, the very nuanced issue of nicknames and diminutives. For ex
 So it is. While I have more or less resigned myself to a fate of forever being called "Chris"; that no matter how many times I present my actual name "Christopher", the echos always whisper "Chris"; I still do not like it. I often wonder what it is (if anything) that passes through someone's mind when they hear me say my name, "Christopher" and then immediately switch to a diminutive.
 
 * Did they mishear me pronounce my name?
+* Are they mispronouncing my name accidentally?
 * Have they confused me with someone else?
 * Were they explicitly taught to truncate names?
 * Are they trying to assert some kind of dominance by butchering my name?
